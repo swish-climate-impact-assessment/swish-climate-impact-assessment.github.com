@@ -11,6 +11,7 @@ categories:
 The server will operate as a minimal GIS database with a basic data registry.  A data catalogue with effecient search functionality is beyond the scope.
 
 The software stack will include:
+
 - This website
 - A PostGIS server
 - geoserver
