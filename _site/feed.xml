@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+	<channel>
+		<title>Recology</title>
+		<description>An exploration of using R for ecology, evolution, and open science.</description>
+		<link>http://schamberlain.github.com</link>
+		
+			<item>
+				<title>Data Management Plan</title>
+				<description>&lt;p&gt;The server will operate as a minimal GIS database with a basic data registry.  A data catalogue with effecient search functionality is beyond the scope.&lt;/p&gt;
+
+&lt;p&gt;The software stack will include:
+- This website
+- A PostGIS server
+- geoserver
+- Rstudio server
+- an Oracle XE database for the data register&lt;/p&gt;
+</description>
+				<published>Sat Sep 15 00:00:00 +1000 2012</published>
+				<link>http://schamberlain.github.com/2012/09/data-management-plan/</link>
+			</item>
+		
+			<item>
+				<title>Hello World</title>
+				<description>&lt;p&gt;This is the Extreme Weather Events (EWE) database that accompanies the project 'Scientific Workflow and Integration Software for Health - Climate Impacts Assessment', or SWISH for short &lt;a href=&quot;http://swish-climate-impact-assessment.blogspot.com.au/&quot;&gt;http://swish-climate-impact-assessment.blogspot.com.au/&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;We are funded by the Australian National Data Service (ANDS).&lt;/p&gt;
+
+&lt;p&gt;The project is to build a Scientific Workflow System for Assessing and
+Projecting the Health Impacts of Extreme Weather Events.&lt;/p&gt;
+
+&lt;h2&gt;About this site&lt;/h2&gt;
+
+&lt;p&gt;This server hosts a PostGIS database with the results of the algorithms we develop to describe EWE.&lt;br/&gt;
+The data are available for spatial and temporal queries - and download for integration with health data.&lt;/p&gt;
+
+&lt;p&gt;The project will probably result in a database with around 50GB of preprocessed extreme weather event data and some spatial data related to zones of the population census.  The access will be restricted to bona fide researchers  investigating links between extreme weather and human health.  We envisage only a small number of researchers will be accessing these data.&lt;/p&gt;
+
+&lt;h2&gt;Other uses of this site&lt;/h2&gt;
+
+&lt;p&gt;This website can also server to host detailed explanations of the algorithms and tutorials on how to access the data.&lt;/p&gt;
+</description>
+				<published>Fri Sep 14 00:00:00 +1000 2012</published>
+				<link>http://schamberlain.github.com/2012/09/helloworld/</link>
+			</item>
+		
+	</channel>
+</rss>

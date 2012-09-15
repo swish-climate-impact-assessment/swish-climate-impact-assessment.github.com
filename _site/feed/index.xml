@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+ <title>DisentangleThings</title>
+ <link href="http://ivanhanigan.github.com/feed/" rel="self"/>
+ <link href="http://ivanhanigan.github.com/"/>
+ <updated>2012-09-15T23:32:50+10:00</updated>
+ <id>http://ivanhanigan.github.com/</id>
+ <author>
+   <name>ivanhanigan</name>
+   <email>mail@ivan.hanigan@gmail.com</email>
+ </author>
+
+ 
+ <entry>
+   <title>Data Management Plan</title>
+   <link href="http://ivanhanigan.github.com/2012/09/data-management-plan/"/>
+   <updated>2012-09-15T00:00:00+10:00</updated>
+   <id>http://ivanhanigan.github.com/2012/09/data-management-plan</id>
+   <content type="html">&lt;p&gt;The server will operate as a minimal GIS database with a basic data registry.  A data catalogue with effecient search functionality is beyond the scope.&lt;/p&gt;
+
+&lt;p&gt;The software stack will include:
+- This website
+- A PostGIS server
+- geoserver
+- Rstudio server
+- an Oracle XE database for the data register&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Hello World</title>
+   <link href="http://ivanhanigan.github.com/2012/09/helloworld/"/>
+   <updated>2012-09-14T00:00:00+10:00</updated>
+   <id>http://ivanhanigan.github.com/2012/09/helloworld</id>
+   <content type="html">&lt;p&gt;This is the Extreme Weather Events (EWE) database that accompanies the project 'Scientific Workflow and Integration Software for Health - Climate Impacts Assessment', or SWISH for short &lt;a href=&quot;http://swish-climate-impact-assessment.blogspot.com.au/&quot;&gt;http://swish-climate-impact-assessment.blogspot.com.au/&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;We are funded by the Australian National Data Service (ANDS).&lt;/p&gt;
+
+&lt;p&gt;The project is to build a Scientific Workflow System for Assessing and
+Projecting the Health Impacts of Extreme Weather Events.&lt;/p&gt;
+
+&lt;h2&gt;About this site&lt;/h2&gt;
+
+&lt;p&gt;This server hosts a PostGIS database with the results of the algorithms we develop to describe EWE.&lt;br/&gt;
+The data are available for spatial and temporal queries - and download for integration with health data.&lt;/p&gt;
+
+&lt;p&gt;The project will probably result in a database with around 50GB of preprocessed extreme weather event data and some spatial data related to zones of the population census.  The access will be restricted to bona fide researchers  investigating links between extreme weather and human health.  We envisage only a small number of researchers will be accessing these data.&lt;/p&gt;
+
+&lt;h2&gt;Other uses of this site&lt;/h2&gt;
+
+&lt;p&gt;This website can also server to host detailed explanations of the algorithms and tutorials on how to access the data.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ 
+</feed>
