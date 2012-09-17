@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>SWISH Data Management Plan </title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="SWISH Data Management Plan "/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2012-09-17 13:05:43 EST"/>
+<meta name="author" content="Ivan Hanigan"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">SWISH Data Management Plan </h1>
+
+
+<hr/>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 Introduction</a></li>
+<li><a href="#sec-2">2 IT Infrastructure</a>
+<ul>
+<li><a href="#sec-2-1">2.1 The GIS server</a></li>
+<li><a href="#sec-2-2">2.2 The  statistical analytics server</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3 Data Storage</a>
+<ul>
+<li><a href="#sec-3-1">3.1 Backups</a></li>
+<li><a href="#sec-3-2">3.2 Security</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4 The Collection</a>
+<ul>
+<li><a href="#sec-4-1">4.1 The Data Registry</a></li>
+<li><a href="#sec-4-2">4.2 Source Data</a></li>
+<li><a href="#sec-4-3">4.3 Processed Data</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5 Exposing the Data</a>
+<ul>
+<li><a href="#sec-5-1">5.1 The Data Catalogue</a></li>
+<li><a href="#sec-5-2">5.2 Advocacy</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6 Managing access for analysis</a>
+<ul>
+<li><a href="#sec-6-1">6.1 Requesting Access</a></li>
+<li><a href="#sec-6-2">6.2 Granting and Revoking Access</a></li>
+</ul>
+</li>
+<li><a href="#sec-7">7 Archiving</a></li>
+<li><a href="#sec-8">8 Budget</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+
+<p>This is a data management plan for the SWISH Extreme Weather Events data collection.
+There are two servers:
+</p><ul>
+<li>A GIS server
+</li>
+<li>A statistical analytics server
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> IT Infrastructure</h2>
+<div class="outline-text-2" id="text-2">
+
+<p>The two servers are hosted by different organisations due to their different security requirements.  
+</p>
+</div>
+
+<div id="outline-container-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> The GIS server</h3>
+<div class="outline-text-3" id="text-2-1">
+
+<p>The GIS server is hosted by the NeCTAR Australian Research Cloud and has relatively relaxed security arrangements.
+</p></div>
+
+</div>
+
+<div id="outline-container-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> The  statistical analytics server</h3>
+<div class="outline-text-3" id="text-2-2">
+
+<p>The statistical analytics server is hosted by the ANU College of Medicine, Biology and Environment and operates under stringent security arrangements.
+To enable some low risk work to be performed more easily the GIS server will also be equipped with some statistical analysis functionality.
+</p></div>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Data Storage</h2>
+<div class="outline-text-2" id="text-3">
+
+
+</div>
+
+<div id="outline-container-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Backups</h3>
+<div class="outline-text-3" id="text-3-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Security</h3>
+<div class="outline-text-3" id="text-3-2">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> The Collection</h2>
+<div class="outline-text-2" id="text-4">
+
+
+</div>
+
+<div id="outline-container-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> The Data Registry</h3>
+<div class="outline-text-3" id="text-4-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Source Data</h3>
+<div class="outline-text-3" id="text-4-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> Processed Data</h3>
+<div class="outline-text-3" id="text-4-3">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Exposing the Data</h2>
+<div class="outline-text-2" id="text-5">
+
+
+</div>
+
+<div id="outline-container-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> The Data Catalogue</h3>
+<div class="outline-text-3" id="text-5-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Advocacy</h3>
+<div class="outline-text-3" id="text-5-2">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Managing access for analysis</h2>
+<div class="outline-text-2" id="text-6">
+
+<p>Managing access requires:
+</p><ul>
+<li>authorisation
+</li>
+<li>reporting
+</li>
+<li>archiving
+</li>
+<li>repurposing (exposure of created outputs for future analysis)
+</li>
+</ul>
+
+
+</div>
+
+<div id="outline-container-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> Requesting Access</h3>
+<div class="outline-text-3" id="text-6-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-6-2" class="outline-3">
+<h3 id="sec-6-2"><span class="section-number-3">6.2</span> Granting and Revoking Access</h3>
+<div class="outline-text-3" id="text-6-2">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> Archiving</h2>
+<div class="outline-text-2" id="text-7">
+
+</div>
+
+</div>
+
+<div id="outline-container-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> Budget</h2>
+<div class="outline-text-2" id="text-8">
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

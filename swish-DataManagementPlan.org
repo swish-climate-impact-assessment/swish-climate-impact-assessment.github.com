@@ -1,0 +1,40 @@
+#+TITLE:SWISH Data Management Plan 
+#+AUTHOR: Ivan Hanigan
+#+email: ivan.hanigan@anu.edu.au
+#+LaTeX_CLASS: article
+#+LaTeX_CLASS_OPTIONS: [a4paper]
+#+LATEX: \tableofcontents
+-----
+
+* Introduction
+This is a data management plan for the SWISH Extreme Weather Events data collection.
+There are two servers:
+- A GIS server
+- A statistical analytics server
+* IT Infrastructure
+The two servers are hosted by different organisations due to their different security requirements.  
+** The GIS server
+The GIS server is hosted by the NeCTAR Australian Research Cloud and has relatively relaxed security arrangements.
+** The  statistical analytics server
+The statistical analytics server is hosted by the ANU College of Medicine, Biology and Environment and operates under stringent security arrangements.
+To enable some low risk work to be performed more easily the GIS server will also be equipped with some statistical analysis functionality.
+* Data Storage
+** Backups
+** Security
+* The Collection
+** The Data Registry
+** Source Data
+** Processed Data
+* Exposing the Data
+** The Data Catalogue
+** Advocacy
+* Managing access for analysis
+Managing access requires:
+- authorisation
+- reporting
+- archiving
+- repurposing (exposure of created outputs for future analysis)
+** Requesting Access
+** Granting and Revoking Access
+* Archiving
+* Budget
