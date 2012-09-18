@@ -1,7 +1,7 @@
 ---
 name: scheduled-downtime
 layout: post
-title: Scheduled Downtime
+title: Scheduled Downtime Sat 29 Sept
 date: 2012-09-18
 categories: 
 - maintenance
