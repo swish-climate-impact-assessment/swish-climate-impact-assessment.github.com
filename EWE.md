@@ -15,5 +15,6 @@ Stay tuned there are more to come.
 #### [The U-TAS Biomass Smoke Project](http://ivanhanigan.github.com/bio_validated_bushfire_events)
 
 ### Drought
-#### [The Hutchinson Index](/EWE/HutchinsonDroughtIndex/HutchinsonDroughtIndex.html)
+#### [The Hutchinson Index](https://github.com/ivanhanigan/HutchinsonDroughtIndex)
+#### [The Hutchinson Index Tutorial](/EWE/HutchinsonDroughtIndex/HutchinsonDroughtIndex.html)
  
