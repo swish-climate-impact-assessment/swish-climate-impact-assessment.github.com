@@ -17,4 +17,8 @@ Stay tuned there are more to come.
 ### Drought
 #### [The Hutchinson Index](https://github.com/ivanhanigan/HutchinsonDroughtIndex)
 #### [The Hutchinson Index Tutorial](/EWE/HutchinsonDroughtIndex/HutchinsonDroughtIndex.html)
- 
+
+## Viewing the data with GIS
+### Quantum GIS
+### ArcGIS 
+### Geoserver
