@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>SWISH High Level System Description </title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="SWISH High Level System Description "/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2012-09-28 07:15:33 EST"/>
+<meta name="author" content="Ivan Hanigan"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">SWISH High Level System Description </h1>
+
+
+<hr/>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 Introduction</a></li>
+<li><a href="#sec-2">2 Structure of the System</a></li>
+<li><a href="#sec-3">3 Description of the Components</a>
+<ul>
+<li><a href="#sec-3-1">3.1 Kepler</a></li>
+<li><a href="#sec-3-2">3.2 Workflows</a></li>
+<li><a href="#sec-3-3">3.3 Actors</a></li>
+<li><a href="#sec-3-4">3.4 Java</a></li>
+<li><a href="#sec-3-5">3.5 R</a></li>
+<li><a href="#sec-3-6">3.6 Stata</a></li>
+<li><a href="#sec-3-7">3.7 C# / Mono</a></li>
+<li><a href="#sec-3-8">3.8 StatTransfer</a></li>
+<li><a href="#sec-3-9">3.9 DDI Metadata</a></li>
+<li><a href="#sec-3-10">3.10 R Studio</a></li>
+<li><a href="#sec-3-11">3.11 EWE Data base</a></li>
+<li><a href="#sec-3-12">3.12 Github</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4 Demonstration of Value</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+
+<p>This is the high level system description document for the Scientific Workflow and Integration Software for Health (SWISH) project.  The project is designed to support climate impact assessment on Human Health.
+</p>
+<p>
+SWISH tools will include methods to chain together tasks that perform operations in the domains of:
+</p>
+<ul>
+<li>data acquisition, 
+</li>
+<li>data transformation, 
+</li>
+<li>mathematical operations, 
+</li>
+<li>graphing, 
+</li>
+<li>statistical analysis, and 
+</li>
+<li>output.  
+</li>
+</ul>
+
+
+<p>
+The project will produce an enhanced research data management and analysis system that will address the current barriers and eventually provide support for a diversity of epidemiology researchers (e.g., bio-surveillance, wildlife health, and emerging infectious diseases).
+</p>
+<p>
+The systematic organisation and synthesis of datasets is vital for analysis and inference in any study of population health. However it is all too easy for datasets to be large and unwieldy. Our effective use of these datasets is currently limited, and is heavily dependent on the individual abilities of a researcher to access and use the existing computational and data infrastructure. 
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Structure of the System</h2>
+<div class="outline-text-2" id="text-2">
+
+<p>The system will include both an operational web-based research platform as well as enhance traditional desktop client-side workflows, so that it boosts capacity without compromising expertise and trusted workflows. The software ecosystem is summarised in the image below:
+</p>
+<p>
+<img src="Structure2.png"  alt="Structure2.png" />
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Description of the Components</h2>
+<div class="outline-text-2" id="text-3">
+
+
+</div>
+
+<div id="outline-container-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Kepler</h3>
+<div class="outline-text-3" id="text-3-1">
+
+<p>This is the system being used to drive the scientific workflows of the software system. Its value to the system is its ability to connect high level operations together, and run simple algorithms. Complex algorithms however are cumbersome and custom components will be implemented as necessary. The project is leveraging on Keplers existing functionality and components, its ability to develop new components, load and save workflows, and edit workflows in a graphical user interface.
+</p></div>
+
+</div>
+
+<div id="outline-container-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Workflows</h3>
+<div class="outline-text-3" id="text-3-2">
+
+<p>These are instances of captured processes. The first demonstration will be the access to and analysis of the Extreme Wether Events (EWE) database. The use of Kepler workflows will allow users to create there own work flows that can be developed and used after the project delivery. Workflows developed during the project will be made available on the project Git repository.
+</p></div>
+
+</div>
+
+<div id="outline-container-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Actors</h3>
+<div class="outline-text-3" id="text-3-3">
+
+<p>“Actors” is the term used by Kepler to label the building blocks of a work flow. Workflows are created by linking together actors that combined work towards a singular goal. Custom actors will be developed for the project and stored on the project Git repository. Custom actors will include data and table operations, data access, statistical operations, and access to custom data analysis. Operations will consist of data retrieval and storage operations, statistical operations, data table operations, and implementations of custom data analysis like the heat wave indices.
+</p></div>
+
+</div>
+
+<div id="outline-container-3-4" class="outline-3">
+<h3 id="sec-3-4"><span class="section-number-3">3.4</span> Java</h3>
+<div class="outline-text-3" id="text-3-4">
+
+<p>Java is the run time environment of Ptolemy – the framework Kepler is built upon. Ptolemy has the ability to include custom actors written in java code. While Java is a powerful language, Ptolemy also supports executing R code, and directly running executables. This will be used to invoke Stata, C*, and R code for which there is more much experience possessed by project members. Java will be used as necessary to integrate with other languages efficiently. 
+</p></div>
+
+</div>
+
+<div id="outline-container-3-5" class="outline-3">
+<h3 id="sec-3-5"><span class="section-number-3">3.5</span> R</h3>
+<div class="outline-text-3" id="text-3-5">
+
+<p>R is a community driven open source statistics tool that is easily run from Kepler. It will be used as appropriate to make existing analysis work in R available as a component in a work flow.
+</p></div>
+
+</div>
+
+<div id="outline-container-3-6" class="outline-3">
+<h3 id="sec-3-6"><span class="section-number-3">3.6</span> Stata</h3>
+<div class="outline-text-3" id="text-3-6">
+
+<p>Stata is a commercial statistics tool. This will be used to make actors for preforming data and statistical operations as well as providing access to any existing analysis work that is to be brought into the system. Stata is a separate software tool for which users will need to have a licence and install separately on the machine.
+</p></div>
+
+</div>
+
+<div id="outline-container-3-7" class="outline-3">
+<h3 id="sec-3-7"><span class="section-number-3">3.7</span> C# / Mono</h3>
+<div class="outline-text-3" id="text-3-7">
+
+<p>C# is a programming language able to run on windows and linux based systems. It will be used as necessary for complex processing that is not easily supported by the other code environments used in the system.
+</p></div>
+
+</div>
+
+<div id="outline-container-3-8" class="outline-3">
+<h3 id="sec-3-8"><span class="section-number-3">3.8</span> StatTransfer</h3>
+<div class="outline-text-3" id="text-3-8">
+
+<p>StatTransfer a commercial tool that can use many different file and data formats common in statistical work. The project will leverage on its ability to convert between the different formats extending the system’s ability to use data from different sources. StatTransfer is a separate software tool for which users will need to have a licence and install separately on the machine.
+</p></div>
+
+</div>
+
+<div id="outline-container-3-9" class="outline-3">
+<h3 id="sec-3-9"><span class="section-number-3">3.9</span> DDI Metadata</h3>
+<div class="outline-text-3" id="text-3-9">
+
+<p>The Data Documentation Initiative (DDI) <a href="http://www.ddialliance.org/">http://www.ddialliance.org/</a> is a Metadata Standard that is used extensively in the Social Science data domain.  The DDI-index Metadata Catalogue is an open source tool for searching through metadata records of a data warehouse such s the EWE data base. It provides the users the ability to manually search for data, but also for Kepler actors to access metadata records automatically. We use an Oracle XE database as the backend to the ddiindex and maintain records of all authorised database users.  Oracle XE is a free version of the well-known Oracle Database system.
+</p></div>
+
+</div>
+
+<div id="outline-container-3-10" class="outline-3">
+<h3 id="sec-3-10"><span class="section-number-3">3.10</span> R Studio</h3>
+<div class="outline-text-3" id="text-3-10">
+
+<p>R studio is an environment allowing users to run R code remotely. It provides R users a secure environment to process data. This is separate from the Software system.
+</p></div>
+
+</div>
+
+<div id="outline-container-3-11" class="outline-3">
+<h3 id="sec-3-11"><span class="section-number-3">3.11</span> EWE Data base</h3>
+<div class="outline-text-3" id="text-3-11">
+
+<p>A database of extreme weather events.  This is a symbiotic pair of Virtual Machines on the Nectar Research Cloud. 
+The two servers perform dedicated to:
+</p><ul>
+<li>1. Geographical Information System Database server
+</li>
+<li>2. Statistical Analysis and metadata registration
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-3-12" class="outline-3">
+<h3 id="sec-3-12"><span class="section-number-3">3.12</span> Github</h3>
+<div class="outline-text-3" id="text-3-12">
+
+<p>The Github service is a free cloud based code management facility linked to the Git version control system.
+Gitpages is an additional service provided by the site to host project specific websites, wikis and bug-tracking web tools.
+</p></div>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Demonstration of Value</h2>
+<div class="outline-text-2" id="text-4">
+
+<p>The first demonstration of the system will be the creation of an online validated Extreme Weather Events (EWE) database from historical data that can be queried repeatedly, easily and effectively.  To request access please go to this webpage [Click Here](/about.html).
+</p>
+<p>
+The Extreme Weather Events Data will be merged with Health, Population and Climate Change scenario data to project future health impacts; and the impact assessment will be able to be easily updated with future additional health, population and weather data; or new Climate Change model versions.  
+</p>
+<p>
+SWISH is funded by the Australian National Data Service (<a href="http://ands.org.au/">http://ands.org.au/</a>).
+</p>
+
+
+
+
+</div>
+</div>
+</div>
+
+</body>
+</html>
