@@ -12,6 +12,8 @@ The data are available for authorised users.
 
 To apply for access please complete the application forms at [some website for applying at](http://www.google.com)
 
+[View the Database Catalogue](http://115.146.93.108:8181/ddiindex/)
+
 [View the Database Registry](http://115.146.93.108:8080/apex/f?p=102)
 
 [Public access spatial data are available via geoserver](http://115.146.94.209:8181/geoserver)
@@ -21,3 +23,5 @@ To apply for access please complete the application forms at [some website for a
 
 [The source code and associated project material is available at github](https://github.com/swish-climate-impact-assessment)
 
+# Scientific Workflow and Integration Software for Health (SWISH)
+The SWISH project is a suite of software tools that we developed and includes both an operational web-based research platform as well as enhanced traditional desktop client-side workflows, that boosts our researcher's capacity without compromising our expertise and trusted workflows.  You can read about the other elements of this project at this webpage [Click Here](/HighLevelDescription.html)
