@@ -24,4 +24,4 @@ To apply for access please complete the application forms at [some website for a
 [The source code and associated project material is available at github](https://github.com/swish-climate-impact-assessment)
 
 # Scientific Workflow and Integration Software for Health (SWISH)
-The SWISH project is a suite of software tools that we developed and includes both an operational web-based research platform as well as enhanced traditional desktop client-side workflows, that boosts our researcher's capacity without compromising our expertise and trusted workflows.  You can read about the other elements of this project at this webpage [Click Here](/HighLevelDescription.html)
+The SWISH project is a suite of software tools that we developed and includes both an operational web-based research platform as well as enhanced traditional desktop client-side workflows, that boosts our researcher's capacity without compromising our expertise and trusted workflows.  You can read about the other elements of this project at the [High Level System Description Document webpage](/HighLevelDescription.html).

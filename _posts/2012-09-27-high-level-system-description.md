@@ -1,16 +1,15 @@
 ---
 name: 2012-009-27-high-level-system-description
 layout: default
-title: High level system description
+title: High level system description now available
 date: 2012-09-27
 categories:
 - System Description
 ---
 
-# High Level System Description
-This is the high level system description document for the Scientific Workflow and Integration Software for Health (SWISH) project.  The project is designed to support climate impact assessment on Human Health.
+The [High Level System Description Document](/HighLevelDescription.html) for the Scientific Workflow and Integration Software for Health (SWISH) project is now available.  
 
-SWISH tools will include methods to chain together tasks that perform operations in the domains of:
+The project is designed to support climate impact assessment on Human Health. SWISH tools will include methods to chain together tasks that perform operations in the domains of:
 
 - data acquisition, 
 - data transformation, 
