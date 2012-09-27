@@ -1,0 +1,122 @@
+% Created 2012-09-28 Fri 07:25
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\providecommand{\alert}[1]{\textbf{#1}}
+
+\title{SWISH High Level System Description}
+\author{Ivan Hanigan}
+\date{\today}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs Org-mode version 7.8.11}}
+
+\begin{document}
+
+\maketitle
+
+% Org-mode is exporting headings to 3 levels.
+\tableofcontents
+\hrule
+
+\section{Introduction}
+\label{sec-1}
+
+This is the high level system description document for the Scientific Workflow and Integration Software for Health (SWISH) project.  The project is designed to support climate impact assessment on Human Health.
+
+SWISH tools will include methods to chain together tasks that perform operations in the domains of:
+
+\begin{itemize}
+\item data acquisition,
+\item data transformation,
+\item mathematical operations,
+\item graphing,
+\item statistical analysis, and
+\item output.
+\end{itemize}
+
+The project will produce an enhanced research data management and analysis system that will address the current barriers and eventually provide support for a diversity of epidemiology researchers (e.g., bio-surveillance, wildlife health, and emerging infectious diseases).
+
+The systematic organisation and synthesis of datasets is vital for analysis and inference in any study of population health. However it is all too easy for datasets to be large and unwieldy. Our effective use of these datasets is currently limited, and is heavily dependent on the individual abilities of a researcher to access and use the existing computational and data infrastructure. 
+\section{Structure of the System}
+\label{sec-2}
+
+The system will include both an operational web-based research platform as well as enhance traditional desktop client-side workflows, so that it boosts capacity without compromising expertise and trusted workflows. The software ecosystem is summarised in the image below:
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=\textwidth]{Structure2.png}
+\caption{Structure2.png}
+\label{fig:Structure2.png}
+\end{figure}
+\clearpage
+\section{Description of the Components}
+\label{sec-3}
+\subsection{Kepler}
+\label{sec-3-1}
+
+This is the system being used to drive the scientific workflows of the software system. Its value to the system is its ability to connect high level operations together, and run simple algorithms. Complex algorithms however are cumbersome and custom components will be implemented as necessary. The project is leveraging on Keplers existing functionality and components, its ability to develop new components, load and save workflows, and edit workflows in a graphical user interface.
+\subsection{Workflows}
+\label{sec-3-2}
+
+These are instances of captured processes. The first demonstration will be the access to and analysis of the Extreme Wether Events (EWE) database. The use of Kepler workflows will allow users to create there own work flows that can be developed and used after the project delivery. Workflows developed during the project will be made available on the project Git repository.
+\subsection{Actors}
+\label{sec-3-3}
+
+“Actors” is the term used by Kepler to label the building blocks of a work flow. Workflows are created by linking together actors that combined work towards a singular goal. Custom actors will be developed for the project and stored on the project Git repository. Custom actors will include data and table operations, data access, statistical operations, and access to custom data analysis. Operations will consist of data retrieval and storage operations, statistical operations, data table operations, and implementations of custom data analysis like the heat wave indices.
+\subsection{Java}
+\label{sec-3-4}
+
+Java is the run time environment of Ptolemy – the framework Kepler is built upon. Ptolemy has the ability to include custom actors written in java code. While Java is a powerful language, Ptolemy also supports executing R code, and directly running executables. This will be used to invoke Stata, C*, and R code for which there is more much experience possessed by project members. Java will be used as necessary to integrate with other languages efficiently. 
+\subsection{R}
+\label{sec-3-5}
+
+R is a community driven open source statistics tool that is easily run from Kepler. It will be used as appropriate to make existing analysis work in R available as a component in a work flow.
+\subsection{Stata}
+\label{sec-3-6}
+
+Stata is a commercial statistics tool. This will be used to make actors for preforming data and statistical operations as well as providing access to any existing analysis work that is to be brought into the system. Stata is a separate software tool for which users will need to have a licence and install separately on the machine.
+\subsection{C\# / Mono}
+\label{sec-3-7}
+
+C\# is a programming language able to run on windows and linux based systems. It will be used as necessary for complex processing that is not easily supported by the other code environments used in the system.
+\subsection{StatTransfer}
+\label{sec-3-8}
+
+StatTransfer a commercial tool that can use many different file and data formats common in statistical work. The project will leverage on its ability to convert between the different formats extending the system’s ability to use data from different sources. StatTransfer is a separate software tool for which users will need to have a licence and install separately on the machine.
+\subsection{DDI Metadata}
+\label{sec-3-9}
+
+The Data Documentation Initiative (DDI) \href{http://www.ddialliance.org/}{http://www.ddialliance.org/} is a Metadata Standard that is used extensively in the Social Science data domain.  The DDI-index Metadata Catalogue is an open source tool for searching through metadata records of a data warehouse such s the EWE data base. It provides the users the ability to manually search for data, but also for Kepler actors to access metadata records automatically. We use an Oracle XE database as the backend to the ddiindex and maintain records of all authorised database users.  Oracle XE is a free version of the well-known Oracle Database system.
+\subsection{R Studio}
+\label{sec-3-10}
+
+R studio is an environment allowing users to run R code remotely. It provides R users a secure environment to process data. This is separate from the Software system.
+\subsection{EWE Data base}
+\label{sec-3-11}
+
+A database of extreme weather events.  This is a symbiotic pair of Virtual Machines on the Nectar Research Cloud. 
+The two servers perform dedicated to:
+\begin{itemize}
+\item 1. Geographical Information System Database server
+\item 2. Statistical Analysis and metadata registration
+\end{itemize}
+\subsection{Github}
+\label{sec-3-12}
+
+The Github service is a free cloud based code management facility linked to the Git version control system.
+Gitpages is an additional service provided by the site to host project specific websites, wikis and bug-tracking web tools.
+\section{Demonstration of Value}
+\label{sec-4}
+
+The first demonstration of the system will be the creation of an online validated Extreme Weather Events (EWE) database from historical data that can be queried repeatedly, easily and effectively.  To request access please go to this webpage [Click Here](/about.html).
+
+The Extreme Weather Events Data will be merged with Health, Population and Climate Change scenario data to project future health impacts; and the impact assessment will be able to be easily updated with future additional health, population and weather data; or new Climate Change model versions.  
+
+SWISH is funded by the Australian National Data Service (\href{http://ands.org.au/}{http://ands.org.au/}).
+
+\end{document}
