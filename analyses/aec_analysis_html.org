@@ -1,0 +1,746 @@
+#+TITLE:AEC analysis 
+#+AUTHOR: Steven Mceachern and Ivan Hanigan
+#+email: ivan.hanigan@anu.edu.au
+#+LaTeX_CLASS: article
+#+LaTeX_CLASS_OPTIONS: [a4paper]
+#+LaTeX_HEADER: \usepackage{verbatim}
+#+LaTeX_HEADER: \graphicspath{{./reports/}}
+#+BEGIN_abstract
+We explore the hypothesis that Australians are more likely to vote for conservative political parties during droughts. The study design is a spatial association of drought data with Electoral results.
+#+END_abstract
+#+LATEX: \tableofcontents
+#+LATEX: \listoftables
+#+LATEX: \listoffigures
+-----
+* COMMENT TODOLIST
+** TODO check if the geocode points code is more up to date
+from here https://alliance.anu.edu.au/access/content/group/bf77d6fc-d1e1-401c-806a-25fbe06a82d0/Tools/geocoder20090601_points.xls
+* COMMENT func
+** main
+#+name:main
+#+begin_src R :session *shell* :tangle main.r :exports none :eval no
+  ################################################################
+  # name:main
+  setwd('~/aec_analysis')
+  if(!require(ProjectTemplate)) install.packages('ProjectTemplate'); require(ProjectTemplate)
+  load.project()
+  
+  source('src/readOGR2.r')
+  source('~/disentangle/src/fixGeom.r')
+  source('src/plotMap.r')
+  if (!require(maps)) install.packages('maps', repos='http://cran.csiro.au'); require(maps)
+  if(!require(XML)) install.packages('XML', repos='http://cran.csiro.au'); require(XML)
+  
+#+end_src
+
+** init
+#+name:init
+#+begin_src R :session *shell* :tangle src/init.r :exports none :eval no
+  ################################################################
+  # name:init
+  # set load_libraries: on
+  sink('config/global.dcf')
+  print("data_loading: on
+  cache_loading: on
+  munging: on
+  logging: off
+  load_libraries: off
+  libraries: reshape, plyr, ggplot2, stringr, lubridate
+  as_factors: on
+  data_tables: off")
+  sink()
+
+
+  for(i in c('reshape', 'plyr', 'ggplot2', 'stringr', 'lubridate')){
+   cat(
+     paste("if(!require(",i,")) install.packages('",i,"'); require(",i,");\n",
+           sep = "")
+     )
+  }
+  if(!require(reshape)) install.packages('reshape'); require(reshape);
+  if(!require(plyr)) install.packages('plyr'); require(plyr);
+  if(!require(ggplot2)) install.packages('ggplot2'); require(ggplot2);
+  if(!require(stringr)) install.packages('stringr'); require(stringr);
+  if(!require(lubridate)) install.packages('lubridate'); require(lubridate);
+  
+#+end_src
+** connect2postgres
+#+name:connect2postgres
+#+begin_src R :session *shell* :tangle main.r :exports none :eval no
+  ################################################################
+  # name:connect2postgres
+  # available at github.com/ivanhanigan
+  source('~/disentangle/src/connect2postgres.r')
+  ewedb <- connect2postgres(hostip =  '115.146.94.209', db = 'ewedb')
+  
+#+end_src
+
+** newnode
+#+begin_src R :session *R* :tangle src/nodes.r :exports none :eval no
+  ################################################################
+  # name:nodes
+  # see disentangle available at github.com/ivanhanigan
+  source('~/tools/disentangle/src/newnode.r')
+  # test
+  #nodes <- newnode(name = 'test', inputs = 'testin', newgraph = T)
+  
+#+end_src
+** readOGR2
+#+name:readOGR2
+#+begin_src R :session *shell* :tangle src/readOGR2.r :exports none :eval no
+  ################################################################
+  # name:readOGR2
+  
+  readOGR2 <- function(hostip=NA,user=NA,db=NA, layer=NA, p = NA) {
+   # NOTES
+   # only works on Linux OS
+   # returns uninformative error due to either bad connection or lack of record in geometry column table.  can check if connection problem using a test connect?
+   # TODO add a prompt for each connection arg if isna
+   if (!require(rgdal)) install.packages('rgdal', repos='http://cran.csiro.au'); 
+   if(is.na(p)){ 
+   pwd=readline('enter password (ctrl-L will clear the console after): ')
+   } else {
+   pwd <- p
+   }
+   shp <- readOGR(sprintf('PG:host=%s
+                           user=%s
+                           dbname=%s
+                           password=%s
+                           port=5432',hostip,user,db,pwd),
+                           layer=layer)
+  
+   # clean up
+   rm(pwd)
+   return(shp)
+   }
+  
+#  tassla06 <- readOGR2(hostip='115.146.94.209',user='gislibrary',db='ewedb', layer='abs_sla.tassla06')
+#+end_src
+
+** TODO plotMap.r kudos
+#+name:plotMap
+#+begin_src R :session *R* :tangle src/plotMap.r :exports none :eval no
+################################################################
+# name:plotMap
+if (!require(maptools)) install.packages('maptools', repos='http://cran.csiro.au'); require(maptools)
+if (!require(RColorBrewer)) install.packages('RColorBrewer', repos='http://cran.csiro.au'); require(RColorBrewer)
+# library(maptools)
+# library(RColorBrewer)
+
+
+################################################################################
+# Function to return bin sizes for the map key            
+################################################################################
+get.levels = function(stat,cellsmap, probs=seq(0,1,.2)){
+  cells.map=cellsmap
+  bins = quantile(cells.map@data[,stat], probs, na.rm=T)  
+  binlevels = cut(cells.map@data[,stat], bins, include.lowest=TRUE)
+  groups = strsplit(levels(binlevels), ",")
+# Get the beginning value for each group
+  begins = sapply(groups, '[[', 1)
+  begins = substr(begins, 2, nchar(begins))
+# Get the beginning value for each group
+  ends = sapply(groups, '[[', 2)
+  ends = substr(ends, 1, nchar(ends)-1)
+# Put begins and ends together into labels
+  level.labels = paste(begins, ends, sep = " - ")
+  qlevels = paste(as.character(probs[2:length(probs)]*100),"%:",sep="") 
+  level.labels = paste(qlevels, level.labels)  
+return(level.labels) 
+}  
+#get.levels(cellsmap=d,stat='DAILY_MAX_')
+
+################################################################################
+# Write a mapping function, form of which was taken from here:
+# -
+# maps-with-r             
+################################################################################
+
+plotMap = function(stat=NA,plotdir = getwd(),probs=seq(0,1,.2), outfile = NA,  maptitle = 'map',  cellsmap=NA,region.map=NA){
+  level.labels = get.levels(cellsmap=cellsmap,stat=stat,probs=probs)
+# create a new variable in cells.map to bin the data into categories 
+  cells.map=cellsmap
+  bins = quantile(cells.map@data[,stat], probs, na.rm=T)
+  cells.map@data$bins = cut(cells.map@data[,stat], bins, include.lowest=TRUE)
+# Replace the charachter "levels" attribute with character colors
+  col.vec = brewer.pal(length(level.labels),"YlOrRd")
+  levels(cells.map@data$bins) <- col.vec
+# Open a windows graphics device so that we can see what's happening 
+# windows(11.7,8.3)
+# Split the figure to leave room at the right for a legend, and room
+# at the top margin for a title   
+  par(fig = c(0,0.8,0,1), mar=c(2,2,2,0))
+# plot the map object with no border around the rectangels, and with colors
+# dictated by new variable we created, which holds the colours as its levels
+# paramater.    
+  plot(cells.map, 
+    border = FALSE, 
+    axes = FALSE, 
+    las = 1,
+    col = as.character(cells.map@data$bins))
+axis(2)
+axis(1)
+box() 	
+  plot(region.map, add=TRUE, lwd=1)
+  mtext(maptitle, side = 3, cex = 2, line = -0.5)
+  par(fig = c(0.8,1,0,1), mar=c(0,0,0,0), new = FALSE)  
+  legend("left", level.labels, fill=col.vec, bty="n", xpd=TRUE, 
+        title="Legend")
+
+if(!is.na(outfile)){
+# # paste windows device to jpeg device
+  dev.copy(jpeg, file = paste(plotdir, '/',outfile,'.jpg', sep = ""), width = 11.75, 
+    height = 8.3, units = "in", pointsize = 12, quality = 75, bg = "white", 
+    res = 150, restoreConsole = TRUE) 
+  graphics.off()
+}
+  }
+
+  
+# get.levels(cellsmap=d,stat='DAILY_MAX_',probs=seq(0,1,.1))
+# plotMap(cellsmap=d,stat='DAILY_MAX_',region.map=grd,probs=seq(0,1,.1))
+  
+#+end_src
+
+* Introduction
+This is a test of the SWISH EWEDB service.
+We follow the Replication Standard \cite{King1995}.  This is a compendium \cite{Gentleman2007} using the orgmode approach
+\cite{Schulte}.
+* COMMENT Plan
+
+* Data
+** COMMENT Zones
+The electoral divisions come from the study 'boundaries electorates' and are for 2009.
+*** newnode
+#+name:zones-newnode
+#+begin_src R :session *R* :tangle src/nodes.r :exports none :eval no
+################################################################
+# name:zones-newnode
+nodes <- newnode(name = 'zones', inputs = 'boundaries_electorates.electorates2009', newgraph = T)
+#+end_src
+
+*** func
+*** load
+*** clean
+*** do
+** COMMENT Outcome
+There's no identifiers common between the electoral boundaries and the AEC results files (the ID numbers are completely different!!). The easiest way therefore to match the data is on the Electoral Division name string.
+
+Drought by electorate data:
+In the electoral division drought map this is var "elect_div".
+
+Electoral results data:
+Results by party by division are imported in the r file " aec_read_data_knitr.r" - the Liberal Party is denoted by LP (we'll need to figure out how to include "conservative" rather than Libs or Nats).
+The code to import the results is from lines 100 - 146 (note you will need the package "XML" for this).
+The results are in the data frame "HouseFirstPrefsTppByDivision"
+
+Are you able to match the "drought by electorate" and "HouseFirstPrefsTppByDivision" and generate a PDF with 2 maps of the droughts and LP first preference votes by electorate, and a spatial correlation calculation?
+*** newnode
+#+name:outcome-newnode
+#+begin_src R :session *R* :tangle src/nodes.r :exports none :eval no
+################################################################
+# name:zones-newnode
+nodes <- newnode(name = 'outcome', inputs = 'HouseFirstPrefsTppByDivision')
+#+end_src
+*** func
+*** load
+modify steves code
+#+name:load-housecounts
+#+begin_src R :session *shell* :tangle src/load-housecounts.r :exports none :eval no
+  ################################################################
+  # name:load-housecounts
+  #' FILE TWO
+  #' ========
+  #' FIRST PREFERENCE RESULTS BY _Division_ - HTML table
+  
+  #' IF REQUIRED:
+  #' remove(HouseFirstPrefsTppByDivision)
+  #'
+  #' LOAD
+  #' ----
+  #' READ IN DATA - NOTE StringsAsFactors - False to avoid FACTOR problems
+  HouseFirstPrefsTppByDivision <- readHTMLTable("http://results.aec.gov.au/15508/Website/HouseFirstPrefsTppByDivision-15508-NAT.htm",
+                              header = c("Division","State","ALP_1Prf","LP_1Pref","LNQ_1Pref","GRN_1Pref","NP_1Pref","OTH_1Pref","ALP_2PP","LNP_2PP"),
+                              skip.rows=c(1,2), trim=TRUE, as.data.frame=TRUE, which=5, stringsAsFactors=FALSE)
+  
+  #' Describe the data
+  str(HouseFirstPrefsTppByDivision)
+  
+  #' Apply variable names to columns
+  HouseFirstPrefsTppByDivision_varnames <-  c("Division","State","ALP_1Prf","LP_1Pref","LNQ_1Pref","GRN_1Pref","NP_1Pref","OTH_1Pref","ALP_2PP","LNP_2PP")
+  colnames(HouseFirstPrefsTppByDivision) <- HouseFirstPrefsTppByDivision_varnames
+  
+  #' CLEAN
+  #' -----
+  #' Recode values of NATIONAL TOTAL due to missing State value
+  #' select rows where v1 is 99 and recode column v1
+  
+  HouseFirstPrefsTppByDivision[HouseFirstPrefsTppByDivision$Division=="National Total","State"] <- "National"
+  HouseFirstPrefsTppByDivision[HouseFirstPrefsTppByDivision$Division=="National Total","ALP_1Prf"] <- 37.99
+  HouseFirstPrefsTppByDivision[HouseFirstPrefsTppByDivision$Division=="National Total","LP_1Pref"] <- 30.46
+  HouseFirstPrefsTppByDivision[HouseFirstPrefsTppByDivision$Division=="National Total","LNQ_1Pref"] <- 9.12
+  HouseFirstPrefsTppByDivision[HouseFirstPrefsTppByDivision$Division=="National Total","GRN_1Pref"] <- 11.76
+  HouseFirstPrefsTppByDivision[HouseFirstPrefsTppByDivision$Division=="National Total","NP_1Pref"] <- 3.73
+  HouseFirstPrefsTppByDivision[HouseFirstPrefsTppByDivision$Division=="National Total","OTH_1Pref"] <- 6.94
+  HouseFirstPrefsTppByDivision[HouseFirstPrefsTppByDivision$Division=="National Total","ALP_2PP"] <- 50.12
+  HouseFirstPrefsTppByDivision[HouseFirstPrefsTppByDivision$Division=="National Total","LNP_2PP"] <- 49.88
+  
+  #CHECK CHANGES APPLIED CORRECTLY
+  #VALUES: National Total [STATE]  37.99  30.46  9.12  11.76  3.73  6.94  50.12  49.88
+  tail(HouseFirstPrefsTppByDivision)
+  
+  #CREATE A State FACTOR VARIABLE
+  HouseFirstPrefsTppByDivision$State_factor <- as.factor(HouseFirstPrefsTppByDivision$State)
+  
+  #RENAME THE DIVISION VARIABLE (FOR FILE MERGING)
+  HouseFirstPrefsTppByDivision$DivisionNm <- as.character(HouseFirstPrefsTppByDivision$Division)
+  HouseFirstPrefsTppByDivision$Division <- NULL
+  
+
+  
+#+end_src
+
+*** clean
+*** do
+#+name:do send 2 psql
+#+begin_src R :session *shell* :tangle src/load-housecounts.r :exports none :eval no
+  ################################################################
+  # name:do send 2 psql
+    dbWriteTable(ewedb, "housefirstprefstppbydivision", HouseFirstPrefsTppByDivision)
+  
+#+end_src
+
+
+** COMMENT Population, Not applicable?
+** COMMENT Exposure
+*** newnode
+#+name:exposure-newnode
+#+begin_src R :session *R* :tangle src/nodes.r :exports none :eval no
+################################################################
+# name:zones-newnode
+nodes <- newnode(name = 'exposure', inputs = 'drought')
+#+end_src
+
+** Merge
+*** merge1 drought with electorate boundaries
+# I originally developed the SQL codes for a generalised extraction using excel, still available at
+# http://alliance.anu.edu.au/access/content/group/bf77d6fc-d1e1-401c-806a-25fbe06a82d0/Tools/geocoder20090601_areas.xls
+# Convert this to a R script
+**** COMMENT newnode
+#+name:Merge-newnode
+#+begin_src R :session *R* :tangle src/nodes.r :exports none :eval no
+################################################################
+# name:zones-newnode
+nodes <- newnode(name = 'merge1', inputs = c('zones','exposure'), outputs = c('droughtByElectorate', 'mapDroughtByElectorate'))
+#+end_src
+
+**** COMMENT global vars
+#+begin_src R :session *shell* :tangle src/merge.r :exports none :eval no
+  ################################################################
+  # name:globals
+  projectTitle <- 'aec'
+  year <- 2006
+  month <- 6
+  areaSchema <- 'BOUNDARIES_ELECTORATES'
+  areaTable <- 'electorates2009'
+  areaCondition <- "state = 'NSW'"
+  areaName <- 'elect_div'
+  yearOfEdition <- '09'
+  bomGridState <- 'NSW'
+  
+#+end_src
+**** COMMENT area lists
+#+begin_src R :session *shell* :tangle src/merge.r :exports none :eval no
+  ################################################################
+  
+  dbSendQuery(ewedb,
+  #cat(
+  paste('
+  select * into ',projectTitle,'_geocodes_areas
+  from ',areaSchema,'.',areaTable,'
+  where ',areaCondition, sep = '')
+  )
+  )
+  # optionally
+  # where area_code in ...
+  
+  ################################################################
+  dbSendQuery(ewedb,
+  paste('ALTER TABLE ',projectTitle,'_geocodes_areas ALTER COLUMN the_geom SET NOT NULL;
+  CREATE INDEX ',projectTitle,'_geocodes_areas_gist on ',projectTitle,'_geocodes_areas using GIST(the_geom);
+  ALTER TABLE ',projectTitle,'_geocodes_areas CLUSTER ON ',projectTitle,'_geocodes_areas_gist;
+  
+  create unique index ',projectTitle,'_geocodes_areas_pk on ',projectTitle,'_geocodes_areas (gid);',
+  sep = '')
+  )
+  
+################################################################
+dbSendQuery(ewedb,
+paste(
+'select t2.geoid,',areaName,',year,month,avg(t1.sum) as avsum,avg(t1.count) as avcount
+into ',projectTitle,'_geocoded_drought
+from bom_grids.rain_',bomGridState,'_1890_2008_4 as t1 
+join 
+(
+ select ',projectTitle,'_geocodes_areas.gid as geoid, 
+ ',projectTitle,'_geocodes_areas.',areaName,', bom_grids.grid_',bomGridState,'.*
+ from ',projectTitle,'_geocodes_areas, bom_grids.grid_',bomGridState,'
+ where st_intersects(',projectTitle,'_geocodes_areas.the_geom,bom_grids.grid_',bomGridState,'.the_geom)
+ order by ',areaName,', bom_grids.grid_',bomGridState,'.gid
+) as t2 
+on t1.gid=t2.gid
+where year=',year,' and month=',month,'
+group by t2.geoid,',areaName,',year,month;',
+sep = '')
+)
+
+# cleanup
+# drop table ',projectTitle,'_geocodes_areas;
+
+#+end_src
+**** COMMENT qc-map
+#+name:qc-map
+#+begin_src R :session *shell* :tangle src/qc-map.r :exports none :eval no
+  ################################################################
+  # name:qc-map
+  dbGetQuery(ewedb, 'select *
+   from aec_geocoded_drought limit 10')
+  dbSendQuery(ewedb, '
+  select t1.*, t2.the_geom
+  into aec_geocoded_drought_map
+   from aec_geocoded_drought t1
+   join
+   boundaries_electorates.electorates2009 t2
+   on t1.elect_div = t2.elect_div')
+  
+  dbSendQuery(ewedb, '
+  alter table aec_geocoded_drought_map add column gid serial primary
+  key')
+  # check with qgis
+  
+  fixGeom('steven_mceachern','aec_geocoded_drought_map')
+  dbSendQuery(ewedb,
+              "INSERT INTO geometry_columns(f_table_catalog, f_table_schema, f_table_name, f_geometry_column, coord_dimension, srid, \"type\")
+   SELECT '', 'steven_mceachern', 'aec_geocoded_drought_map', 'the_geom', ST_CoordDim(the_geom), ST_SRID(the_geom), GeometryType(the_geom)
+   FROM steven_mceachern.aec_geocoded_drought_map LIMIT 1;
+  ")
+  
+  df <- readOGR2(hostip = '115.146.94.209', user = 'steven_mceachern',
+                     db = 'ewedb', layer =
+                     'aec_geocoded_drought_map')
+  
+  df@data[is.na(df@data$avsum),'avsum'] <- 0
+  # invert
+  df@data$avsum <-   df@data$avsum * -1
+  png('qc-map-drought.png')
+  plotMap(stat = 'avsum', plotdir = getwd(), probs = seq(0, 1, 0.2),
+          outfile = NA, maptitle = "Drought by NSW electorates June 2006",
+          cellsmap = df, region.map = df)
+  #map.scale(ratio=F,relwidth=.15)
+  #title('drought accumulated score Jun-2006')
+  dev.off()
+  
+#+end_src
+**** mapDroughtByElectorate
+[[file:qc-map-drought.png]]
+*** merge2 all
+**** COMMENT newnode
+#+name:Merge-newnode
+#+begin_src R :session *R* :tangle src/nodes.r :exports none :eval no
+  ################################################################
+  # name:zones-newnode
+  nodes <- newnode(name = 'merge2', inputs = c('outcome','droughtByElectorate'), outputs = c('droughtByElectorateWithResults','mapConservativeByElectorate'))
+#+end_src
+**** COMMENT do
+#+name:merge2
+#+begin_src R :session *shell* :tangle src/merge2.r :exports none :eval no
+  ################################################################
+  # name:merge2
+  dbGetQuery(ewedb,'select t1.*, t2.avsum, t2.the_geom
+    into droughtByElectorateWithResults
+    from HouseFirstPrefsTppByDivision t1
+    join
+    aec_geocoded_drought_map t2
+    on t1.\"DivisionNm\"  = t2.elect_div
+  ')
+  
+  
+   dbSendQuery(ewedb, '
+    alter table droughtByElectorateWithResults add column gid serial primary
+    key')
+    # check with qgis
+  
+  #  fixGeom('steven_mceachern','droughtByElectorateWithResults')
+    dbSendQuery(ewedb,
+                "INSERT INTO geometry_columns(f_table_catalog, f_table_schema, f_table_name, f_geometry_column, coord_dimension, srid, \"type\")
+     SELECT '', 'steven_mceachern', 'droughtbyelectoratewithresults', 'the_geom', ST_CoordDim(the_geom), ST_SRID(the_geom), GeometryType(the_geom)
+     FROM steven_mceachern.droughtByElectorateWithResults LIMIT 1;
+    ")
+  
+    df <- readOGR2(hostip = '115.146.94.209', user = 'steven_mceachern',
+                       db = 'ewedb', layer = 'droughtbyelectoratewithresults')
+    str(df@data)
+    df@data$LP_1Pref <- as.numeric(as.character(df@data$LP_1Pref))
+    png('qc-map-lp.png')
+    plotMap(stat = 'LP_1Pref', plotdir = getwd(), probs = seq(0, 1, 0.2),
+            outfile = NA, maptitle = "Liberal Party by NSW electorates 2010",
+            cellsmap = df, region.map = df)
+    #map.scale(ratio=F,relwidth=.15)
+    #title('drought accumulated score Jun-2006')
+    dev.off()
+  
+#+end_src
+
+
+**** mapConservativeByElectorate
+[[file:qc-map-lp.png]]
+
+* Analysis
+** COMMENT code
+*** newnode
+#+name:Merge-newnode
+#+begin_src R :session *R* :tangle src/nodes.r :exports none :eval no
+  ################################################################
+  # name:zones-newnode
+  nodes <- newnode(name = 'analysis', inputs = 'droughtByElectorateWithResults', outputs = 'results')
+#+end_src
+
+*** func
+*** load
+*** clean
+*** do
+** scatterplot
+#+name:scatter
+#+begin_src R :session *shell* :tangle src/scatter.r :exports none :eval no
+  ################################################################
+  # name:scatter
+  analyte <- dbGetQuery(ewedb,'select "DivisionNm", avsum, "LP_1Pref"
+     from droughtByElectorateWithResults
+    ')
+  head(analyte)
+  str(analyte)
+  analyte$LP_1Pref <- as.numeric(as.character(analyte$LP_1Pref))
+  png('scatter.png')
+  with(analyte,plot(avsum, LP_1Pref))
+  dev.off()
+  
+#+end_src
+[[file:scatter.png]]
+
+
+
+* COMMENT Document
+** review
+*** newnode
+#+name:Merge-newnode
+#+begin_src R :session *R* :tangle src/nodes.r :exports none :eval no
+  ################################################################
+  # name:zones-newnode
+  nodes <- newnode(name = 'document', inputs = 'results',
+                   outputs = c('manuscript4review','metadata')
+                   )
+    
+#+end_src
+
+*** func
+*** load
+*** clean
+*** do
+** accepted
+*** newnode
+#+name:Merge-newnode
+#+begin_src R :session *R* :tangle src/nodes.r :exports none :eval no
+  ################################################################
+  # name:zones-newnode
+  nodes <- newnode(name = 'publish', inputs = 'manuscript4review',
+                   outputs = c('accepted','metadata')
+                   )
+  
+#+end_src
+
+*** func
+*** load
+*** clean
+*** do
+
+* Bibliography
+# \section{References}
+# \bibliographystyle{unsrt}
+# \bibliography{I:/references/library}
+
+\begin{thebibliography}{1}
+\bibitem{King1995}
+G~King.
+\newblock {Replication, replication}.
+\newblock {\em PS: Political Science and Politics}, 28:443--499, 1995.
+
+\bibitem{Gentleman2007}
+ Robert Gentleman and Duncan {Temple Lang}.
+ \newblock {Statistical Analyses and Reproducible Research}.
+ \newblock {\em Journal of Computational and Graphical Statistics}, 16(1):1--23,
+   March 2007.
+
+ \bibitem{Schulte}
+ E~Schulte, D~Davison, T~Dye, and C~Dominik.
+ \newblock {A Multi-Language Computing Environment for Literate Programming and
+   Reproducible Research}.
+ \newblock {\em Journal of Statistical Software}, 46(3), 2012.
+
+
+\end{thebibliography}
+* COMMENT Archiving
+*** newnode
+#+name:Merge-newnode
+#+begin_src R :session *R* :tangle src/nodes.r :exports none :eval no
+  ################################################################
+  # name:zones-newnode
+  nodes <- newnode(name = 'archive', inputs = 'accepted',
+                   outputs = c('re-use')
+                   )
+    
+#+end_src
+
+*** func
+*** load
+*** clean
+*** do
+
+* Metadata
+Users must cite the data like this:
+
+Exposure variables were calculated for our study regions using a PostgreSQL database [http://www.postgresql.org] with the PostGIS spatial extension [http://postgis.refractions.net] managed by the Australian National Centre for Epidemiology and Population Health at the Australian National University.  
+
+We used the Bureau of Meteorology’s gridded monthly climate data at a resolution of 0.25 degree of latitude-longitude to calculate a drought index based on six-monthly percentiles for each place’s rainfall record from 1890 and 2008.
+
+The National Climate Centre. Gridded Monthly Rainfall Data between 1890 and 2003 at 0.25 degree of latitude-longitude: The Bureau of Meteorology Research Centre, 700 Collins Street, Docklands, Melbourne, VIC, 3008. 2004.
+
+We used the drought index described in Smith, Hutchinson and McArthur (1992).
+
+Smith D, Hutchinson M, McArthur R. Climatic and Agricultural Drought: Payments and Policy. Canberra, ACT: Centre for Resource and Environmental Studies, Australian National University. 1992."
+and please let me or the National Climate Centre know of any publications arising from these data.
+\clearpage
+** COMMENT review processing and select objects to produce metadata for
+#+begin_src R :session *R* :tangle src/nodes.r :exports none :eval no
+dev.copy2pdf(file='nodes.pdf');
+dev.off();
+#+end_src
+#+name:plot-nodes
+#+begin_src R :session *R* :tangle no :exports none :eval no
+  ################################################################
+  # name:plot-nodes
+  source('src/nodes.r')
+#+end_src
+
+** graph of nodes in this analysis
+file:nodes.pdf
+
+** COMMENT add metadata using df2ddi
+#+name:add_ddi
+#+begin_src R :session *shell* :tangle src/add_ddi.r :exports none :eval no
+  ################################################################
+  # name:add_ddi
+  source('~/disentangle/src/df2ddi.r')
+  source('~/disentangle/src/connect2postgres.r')
+  ewedb <- connect2postgres()
+  if(!require(rgdal)) install.packages('rgdal'); require(rgdal)
+  if(!require(RJDBC)) install.packages('RJDBC'); require(RJDBC)
+  drv <- JDBC("oracle.jdbc.driver.OracleDriver",
+              '/u01/app/oracle/product/11.2.0/xe/jdbc/lib/ojdbc6.jar')
+  p <- readline('enter password: ')
+  h <- readline('enter target ipaddres: ')
+  d <- readline('enter database name: ')
+  ch <- dbConnect(drv,paste("jdbc:oracle:thin:@",h,":1521",sep=''),d,p)
+  
+  #dir.create('metadata')
+  s <- dbGetQuery(ch, "select * from stdydscr where IDNO = 'BOUNDARIES_ELECTORATES'")
+  # s <- add_stdydscr(ask=T)
+  #write.table(s,'metadata/stdydscr.csv',sep=',',row.names=F)
+  
+  s$PRODDATESTDY=format(as.Date( substr(s$PRODDATESTDY,1,10),'%Y-%m-%d'),"%d/%b/%Y")
+  s$PRODDATEDOC=format(as.Date( substr(s$PRODDATEDOC,1,10),'%Y-%m-%d'),"%d/%b/%Y")
+  
+  ## dbSendUpdate(ch,
+  ## # cat(
+  ## paste('
+  ## insert into STDYDSCR (',paste(names(s), sep = '', collapse = ', '),')
+  ## VALUES (',paste("'",paste(gsub("'","",ifelse(is.na(s),'',s)),sep='',collapse="', '"),"'",sep=''),')',sep='')
+  ## )
+  
+  f <- add_filedscr(fileid = 1, idno = 'BOUNDARIES_ELECTORATES', ask=T)
+  f$FILELOCATION <- 'BOUNDARIES_ELECTORATES'
+  
+  dbSendUpdate(ch,
+  # cat(
+  paste('
+  insert into FILEDSCR (',paste(names(f), sep = '', collapse = ', '),')
+  VALUES (',paste("'",paste(gsub("'","",ifelse(is.na(f),'',f)),sep='',collapse="', '"),"'",sep=''),')',sep='')
+  )
+  f <- dbGetQuery(ch, "select * from filedscr where IDNO = 'BOUNDARIES_ELECTORATES'")
+  f
+  
+  fid <- dbGetQuery(ch,
+  #                  cat(
+                    paste("select FILEID
+                    from filedscr
+                    where filelocation = '",f$FILELOCATION,"'
+                    and filename = '",f$FILENAME,"'",
+                    sep=''))
+  
+  df <- dbGetQuery(ewedb,
+                   'select elect_div, state from boundaries_electorates.electorates2009 limit 1'
+                   )
+  df[1,]
+  df <- readOGR2(hostip = '115.146.94.209', user = 'steven_mceachern',
+                   db = 'ewedb', layer =
+                   'boundaries_electorates.electorates2009')
+  df@data[1:10,]
+  d <- add_datadscr(data_frame = df, fileid = fid[1,1], ask=T)
+  d
+  
+  for(i in 1:nrow(d)){
+  dbSendUpdate(ch,
+  #i = 1
+  # cat(
+  paste('
+  insert into DATADSCR (',paste(names(d), sep = '', collapse = ', '),')
+  VALUES (',paste("'",paste(gsub("'","",ifelse(is.na(d[i,]),'',d[i,])),sep='',collapse="', '"),"'",sep=''),')',sep='')
+  )
+  }
+  
+  
+  ###################################################
+  # make xml
+  studyID <- 'BOUNDARIES_ELECTORATES'
+  s <- dbGetQuery(ch, paste("select * from stdydscr where idno = '",studyID,"'",sep=''))
+  s
+  f <- dbGetQuery(ch, paste("select * from filedscr where idno = '",studyID,"'",sep=''))
+  f
+  for(fi in f){
+  d <- dbGetQuery(ch,
+                  paste("select * from datadscr where FILEID = ",f$FILEID,
+                        sep = '')
+                  )
+  d
+  ddixml <- make_xml(s,f,d)
+  }
+  out <- dir(pattern='xml')
+  file.remove(file.path('/xmldata', out))
+  file.copy(out, '/xmldata')
+  # go to indexer.jsp
+  out
+  
+#+end_src
+ 
+* COMMENT remote git
+#+name:remote git
+#+begin_src R :session *shell* :exports none :eval no
+  system('git fetch origin')
+  system('git merge origin/master')
+#+end_src
+\begin{figure}[!h]
+\centering
+\includegraphics[width=\textwidth]{nodes.pdf}
+\caption{nodes.pdf}
+\label{fig:nodes.pdf}
+\end{figure}
+\clearpage
