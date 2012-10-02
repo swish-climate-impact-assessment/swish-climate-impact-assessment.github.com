@@ -4,11 +4,11 @@ layout: nil
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
  
- <title>DisentangleThings</title>
- <link href="http://ivanhanigan.github.com/feed/" rel="self"/>
- <link href="http://ivanhanigan.github.com/"/>
+ <title>swish-climate-impact-assessment</title>
+ <link href="http://swish-climate-impact-assessment.github.com/feed/" rel="self"/>
+ <link href="http://swish-climate-impact-assessment.github.com/"/>
  <updated>{{ site.time | date_to_xmlschema }}</updated>
- <id>http://ivanhanigan.github.com/</id>
+ <id>http://swish-climate-impact-assessment.github.com/</id>
  <author>
    <name>ivanhanigan</name>
    <email>mail@ivan.hanigan@gmail.com</email>
@@ -17,9 +17,9 @@ layout: nil
  {% for post in site.posts %}
  <entry>
    <title>{{ post.title }}</title>
-   <link href="http://ivanhanigan.github.com{{ post.url }}"/>
+   <link href="http://swish-climate-impact-assessment.github.com{{ post.url }}"/>
    <updated>{{ post.date | date_to_xmlschema }}</updated>
-   <id>http://ivanhanigan.github.com{{ post.id }}</id>
+   <id>http://swish-climate-impact-assessment.github.com{{ post.id }}</id>
    <content type="html">{{ post.content | xml_escape }}</content>
  </entry>
  {% endfor %}
