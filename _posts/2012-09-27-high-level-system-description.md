@@ -1,6 +1,6 @@
 ---
 name: 2012-009-27-high-level-system-description
-layout: default
+layout: post
 title: High level system description now available
 date: 2012-09-27
 categories:
