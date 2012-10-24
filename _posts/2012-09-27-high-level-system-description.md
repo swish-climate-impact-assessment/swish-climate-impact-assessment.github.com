@@ -20,7 +20,7 @@ The project is designed to support climate impact assessment on Human Health. SW
 
 It will include both an operational web-based research platform as well as enhance traditional desktop client-side workflows, so that it boosts capacity without compromising expertise and trusted workflows. The software ecosystem is summarised in the image below, and fully described at this page [Click Here](/HighLevelDescription.html)
 
-![System Structure](/images/Structure2thumbnail.png)
+![System Structure](/images/3Components.png)
 
 The first demonstration of the system will be the creation of an online validated Extreme Weather Events (EWE) database from historical data that can be queried repeatedly, easily and effectively.
 
