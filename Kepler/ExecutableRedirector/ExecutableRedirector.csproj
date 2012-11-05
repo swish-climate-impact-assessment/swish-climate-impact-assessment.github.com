@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2EC0DA0D-8BAB-4C6D-80FE-875E219EEF36}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Swish.ExecutableRedirector</RootNamespace>
+    <AssemblyName>Swish.ExecutableRedirector</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <NoWarn>1607</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tests\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Swish\Swish.csproj">
+      <Project>{EBB44164-34A5-434F-8EDB-6C0AC6F4BAE4}</Project>
+      <Name>Swish</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>..\..\Delete.exe "c:\Swish\bin\Swish.SortAdapter.exe"
+..\..\Delete.exe "c:\Swish\bin\Swish.MergeAdapter.exe"
+..\..\Delete.exe "c:\Swish\bin\Swish.AppendAdapter.exe"
+..\..\Delete.exe "c:\Swish\bin\Swish.CollapseAdapter.exe"
+..\..\Delete.exe "c:\Swish\bin\Swish.CommandAdapter.exe"
+</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>copy ..\..\..\ExecutableRedirector\bin\Debug\Swish.ExecutableRedirector.exe C:\Swish\bin\Swish.SortAdapter.exe
+copy ..\..\..\ExecutableRedirector\bin\Debug\Swish.ExecutableRedirector.exe C:\Swish\bin\Swish.MergeAdapter.exe
+copy ..\..\..\ExecutableRedirector\bin\Debug\Swish.ExecutableRedirector.exe C:\Swish\bin\Swish.AppendAdapter.exe
+copy ..\..\..\ExecutableRedirector\bin\Debug\Swish.ExecutableRedirector.exe C:\Swish\bin\Swish.CollapseAdapter.exe
+copy ..\..\..\ExecutableRedirector\bin\Debug\Swish.ExecutableRedirector.exe C:\Swish\bin\Swish.CommandAdapter.exe
+copy ..\..\..\ExecutableRedirector\bin\Debug\Swish.dll C:\Swish\bin\Swish.dll
+</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

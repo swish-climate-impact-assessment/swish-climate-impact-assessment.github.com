@@ -1,0 +1,18 @@
+C:\Users\u5265691\Desktop\Swish\SortAdapter\bin\Debug
+C:\Users\u5265691\Desktop\Swish\MergeAdapter\bin\Debug
+C:\Users\u5265691\Desktop\Swish\AppendAdapter\bin\Debug
+C:\Users\u5265691\Desktop\Swish\CollapseAdapter\bin\Debug
+C:\Users\u5265691\Desktop\Swish\CommandAdapter\bin\Debug
+
+C:\Users\Ian\Desktop\Swish\SortAdapter\bin\Debug
+C:\Users\Ian\Desktop\Swish\MergeAdapter\bin\Debug
+C:\Users\Ian\Desktop\Swish\AppendAdapter\bin\Debug
+C:\Users\Ian\Desktop\Swish\CollapseAdapter\bin\Debug
+C:\Users\Ian\Desktop\Swish\CommandAdapter\bin\Debug
+
+C:\Users\u5265691\Desktop\Swish current\SortAdapter\bin\Debug
+C:\Users\u5265691\Desktop\Swish current\MergeAdapter\bin\Debug
+C:\Users\u5265691\Desktop\Swish current\AppendAdapter\bin\Debug
+C:\Users\u5265691\Desktop\Swish current\CollapseAdapter\bin\Debug
+C:\Users\u5265691\Desktop\Swish current\CommandAdapter\bin\Debug
+
