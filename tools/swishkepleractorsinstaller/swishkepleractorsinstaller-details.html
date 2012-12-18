@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>SWISH Kepler Actors Installer - Details</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+
+
+</head>
+
+<body>
+<h1>SWISH Kepler Actors Installer - Details</h1>
+
+<h2>Details</h2>
+
+<p>This is the SWISH Kepler Actors installer, you will need Kepler and Java if you don’t have them already.</p>
+
+<ul>
+<li><a href="https://kepler-project.org/users/downloads">https://kepler-project.org/users/downloads</a></li>
+<li><a href="http://java.com/en/download/index.jsp">http://java.com/en/download/index.jsp</a></li>
+</ul>
+
+<p>R is recommended for Kepler in general and required for some SWISH Climate Impact Assessment workflows.  It is important to make sure R is on your PATH Environment Variable.</p>
+
+<p>The installer should work regardless of the order you install things, if you get into trouble let us know.</p>
+
+<ul>
+<li><a href="/tools/swishkepleractorsinstaller/swishkepleractorsinstaller-downloads.html">Click here for downloads</a></li>
+</ul>
+
+<p>The actors included are:</p>
+
+<ul>
+<li>AppendTables</li>
+<li>MergeTables</li>
+<li>SaveTable</li>
+<li>SelectColumnsFromTable</li>
+<li>SelectFromTable</li>
+<li>SortTable</li>
+<li>StataCommand</li>
+<li>TransposeTable</li>
+<li>VariableCount</li>
+<li>VariableIQR</li>
+<li>VariableMaximum</li>
+<li>VariableMean</li>
+<li>VariableMedian</li>
+<li>VariableMinimum</li>
+<li>VariableStandardDeviation</li>
+<li>VariableSum</li>
+</ul>
+
+<h2>To use:</h2>
+
+<p>The easiest way to use Kepler is with the components panel that appears on the left side of the screen. You can search for actors, and drag and drop them on to the main canvas. Eg searching for &#39;table&#39; or &#39;variable&#39; will return most of the SWISH actors.</p>
+
+<p>Each SWISH actor has one or more input connectors, an output connector, a variable(s) connector as needed, and a result connector.</p>
+
+<p>The inputs and outputs need to be attached to a file name, the inputs can also be connected to the result of a previous SWISH actor.</p>
+
+<p>File names are entered using the &#39;String Constant&#39; actor, to set its value double click on the actors icon and edit the &#39;value:&#39; parameter, click the &#39;Commit&#39; button to save the value.</p>
+
+<p>The variable connector identifies the table columns the actor operates on, eg the variables used to merge two tables together. Variables are also entered using a &#39;String Constant&#39; actor, with multiple variable names separated by a space.</p>
+
+<p>To display some text output use the &#39;Display&#39; actor, note that the result output of the swish actors will just display a file name.</p>
+
+<p>Finally every workflow needs one  &#39;SDF Director&#39; located somewhere on the main canvas. You will need to double click on the &#39;SDF Director&#39; icon and set the &#39;iterations:&#39; parameter to 1.</p>
+
+</body>
+
+</html>
+
