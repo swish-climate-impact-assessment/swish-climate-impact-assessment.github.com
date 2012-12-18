@@ -9,4 +9,4 @@ SWISH Kepler Actors Installer - Downloads
 * Maintainer: Who to complain to <ivan.hanigan@gmail.com>
 
 ## Downloads
-* [Click here for Windows](/tools/swishkepleractorsinstaller/SWISH-Kepler-Actors-Installer-18-December-2012.zip)
+* [Click here for Windows](/tools/swishkepleractorsinstaller/SWISHKeplerActorsInstaller18December2012.zip)
