@@ -1,0 +1,19 @@
+#+TITLE:tools 
+#+AUTHOR: Ivan Hanigan
+#+email: ivan.hanigan@anu.edu.au
+#+LaTeX_CLASS: article
+#+LaTeX_CLASS_OPTIONS: [a4paper]
+#+LATEX: \tableofcontents
+-----
+
+This is not shown on website, just manages the files
+
+#+name:copy
+#+begin_src sh :session *shell* 
+  cp ~/tools/swishdbtools_1.1_R_x86_64-pc-linux-gnu.tar.gz ~/projects/swish/swish-climate-impact-assessment.github.com/tools/swishdbtools/swishdbtools_1.1_R_x86_64-pc-linux-gnu.tar.gz
+  
+#+end_src
+
+#+RESULTS: copy
+
+want to change the downloads page and the package details page
