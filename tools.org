@@ -5,7 +5,8 @@
 #+LaTeX_CLASS_OPTIONS: [a4paper]
 #+LATEX: \tableofcontents
 -----
-
+NB 
+#   system("R CMD Rdconv --type=html ~/projects/swish/swish-climate-impact-assessment.github.com/tools/ExcessHeatIndices/ExcessHeatIndices-package.Rd --output=~/projects/swish/swish-climate-impact-assessment.github.com/tools/ExcessHeatIndices/ExcessHeatIndices-package.html")
 This is not shown on website, just manages the files
 
 #+name:copy

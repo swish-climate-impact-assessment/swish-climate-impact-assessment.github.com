@@ -15,4 +15,9 @@ title: Tools
 * [Click here for details](/tools/swishdbtools/swishdbtools-package.html)
 * [Click here for downloads](/tools/swishdbtools/swishdbtools-downloads.html)
 
+### Excess Heat Indices
+* This is an R package collecting useful R functions for calculating Excess Heat Indices
+* [Click here for details](/tools/ExcessHeatIndices/ExcessHeatIndices-package.html)
+* [Click here for downloads](/tools/ExcessHeatIndices/ExcessHeatIndices-downloads.html)
+
 
