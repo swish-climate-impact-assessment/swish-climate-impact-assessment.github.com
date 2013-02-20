@@ -1,16 +1,10 @@
 SWISH Kepler Actors Installer - Details
 ========================================================
 
-## Details
-This is the SWISH Kepler Actors installer, you will need Kepler and Java if you don’t have them already.
-* https://kepler-project.org/users/downloads
-* http://java.com/en/download/index.jsp
-
-R is recommended for Kepler in general and required for some SWISH Climate Impact Assessment workflows.  It is important to make sure R is on your PATH Environment Variable.
-
 ### The installer 
+This is the SWISH Kepler Actors installer, you will need Kepler and Java if you don’t have them already.
 
-should work regardless of the order you install things, if you get into trouble let us know.
+The installer should work regardless of the order you install things, if you get into trouble let us know.
 * [Click here for downloads](/tools/swishkepleractorsinstaller/swishkepleractorsinstaller-downloads.html)
 
 To use SWISH Kepler Actors, Kepler 2.3, Java JRE or JDK, Stata 12, and Microsoft .Net framework 4 are required. The installer is built to work on Microsoft Windows systems, and will not work correctly on Linux systems. The installer will need to be run for each user that wishes to user SWISH Kepler actors.
