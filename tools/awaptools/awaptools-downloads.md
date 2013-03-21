@@ -1,4 +1,4 @@
-swishdbtools-package
+awaptools-package
 ========================================================
 
 * Package: 	awaptools
@@ -12,7 +12,7 @@ swishdbtools-package
 
 ## Downloads
 ### Linux 
-* Coming soon
+* [awaptools_1.0.zip](/tools/awaptools/awaptools_1.0.zip)
 
 ### Windows
 * [awaptools_1.0.zip](/tools/awaptools/awaptools_1.0.zip)

@@ -20,4 +20,6 @@ title: Tools
 * [Click here for details](/tools/ExcessHeatIndices/ExcessHeatIndices-package.html)
 * [Click here for downloads](/tools/ExcessHeatIndices/ExcessHeatIndices-downloads.html)
 
-
+### Australian Water Availability Grids tools
+* R package to download and format gridded weather data
+* [Click here for downloads](/tools/awaptools/awaptools-downloads.html)
