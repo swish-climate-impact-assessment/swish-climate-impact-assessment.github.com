@@ -45,7 +45,7 @@ The actors are AppendTables, CompressTable, DisplayTable, EncodeArgument, Format
 
 ### To use these actors:
 
-The easiest way to use Kepler is with the components panel that appears on the left side of the screen. You can search for actors, and drag and drop them on to the main canvas. Eg searching for 'table' or 'variable' will return most of the SWISH actors.
+The easiest way to use Kepler is with the components panel that appears on the left side of the screen. You can search for actors, and drag and drop them on to the main canvas. Eg searching for 'table' or 'variable' will return a number of the SWISH actors.
 
 Each SWISH actor has one or more input connectors, an output connector, a variable(s) connector as needed, and a result connector.
 
