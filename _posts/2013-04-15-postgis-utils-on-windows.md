@@ -1,6 +1,6 @@
 ---
 name: 2013-04-15-postgis-utils-on-windows
-layout: default
+layout: post
 title: PostGIS utils on windows
 date: 2013-04-15
 categories: 

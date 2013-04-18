@@ -1,6 +1,6 @@
 ---
 name: A-SWISH-user-test-report
-layout: default
+layout: post 
 title: A SWISH user test report
 date: 2013-04-19
 categories:

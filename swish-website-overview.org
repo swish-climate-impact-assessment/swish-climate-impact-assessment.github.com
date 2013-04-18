@@ -16,7 +16,7 @@
 #+begin_src markdown :tangle _posts/2013-04-15-postgis-utils-on-windows.md :exports none :eval no :padline no
 ---
 name: 2013-04-15-postgis-utils-on-windows
-layout: default
+layout: post
 title: PostGIS utils on windows
 date: 2013-04-15
 categories: 
@@ -48,7 +48,7 @@ A tutorial with screenshots to make use of the GIS features of the EWEDB will fo
 #+begin_src markdown :tangle _posts/2013-04-19-a-swish-user-test-report.md :exports none :eval no :padline no
   ---
   name: A-SWISH-user-test-report
-  layout: default
+  layout: post 
   title: A SWISH user test report
   date: 2013-04-19
   categories:
