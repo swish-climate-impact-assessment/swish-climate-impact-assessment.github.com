@@ -20,7 +20,7 @@ To apply for access please complete the application forms at [some website for a
 
 [View the Database Registry](http://115.146.93.225:8080/apex/f?p=102)
 
-[Public access spatial data are available via geoserver](http://115.146.94.209:8181/geoserver)
+[Public access spatial data are available via geoserver](http://115.146.93.225:8181/geoexplorer)
 
 # Analyse data
 [There is an Rstudio server available for using these data](https://115.146.93.225)
