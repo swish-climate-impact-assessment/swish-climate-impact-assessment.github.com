@@ -7,8 +7,8 @@
 -----
 
 * Posts
-<<<<<<< HEAD
-** testimonials
+** drafts
+*** testimonials
 The Scientific Workflow and Integration Software for Health (SWISH)
 provides an enviable collection of research tools for the conduct of
 heath and social science research. The starting point for SWISH is the
@@ -53,62 +53,6 @@ I look forward to using this system further in future.
 Steve McEachern, Deputy Director of the Australian Data Archive and
 senior research fellow with the Australian Demographic and Social
 Research Institute at the Australian National University.
-** 2013-04-26-extract-weather-from-grids
-
-#+name:2013-04-26-extract-weather-from-grids-header
-#+begin_src markdown :tangle _posts/2013-04-26-extract-weather-from-grids.md :exports none :eval no :padline no
-  ---
-  name: 2013-04-26-extract-weather-from-grids
-  layout: post
-  title: Extracting Weather Data from Grids
-  ---
-  
-  # Gridded weather Data
-  One of the cornerstone datasets in the EWEDB is the gridded weather data from the [Australian Bureau of Meteorology](http://www.bom.gov.au).
-  
-  ## Step one: find the data
-  ### First log in to the Web Catalogue
-  ![extract-data-login-ddiindex.png](/images/extract-data-login-ddiindex.png)
-  ### Then Browse 
-  ![extract-data-browse.png](/images/extract-data-browse.png)
-  ### Or Search
-  ![extract-data-search.png](/images/extract-data-search.png)
-  
-  ## Step two: Create a Kepler Workflow
-  
-  The Workflow in the image below:
-  - gets a list of study locations in the towns.xlsx file
-  - subsets them to the places of interest
-  - geocodes them using the google geocoder
-  - uploads them to the EWEDB PostGIS server (after checking our saved password in the postgres.conf file)
-  - extracts the pixel values for the raster named in the string constant (that we found from the catalogue)
-  ![extract-data-kepler.png](/images/extract-data-kepler.png)
-  ## The result
-  The result is a file extracted from the database to the local TEMP directory and the name is shown.
-  ![extract-data-kepler-ran.png](/images/extract-data-kepler-ran.png)
-  The user can then take these data for further work
-  ![extract-data-result.png](/images/extract-data-result.png)
-  
-      
-#+end_src
-*** COMMENT get-pics-code
-#+name:get-pics
-#+begin_src R :session *R2* :tangle no :exports none :eval yes
-  ################################################################
-  # name:get-pics
-  picdir  <- "~/Pictures"
-  flist  <- dir(picdir, "extract-data", full.names = F)
-  for(f_i in flist)
-    {
-    #  f_i  <- flist[1]
-      file.copy(file.path(picdir,f_i), file.path("images", f_i) )
-    }
-#+end_src
-
-#+RESULTS: get-pics
-
-=======
-** drafts
 
 ** posted
 
@@ -212,4 +156,63 @@ A tutorial with screenshots to make use of the GIS features of the EWEDB will fo
       http://www.ada.edu.au
       28 September 2012
 #+end_src
->>>>>>> 9bdf46c95293c0f1da7a341081f92c9d96c95788
+
+*** 2013-04-26-extract-weather-from-grids
+
+#+name:2013-04-26-extract-weather-from-grids-header
+#+begin_src markdown :tangle _posts/2013-04-26-extract-weather-from-grids.md :exports none :eval no :padline no
+  ---
+  name: 2013-04-26-extract-weather-from-grids
+  layout: post
+  title: Extracting Weather Data from Grids
+  ---
+  
+  # Gridded weather Data
+  One of the cornerstone datasets in the EWEDB is the gridded weather data from the [Australian Bureau of Meteorology](http://www.bom.gov.au).
+  
+  ## Step one: find the data
+  ### First log in to the Web Catalogue
+  ![extract-data-login-ddiindex.png](/images/extract-data-login-ddiindex.png)
+  ### Then Browse 
+  ![extract-data-browse.png](/images/extract-data-browse.png)
+  ### Or Search
+  ![extract-data-search.png](/images/extract-data-search.png)
+  
+  ## Step two: Create a Kepler Workflow
+  
+  The Workflow in the image below:
+
+  - gets a list of study locations in the towns.xlsx file
+  - subsets them to the places of interest
+  - geocodes them using the google geocoder
+  - uploads them to the EWEDB PostGIS server (after checking our saved password in the postgres.conf file)
+  - extracts the pixel values for the raster named in the string constant (that we found from the catalogue)
+
+  ![extract-data-kepler.png](/images/extract-data-kepler.png)
+
+  ## The result
+  The result is a file extracted from the database to the local TEMP directory and the name is shown.
+
+  ![extract-data-kepler-ran.png](/images/extract-data-kepler-ran.png)
+
+  The user can then take these data for further work
+
+  ![extract-data-result.png](/images/extract-data-result.png)
+  
+      
+#+end_src
+*** COMMENT get-pics-code
+#+name:get-pics
+#+begin_src R :session *R2* :tangle no :exports none :eval yes
+  ################################################################
+  # name:get-pics
+  picdir  <- "~/Pictures"
+  flist  <- dir(picdir, "extract-data", full.names = F)
+  for(f_i in flist)
+    {
+    #  f_i  <- flist[1]
+      file.copy(file.path(picdir,f_i), file.path("images", f_i) )
+    }
+#+end_src
+
+#+RESULTS: get-pics

@@ -18,14 +18,20 @@ One of the cornerstone datasets in the EWEDB is the gridded weather data from th
 ## Step two: Create a Kepler Workflow
 
 The Workflow in the image below:
+
 - gets a list of study locations in the towns.xlsx file
 - subsets them to the places of interest
 - geocodes them using the google geocoder
 - uploads them to the EWEDB PostGIS server (after checking our saved password in the postgres.conf file)
 - extracts the pixel values for the raster named in the string constant (that we found from the catalogue)
+
 ![extract-data-kepler.png](/images/extract-data-kepler.png)
+
 ## The result
 The result is a file extracted from the database to the local TEMP directory and the name is shown.
+
 ![extract-data-kepler-ran.png](/images/extract-data-kepler-ran.png)
+
 The user can then take these data for further work
+
 ![extract-data-result.png](/images/extract-data-result.png)
