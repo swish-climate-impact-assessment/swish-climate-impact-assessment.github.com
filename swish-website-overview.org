@@ -54,8 +54,22 @@ Steve McEachern, Deputy Director of the Australian Data Archive and
 senior research fellow with the Australian Demographic and Social
 Research Institute at the Australian National University.
 
-** posted
+*** set up a swish computer header
+#+name:set up a swish computer-header
+#+begin_src markdown :tangle _posts/2013-04-27-set-up-a-swish-computer.md :exports none :eval no :padline no
+---
+name: set-up-a-swish-computer
+layout: post
+title: set up a swish computer
+---
 
+
+#### Code:set up a swish computer
+    
+#+end_src
+
+
+** posted
 *** 2013-04-15-postgis-utils-on-windows header
 
 #+begin_src markdown :tangle _posts/2013-04-15-postgis-utils-on-windows.md :exports none :eval no :padline no
