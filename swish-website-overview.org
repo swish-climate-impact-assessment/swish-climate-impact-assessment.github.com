@@ -54,20 +54,6 @@ Steve McEachern, Deputy Director of the Australian Data Archive and
 senior research fellow with the Australian Demographic and Social
 Research Institute at the Australian National University.
 
-*** set up a swish computer header
-#+name:set up a swish computer-header
-#+begin_src markdown :tangle _posts/2013-04-27-set-up-a-swish-computer.md :exports none :eval no :padline no
----
-name: set-up-a-swish-computer
-layout: post
-title: set up a swish computer
----
-
-
-#### Code:set up a swish computer
-    
-#+end_src
-
 
 ** posted
 *** 2013-04-15-postgis-utils-on-windows header
@@ -172,7 +158,22 @@ A tutorial with screenshots to make use of the GIS features of the EWEDB will fo
 #+end_src
 
 *** 2013-04-26-extract-weather-from-grids
+**** COMMENT get-pics-code
+#+name:get-pics
+#+begin_src R :session *R* :tangle no :exports none :eval yes
+  ################################################################
+  # name:get-pics
+  picdir  <- "~/Pictures"
+  flist  <- dir(picdir, "extract-data", full.names = F)
+  for(f_i in flist)
+    {
+    #  f_i  <- flist[1]
+      file.copy(file.path(picdir,f_i), file.path("images", f_i) )
+    }
+#+end_src
 
+#+RESULTS: get-pics
+**** post
 #+name:2013-04-26-extract-weather-from-grids-header
 #+begin_src markdown :tangle _posts/2013-04-26-extract-weather-from-grids.md :exports none :eval no :padline no
   ---
@@ -215,18 +216,60 @@ A tutorial with screenshots to make use of the GIS features of the EWEDB will fo
   
       
 #+end_src
-*** COMMENT get-pics-code
+
+
+*** set-up-swish-computer header
+**** COMMENT get-pics-code
 #+name:get-pics
-#+begin_src R :session *R2* :tangle no :exports none :eval yes
+#+begin_src R :session *R* :tangle no :exports none :eval yes
   ################################################################
   # name:get-pics
-  picdir  <- "~/Pictures"
-  flist  <- dir(picdir, "extract-data", full.names = F)
+  picdir  <- "~/Pictures/Presentation1"
+  flist  <- dir(picdir, full.names = F)
+  flist
   for(f_i in flist)
     {
-    #  f_i  <- flist[1]
-      file.copy(file.path(picdir,f_i), file.path("images", f_i) )
+      #f_i  <-  flist[1]
+      f_i2 <- paste("setup-swish-", f_i, sep ="")
+      #f_i2
+      file.copy(file.path(picdir,f_i), file.path("images", f_i2) )
+    }
+  
+  for(f_i in flist)
+    {
+      #f_i  <-  flist[1]
+      f_i2 <- paste("setup-swish-", f_i, sep ="")
+      print(paste("![",f_i2,"](",f_i2,")", sep = ""))  
     }
 #+end_src
 
-#+RESULTS: get-pics
+**** post
+#+name:set-up-swish-computer-header
+#+begin_src markdown :tangle _posts/2013-04-27-set-up-swish-computer.md :exports none :eval no :padline no
+  ---
+  name: set-up-swish-computer
+  layout: post
+  title: Set Up Swish Computer
+  ---
+  
+  ## Install SWISH Database Tools R package
+  ![setup-swish-Slide1.PNG](images/setup-swish-Slide1.PNG)
+  ![setup-swish-Slide2.PNG](images/setup-swish-Slide2.PNG)
+  ## Install SWISH Database Tools R package Depends
+  ![setup-swish-Slide3.PNG](images/setup-swish-Slide3.PNG)
+  ![setup-swish-Slide4.PNG](images/setup-swish-Slide4.PNG)
+  ![setup-swish-Slide5.PNG](images/setup-swish-Slide5.PNG)
+  ![setup-swish-Slide6.PNG](images/setup-swish-Slide6.PNG)
+  ![setup-swish-Slide7.PNG](images/setup-swish-Slide7.PNG)
+  ![setup-swish-Slide8.PNG](images/setup-swish-Slide8.PNG)
+  ![setup-swish-Slide9.PNG](images/setup-swish-Slide9.PNG)
+  ![setup-swish-Slide10.PNG](images/setup-swish-Slide10.PNG)
+  ![setup-swish-Slide11.PNG](images/setup-swish-Slide11.PNG)
+  ![setup-swish-Slide12.PNG](images/setup-swish-Slide12.PNG)
+  ![setup-swish-Slide13.PNG](images/setup-swish-Slide13.PNG)
+  ![setup-swish-Slide14.PNG](images/setup-swish-Slide14.PNG)
+  ![setup-swish-Slide15.PNG](images/setup-swish-Slide15.PNG)
+  ![setup-swish-Slide16.PNG](images/setup-swish-Slide16.PNG)
+  
+      
+#+end_src
