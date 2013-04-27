@@ -8,7 +8,7 @@ title: EWE
 ### [Use the Database Registry](http://115.146.93.225:8080/apex/f?p=102)
 ### [Search the Catalogue](http://115.146.93.108:8181/ddiindex)
 
-## The Datasets
+## The Metadata 
 ### AWAP_GRIDS
 #### [Australian Water Availability Project](/metadata/AWAP_GRIDS.html)
 
