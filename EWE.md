@@ -1,16 +1,16 @@
 ---
+name: EWE
 layout: default
-title: EWE data
+title: EWE
 ---
 
 ## The registry and catalogue
-### [Use the Database Registry](http://115.146.93.108:8080/apex/f?p=102)
+### [Use the Database Registry](http://115.146.93.225:8080/apex/f?p=102)
 ### [Search the Catalogue](http://115.146.93.108:8181/ddiindex)
 
-## Types of EWE
-These are the Extreme Weather Events in the GIS server.  
-
-Stay tuned there are more to come.
+## The Datasets
+### AWAP_GRIDS
+#### [Australian Water Availability Project](/metadata/AWAP_GRIDS.html)
 
 ### Heatwaves
 #### [The Excess Heat Factor](https://github.com/swish-climate-impact-assessment/ExcessHeatIndices)

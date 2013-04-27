@@ -273,3 +273,72 @@ A tutorial with screenshots to make use of the GIS features of the EWEDB will fo
   
       
 #+end_src
+* metadata
+** metadata home
+** EWE
+*** EWE header
+#+name:EWE-header
+#+begin_src markdown :tangle EWE.md :exports none :eval no :padline no
+---
+name: EWE
+layout: default
+title: EWE
+---
+
+## The registry and catalogue
+### [Use the Database Registry](http://115.146.93.225:8080/apex/f?p=102)
+### [Search the Catalogue](http://115.146.93.108:8181/ddiindex)
+
+## The Datasets
+### AWAP_GRIDS
+#### [Australian Water Availability Project](/metadata/AWAP_GRIDS.html)
+
+### Heatwaves
+#### [The Excess Heat Factor](https://github.com/swish-climate-impact-assessment/ExcessHeatIndices)
+
+### Bushfire smoke
+#### [The U-TAS Biomass Smoke Project](http://ivanhanigan.github.com/bio_validated_bushfire_events)
+
+### Drought
+#### [The Hutchinson Index](https://github.com/ivanhanigan/HutchinsonDroughtIndex)
+#### [The Hutchinson Index Tutorial](/EWE/HutchinsonDroughtIndex/HutchinsonDroughtIndex.html)
+
+## Viewing the data with GIS
+### Quantum GIS
+### ArcGIS 
+### [Geoserver](http://115.146.94.209:8181/geoserver)
+
+#+end_src
+
+** AWAP_GRIDS
+*** AWAP_GRIDS header
+#+name:AWAP_GRIDS-header
+#+begin_src markdown :tangle metadata/AWAP_GRIDS.md :exports none :eval no :padline no
+---
+name: AWAP-GRIDS
+layout: post
+title: AWAP GRIDS
+categories:
+- gridded
+- weather
+---
+
+The Australian Water Availability Project Gridded Weather Data.
+
+Measure can be maxave, minave, (temperature), or vprph09, vprph15 (vapour pressure) 
+
+For example: 
+
+    awap_grids.maxave_20130108 
+
+<p></p>
+
+STUDY DESCRIPTION: 
+
+The Bureau of Meteorology has generated a range of improved meteorological analyses for Australia as a contribution to the Australian Water Availability Project (AWAP). The meteorological analyses include rainfall, temperature, vapour pressure and solar exposure. Also Normalized Difference Vegetation Index (NDVI) and Atmospheric circulation. Over time periods ranging from daily, weekly, monthly to 3-yearly. 
+
+http://www.bom.gov.au/jsp/awap/ 
+
+Documentation is at http://www.bom.gov.au/amm/docs/2009/jones.pdf 
+    
+#+end_src
