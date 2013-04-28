@@ -1,10 +1,7 @@
 ---
 name: AWAP-GRIDS
-layout: post
+layout: default
 title: AWAP GRIDS
-categories:
-- gridded
-- weather
 ---
 
 The Australian Water Availability Project Gridded Weather Data.
