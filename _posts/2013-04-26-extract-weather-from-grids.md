@@ -38,6 +38,8 @@ The Workflow in the image below:
 - tells the PostGIS data are a points vector datatype, and that the coordinates are in GDA 1994 projection system
 - extracts the pixel values for the raster named in the string constant (that we found from the catalogue)
 
+![setup-swish-Slide8.PNG](/images/setup-swish-Slide8.PNG)
+
 ![extract-data-kepler.png](/images/extract-data-kepler.png)
 
 ## The result
