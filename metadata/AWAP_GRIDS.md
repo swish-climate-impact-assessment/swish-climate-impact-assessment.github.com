@@ -1,6 +1,6 @@
 ---
 name: AWAP-GRIDS
-layout: post
+layout: default
 title: AWAP GRIDS
 ---
 
