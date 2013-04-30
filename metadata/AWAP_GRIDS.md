@@ -2,9 +2,6 @@
 name: AWAP-GRIDS
 layout: post
 title: AWAP GRIDS
-categories:
-- awap
-- metadata
 ---
 
 The Australian Water Availability Project Gridded Weather Data.
