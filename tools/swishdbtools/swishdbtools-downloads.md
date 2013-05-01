@@ -18,5 +18,6 @@ swishdbtools-package
 * [swishdbtools_1.0_R_x86_64-pc-linux-gnu.tar.gz](/tools/swishdbtools/swishdbtools_1.0_R_x86_64-pc-linux-gnu.tar.gz)
 
 ### Windows
+* [swishdbtools_1.2.zip](/tools/swishdbtools/swishdbtools_1.2.zip)
 * [swishdbtools_1.1.zip](/tools/swishdbtools/swishdbtools_1.1.zip)
 * [swishdbtools_1.0.zip](/tools/swishdbtools/swishdbtools_1.0.zip)
