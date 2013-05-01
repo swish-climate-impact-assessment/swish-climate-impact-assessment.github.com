@@ -26,7 +26,7 @@ Maintainer: Who to complain to <ivan.hanigan@gmail.com>
 }
 \keyword{ package }
 \seealso{
-https://github.com/swish-climate-impact-assessment/swishdbtools
+<a href="https://github.com/swish-climate-impact-assessment/swishdbtools">https://github.com/swish-climate-impact-assessment/swishdbtools</a>
 }
 \examples{
 require(swishdbtools)
