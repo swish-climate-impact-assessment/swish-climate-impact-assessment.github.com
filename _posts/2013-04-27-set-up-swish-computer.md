@@ -48,8 +48,8 @@ OR if you don't want the newest versions
 
     if(!require(foreign))   install.packages("foreign"); require(foreign)
     if(!require(rgdal))     install.packages(rgdal);     require(rgdal)   
-    if(!require(plyr        install.packages(plyr);      require(plyr)
-    if(!require(RODBC       install.packages(RODBC);     require(RODBC)
+    if(!require(plyr))      install.packages(plyr);      require(plyr)
+    if(!require(RODBC))     install.packages(RODBC);     require(RODBC)
     if(!require(XLConnect)) install.packages(XLConnect); require(XLConnect)
     require(swishdbtools)
   <p></p>
