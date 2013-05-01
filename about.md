@@ -5,6 +5,9 @@ title: About
 
 This is the Extreme Weather Events Database of the National Centre for Epidemiology and Population Health (NCEPH) at the Australian National University (ANU).  
 
+The SWISH project has [a second website devoted to the high level description](http://swish-climate-impact-assessment.blogspot.com.au/). From that site users can explore the scope of the project.
+
+
 # Documentation
 
 [The Data Management Plan](/swish-DataManagementPlan.html)
@@ -14,7 +17,7 @@ This is the Extreme Weather Events Database of the National Centre for Epidemiol
 # Access data
 The data are available for authorised users.  
 
-To apply for access please complete the application forms at [some website for applying at](http://www.google.com)
+To apply for access please complete the application forms with the data manager [Ivan Hanigan](http://nceph.anu.edu.au/about-us/people/ivan-hanigan)
 
 [View the Database Catalogue](http://115.146.93.108:8181/ddiindex/)
 

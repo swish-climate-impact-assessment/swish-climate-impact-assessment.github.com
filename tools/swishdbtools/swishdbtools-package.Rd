@@ -3,21 +3,20 @@
 \alias{swishdbtools}
 \docType{package}
 \title{
-getPassword and connect2postgres
+SWISH database tools
 }
 \description{
-getPassword and connect2postgres~
+for instance getPassword and connect2postgres2.
 }
 \details{
 \tabular{ll}{
 Package: \tab swishdbtools\cr
 Type: \tab Package\cr
-License: \tab What license is it under?\cr
+License: \tab GPL2\cr
 }
-~~ An overview of how to use the package, including the most important functions ~~
+
 }
 \author{
-Who wrote it
 
 Maintainer: Who to complain to <ivan.hanigan@gmail.com>
 
@@ -27,9 +26,9 @@ Maintainer: Who to complain to <ivan.hanigan@gmail.com>
 }
 \keyword{ package }
 \seealso{
-~~ Optional links to other man pages, e.g. ~~
-~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
+https://github.com/swish-climate-impact-assessment/swishdbtools
 }
 \examples{
-~~ simple examples of the most important functions ~~
+require(swishdbtools)
+ch <- connect2postgres("ewedb")
 }

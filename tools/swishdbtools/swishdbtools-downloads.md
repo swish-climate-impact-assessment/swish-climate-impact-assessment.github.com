@@ -9,9 +9,11 @@ swishdbtools-package
 * Author: ivanhanigan
 * Maintainer: Who to complain to <ivan.hanigan@gmail.com>
 
+[https://github.com/swish-climate-impact-assessment/swishdbtools](https://github.com/swish-climate-impact-assessment/swishdbtools)
 
 ## Downloads
 ### Linux 
+* [swishdbtools_1.2_R_x86_64-pc-linux-gnu.tar.gz](/tools/swishdbtools/swishdbtools_1.2_R_x86_64-pc-linux-gnu.tar.gz)
 * [swishdbtools_1.1_R_x86_64-pc-linux-gnu.tar.gz](/tools/swishdbtools/swishdbtools_1.1_R_x86_64-pc-linux-gnu.tar.gz)
 * [swishdbtools_1.0_R_x86_64-pc-linux-gnu.tar.gz](/tools/swishdbtools/swishdbtools_1.0_R_x86_64-pc-linux-gnu.tar.gz)
 
