@@ -61,12 +61,12 @@ OR if you don't want the newest versions
 ## should not have any ERRORS (but may have a few WARNINGS)
 
 ![setup-swish-Slide4.PNG](/images/setup-swish-Slide4.PNG)
-
+  
 ![setup-swish-Slide7.PNG](/images/setup-swish-Slide7.PNG)
 
-## While we are here, let's install Ivan's GisViz package so we run the [SWISH geocoder workflow](www.google.com) as a TEST
+## While we are here, let's install Ivan's GisViz package so we run the [SWISH geocoder workflow](http://swish-climate-impact-assessment.github.io/tools/geocoder/geocoder.html) as a TEST
 
-The SWISH project has developed a [simple geocoder workflow](www.google.com) to assist our users to get going on a climate/health analysis. This depends on Ivan Hanigan's [GisViz package](http://ivanhanigan.github.io/gisviz/) so let's download and install that now.
+The SWISH project has developed a [simple geocoder workflow](http://swish-climate-impact-assessment.github.io/tools/geocoder/geocoder.html) to assist our users to get going on a climate/health analysis. This depends on Ivan Hanigan's [GisViz package](http://ivanhanigan.github.io/gisviz/) so let's download and install that now.
  
 ## Download the binary and use Rstudio to browse to the downloaded file
 
@@ -82,19 +82,41 @@ The SWISH project has developed a [simple geocoder workflow](www.google.com) to 
 <p></p>
 ![setup-swish-Slide6.PNG](/images/setup-swish-Slide6.PNG)
 
-## Get the SWISH geocoder workflow from [this webpage](www.google.com)
+## Get the SWISH geocoder workflow from [this webpage](http://swish-climate-impact-assessment.github.io/tools/geocoder/geocoder.html)
+This is from version 2.4.  If you open this with Kepler 2.3 and don't want to upgrade, tell it to Force Open, then skip element and once open edit the SDF director and change AUTO to 1.
 
 To demonstrate the geocoder at work let's create some dummy data.  In a spreadsheet I've typed the names of a few towns in New South Wales. This uses the [GoogleMaps geocoding API (with HTTPS security)](https://developers.google.com/maps/documentation/geocoding) which is very clever at resolving place names using fuzzy logic.  To demonstrate this I have misspelt the name of the well-known city Wollongong, leaving off one of the L's and expect google maps to return the correct coordinates anyway. 
 
 ![setup-swish-Slide8.PNG](/images/setup-swish-Slide8.PNG)
 
-![setup-swish-Slide9.PNG](/images/setup-swish-Slide9.PNG)
+## Modify the input file name to reflect the location of your spreadsheet
+
+![setup-swish-Slide18.PNG](/images/setup-swish-Slide18.PNG)
+
+## when you run this it will look for your PostGIS username and password, or ask you to enter them (ON WINDOWS THE POPUP BOX IS OFTEN BEHIND OTHER WINDOWS)
+
+You will have recieved a username and password when the Data Manager set up your account.
 
 ![setup-swish-Slide10.PNG](/images/setup-swish-Slide10.PNG)
 
 ![setup-swish-Slide11.PNG](/images/setup-swish-Slide11.PNG)
 
+## your details are now stored in this file.
+(or ~/.pgpass on Linux) 
+
 ![setup-swish-Slide12.PNG](/images/setup-swish-Slide12.PNG)
+  
+## One thing this workflow does after geocoding the locations and storing a local shapefile is make a default map
+
+![setup-swish-Slide19.PNG](/images/setup-swish-Slide19.PNG)
+
+## But of more interest to us is the data it sent to the PostGIS database that we can view with Quantum GIS
+  
+![setup-swish-Slide15.PNG](/images/setup-swish-Slide15.PNG)
+ 
+![setup-swish-Slide16.PNG](/images/setup-swish-Slide16.PNG)
+  
+
 
 ## The End
 From here the interested reader can follow up on what that workflow does in [this previous post](/2013/04/extract-weather-from-grids/)

@@ -23,3 +23,7 @@ title: Tools
 ### Australian Water Availability Grids tools
 * R package to download and format gridded weather data
 * [Click here for downloads](/tools/awaptools/awaptools-downloads.html)
+
+### Geocoder
+* [Click here for geocoder info](/tools/geocoder/geocoder.html)
+
