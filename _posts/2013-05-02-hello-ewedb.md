@@ -13,7 +13,7 @@ categories:
 This is a very simple workflow designed to install the swishdbtools R package and test the setup of your computer and the connection to the EWEDB.
 
 ### Step 1
-Download [the "hello-ewedb.kar" workflow]((http://swish-climate-impact-assessment.github.io/tools/geocoder/geocoder.html)
+Download [the "hello-ewedb.kar" workflow](/tools/hello-ewedb/hello-ewedb.html)
 
 ### Step 2
 Run the workflow.  

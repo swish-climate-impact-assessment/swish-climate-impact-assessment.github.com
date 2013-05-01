@@ -15,6 +15,10 @@ title: Tools
 * [Click here for details](/tools/swishdbtools/swishdbtools-package.html)
 * [Click here for downloads](/tools/swishdbtools/swishdbtools-downloads.html)
 
+### Hello-EWEDB (Simple Installer)
+* [Click here for the Hello-EWEDB Simple Installer](/tools/hello-ewedb/hello-ewedb.html)
+* [Click here for the Hello-EWEDB Simple Installer demo](http://swish-climate-impact-assessment.github.io/2013/05/hello-ewedb/)
+
 ### Excess Heat Indices
 * This is an R package collecting useful R functions for calculating Excess Heat Indices
 * [Click here for details](/tools/ExcessHeatIndices/ExcessHeatIndices-package.html)
