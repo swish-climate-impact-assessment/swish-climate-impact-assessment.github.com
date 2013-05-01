@@ -22,7 +22,7 @@ Run the workflow.
 
 
 ### Step 3
-Enter the details.  When you run this it will download the R package and install it, along with its dependencies.  It will then look for your PostGIS username and password, or ask you to enter them (ON WINDOWS THE POPUP BOX IS OFTEN BEHIND OTHER WINDOWS)
+Enter the details.  When you run this it will download the R package and install it, along with its dependencies.  It will then look for your PostGIS username and password, if it can't find a valid username, password, database and server combination it will ask you to enter them (ON WINDOWS THE POPUP BOX IS OFTEN BEHIND OTHER WINDOWS)
 
 You will have recieved a username and password when the Data Manager set up your account.
 
