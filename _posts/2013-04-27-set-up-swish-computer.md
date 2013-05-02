@@ -46,13 +46,26 @@ You can install all the dependencies with something like:
   <p></p>
 OR if you don't want the newest versions
 
-    if(!require(foreign))   install.packages("foreign"); require(foreign)
-    if(!require(rgdal))     install.packages(rgdal);     require(rgdal)   
-    if(!require(plyr))      install.packages(plyr);      require(plyr)
-    if(!require(RODBC))     install.packages(RODBC);     require(RODBC)
-    if(!require(XLConnect)) install.packages(XLConnect); require(XLConnect)
+    if (length(grep("ming", sessionInfo()[[1]]$os)) == 1) {
+      download.file("http://swish-climate-impact-assessment.github.io/tools/swishdbtools/swishdbtools_1.2.zip", 
+                    destfile=file.path(Sys.getenv("HOME"), "swishdbtools_1.2.zip"), 
+                    mode="wb")
+      install.packages(file.path(Sys.getenv("HOME"), "swishdbtools_1.2.zip"), repos = NULL)
+    } else {
+      download.file("http://swish-climate-impact-assessment.github.io/tools/swishdbtools/swishdbtools_1.2_R_x86_64-pc-linux-gnu.tar.gz", 
+                    destfile=file.path(Sys.getenv("HOME"), "swishdbtools_1.2_R_x86_64-pc-linux-gnu.tar.gz"), 
+                    mode="wb")
+      install.packages(file.path(Sys.getenv("HOME"), "swishdbtools_1.2_R_x86_64-pc-linux-gnu.tar.gz"), repos = NULL)
+    }
+    if(!require(foreign))   install.packages("foreign", repos="http://cran.csiro.au/"); require(foreign)
+    if(!require(rgdal))     install.packages("rgdal", repos="http://cran.csiro.au/");     require(rgdal)  
+    if(!require(plyr))        install.packages("plyr", repos="http://cran.csiro.au/");      require(plyr)
+    if(!require(RODBC))       install.packages("RODBC", repos="http://cran.csiro.au/");     require(RODBC)
+    if(!require(XLConnect)) install.packages("XLConnect", repos="http://cran.csiro.au/"); require(XLConnect)
     require(swishdbtools)
-  <p></p>
+    ch <- connect2postgres2("ewedb")
+    sql_subset(ch, "dbsize", limit = 1, eval = T)
+<p></p>
 
 ## Installing dependencies
 
