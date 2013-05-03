@@ -15,7 +15,7 @@ The SWISH project has [a second website devoted to the high level description](h
 
 SWISH is released under [the GPL license](http://www.opensource.org/licenses/gpl-license.php)
 
-This program is distributed in the hope that it will be useful, but
+Our software is distributed in the hope that it will be useful, but
 WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
@@ -48,3 +48,7 @@ To apply for access please complete the application forms with the data manager 
 [The source code and associated project material is available at github](https://github.com/swish-climate-impact-assessment)
 
 
+# Licence
+This blog is licensed under the Creative Commons Australia Attribution 3.0 Licence. Please note that this licence applies to the contents of blog posts and associated comments. By submitting a comment to this blog you agree to have granted this licence.
+
+This project is supported by the Australian National Data Service (ANDS). ANDS is supported by the Australian Government through the National Collaborative Research Infrastructure Strategy Program and the Education Investment Fund (EIF) Super Science Initiative, as well as through The Australian National University. .
