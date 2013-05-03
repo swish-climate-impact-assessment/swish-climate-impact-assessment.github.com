@@ -3,12 +3,18 @@ layout: default
 title: About
 ---
 
-This is the Extreme Weather Events Database of the National Centre for Epidemiology and Population Health (NCEPH) at the Australian National University (ANU).  
+This is the Extreme Weather Events Database of the Scientific Workflow and Integration Software for Health (SWISH) project from the National Centre for Epidemiology and Population Health (NCEPH) at the Australian National University (ANU).  
 
 The SWISH project has [a second website devoted to the high level description](http://swish-climate-impact-assessment.blogspot.com.au/). From that site users can explore the scope of the project.
 
 
 # Documentation
+
+[Setting up your Environment](/setting-up.html)
+
+[Assembling Scientific Workflows](/assembling-workflows.html)
+
+[Developing with Workflow Software](/developing-with-workflows.html)
 
 [The Data Management Plan](/swish-DataManagementPlan.html)
 
