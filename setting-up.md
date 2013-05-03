@@ -3,6 +3,8 @@ layout: default
 title: Setting Up
 ---
 
+# Setting Up
+
 This will be a lot of links to posts on setting up.
 
 For eg:
