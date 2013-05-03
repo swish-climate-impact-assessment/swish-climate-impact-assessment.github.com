@@ -425,7 +425,7 @@ categories:
 The AWAP data were found and extracted for a specific date in a previous post.
 This tutorial will demonstrate extracting data for a range of dates and locations.
 
-
+[See this page](/tools/ExtractAWAPdata4locations/extract-awap.html)
     
 #+end_src
 
