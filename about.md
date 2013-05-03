@@ -11,6 +11,11 @@ The SWISH project is a suite of software tools that we developed and includes bo
 
 The SWISH project has [a second website devoted to the high level description](http://swish-climate-impact-assessment.blogspot.com.au/). From that site users can explore the scope of the project.
 
+SWISH is released under [the GPL license](http://www.opensource.org/licenses/gpl-license.php)
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 # Documentation
 
