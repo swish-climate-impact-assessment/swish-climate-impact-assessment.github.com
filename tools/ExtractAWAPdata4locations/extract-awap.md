@@ -4,11 +4,15 @@ title: extractor Kepler Workflow
 ---
 
 ## extractor example workflow
+This workflow extracts AWAP weather data for a location (or optionally for several locations).
+Please see [this blog post](http://swish-climate-impact-assessment.github.io/2013/05/extract-awap-data-4-locations/) for details
 
 ### Download
 * [ExtractAWAPdata4locations.KAR](/tools/ExtractAWAPdata4locations/ExtractAWAPdata4locations.kar)
-* [test dataset zones.xlsx](/tools/ExtractAWAPdata4locations/zones.xlsx)
-* [test R script](/tools/ExtractAWAPdata4locations/ExtractAWAPdata4locations.r)
+* [test INPUT dataset zones.xlsx](/tools/ExtractAWAPdata4locations/zones.xlsx)
+* [test OUTPUT dataset Kaleen.csv](/tools/ExtractAWAPdata4locations/Kaleen.csv)
+* [test R script for debugging](/tools/ExtractAWAPdata4locations/ExtractAWAPdata4locations.r)
+
 
 ### Notes
 * Depends on R Packages:   swishdbtools, gisviz, awaptools, reshape
