@@ -3,14 +3,21 @@ layout: default
 title: About
 ---
 
-# Scientific Workflow and Integration Software for Health (SWISH)
+# The Extreme Weather Events Database of the:
 
-This is the Extreme Weather Events Database of the Scientific Workflow and Integration Software for Health (SWISH) project from the National Centre for Epidemiology and Population Health (NCEPH) at the Australian National University (ANU).  
+    Scientific Workflow and Integration Software for Health (SWISH)
+<p></p>
+project from the National Centre for Epidemiology and Population Health (NCEPH) at the Australian National University (ANU).  
 
 The SWISH project is a suite of software tools that we developed and includes both an operational web-based research platform as well as enhanced traditional desktop client-side workflows, that boosts our researcher's capacity without compromising our expertise and trusted workflows.  You can read about the other elements of this project at the [High Level System Description Document webpage](/HighLevelDescription.html).
 
 The SWISH project has [a second website devoted to the high level description](http://swish-climate-impact-assessment.blogspot.com.au/). From that site users can explore the scope of the project.
 
+SWISH is released under [the GPL license](http://www.opensource.org/licenses/gpl-license.php)
+
+Our software is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 # Documentation
 
@@ -41,3 +48,7 @@ To apply for access please complete the application forms with the data manager 
 [The source code and associated project material is available at github](https://github.com/swish-climate-impact-assessment)
 
 
+# Licence
+This blog is licensed under the Creative Commons Australia Attribution 3.0 Licence. Please note that this licence applies to the contents of blog posts and associated comments. By submitting a comment to this blog you agree to have granted this licence.
+
+This project is supported by the Australian National Data Service (ANDS). ANDS is supported by the Australian Government through the National Collaborative Research Infrastructure Strategy Program and the Education Investment Fund (EIF) Super Science Initiative, as well as through The Australian National University. .

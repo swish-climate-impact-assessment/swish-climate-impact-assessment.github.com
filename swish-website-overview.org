@@ -241,7 +241,7 @@ A tutorial with screenshots to make use of the GIS features of the EWEDB will fo
   <!--![extract-data-kepler-ran.png](/images/extract-data-kepler-ran.png)-->
   <!--![extract-data-result.png](/images/extract-data-result.png)-->
 
-*** set-up-swish-computer header
+*** 2013-04-27-set-up-swish-computer header
 **** COMMENT get-pics-code
 #+name:get-pics
 #+begin_src R :session *R* :tangle no :exports none :eval yes
@@ -407,6 +407,29 @@ A tutorial with screenshots to make use of the GIS features of the EWEDB will fo
   
       
 #+end_src
+
+*** 2013-05-03 ExtractAWAPdata4locations header
+#+name:ExtractAWAPdata4locations-header
+#+begin_src markdown :tangle _posts/2013-05-03-extract-awap-data-4-locations.md :exports none :eval no :padline no
+---
+name: 2013-05-03-extract-awap-data-4-locations
+layout: post
+title: Extract AWAP data for locations
+date: 2013-05-03
+categories:
+- awap
+- extract
+---
+
+# AWAP data 
+The AWAP data were found and extracted for a specific date in a previous post.
+This tutorial will demonstrate extracting data for a range of dates and locations.
+
+[See this page](/tools/ExtractAWAPdata4locations/extract-awap.html)
+    
+#+end_src
+
+
 * metadata
 ** metadata home
 ** EWE
