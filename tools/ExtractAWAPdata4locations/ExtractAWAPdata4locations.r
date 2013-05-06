@@ -1,15 +1,45 @@
 # this script runs the ExtractAWAPGRIDS functions for sample locations
-workingdir <- "/home/ivan_hanigan/projects/swish-climate-impact-assessment.github.com/tools/ExtractAWAPdata4locations"
-fileName <- file.path(workingdir, "zones.xlsx")
 # depends on swishdbtools package from http:/swish-climate-impact-assessment.github.com
-
+# eg 
+workingdir <- "~/projects/swish-climate-impact-assessment.github.com/tools/ExtractAWAPdata4locations"
+# eg 
+fileName <-  "zones.xlsx"
+# eg 
+outputFileName <- "locations.shp"
+# eg
+outputDataFile <- "Kaleen.csv"
+# eg
+StartDate <- "2013-04-20" 
+# eg
+EndDate <- "2013-04-27" 
 ################################################################
-# name: GeoCode_and_send2postgis
+# name: GeoCode
 require(swishdbtools)
 require(gisviz)
-ch <- connect2postgres2("ewedb")
+fileName <- file.path(workingdir, fileName)
 towns <- read_file(fileName)
 locations <- gGeoCode2(towns)
+epsg <- make_EPSG()
+df <- SpatialPointsDataFrame(cbind(locations$long,locations$lat),locations,                             
+                             proj4string=CRS(epsg$prj4[epsg$code %in% "4283"])
+                             )
+setwd(workingdir)
+if(file.exists(outputFileName))
+{
+  for(ext in c(".shp", ".shx", ".dbf", ".prj"))
+  {
+    file.remove(gsub(".shp",ext,outputFileName))
+  }
+}
+writeOGR(df,outputFileName,gsub(".shp","",outputFileName),"ESRI Shapefile")
+tempTableName <- outputFileName
+
+################################################################
+# name: send2postgis
+require(swishdbtools)
+ch <- connect2postgres2("ewedb")
+locations <- read_file(file.path(workingdir,tempTableName))
+locations <- locations@data
 tempTableName <- swish_temptable()
 dbWriteTable(ch, tempTableName$table, locations, row.names = F)
 tested <- sql_subset(ch, tempTableName$fullname, eval = T)
@@ -17,10 +47,7 @@ tested <- sql_subset(ch, tempTableName$fullname, eval = T)
 tempTableName <- tempTableName$fullname
 tempTableName
 
-################################################################
-# name: points2geom
-require(swishdbtools)
-ch <- connect2postgres2("ewedb")
+# points2geom
 sch <- strsplit(tempTableName, "\\.")[[1]][1]
 tbl <- strsplit(tempTableName, "\\.")[[1]][2]
 sql <- points2geom(
@@ -38,8 +65,8 @@ require(swishdbtools)
 require(awaptools)
 require(reshape)
 tempTableName_locations <- tbl
-startdate <- "2013-04-20" #StartDate
-enddate <- "2013-04-27" #EndDate
+startdate <- StartDate
+enddate <- EndDate
 ch<-connect2postgres2("ewedb")
 tempTableName <- swish_temptable("ewedb")
 
@@ -54,8 +81,9 @@ output_data <- reformat_awap_data(
   tableName = tempTableName$fullname
 )
 
-outputFileName <- file.path(workingdir, "Kaleen.csv")
-write.csv(output_data,outputFileName, row.names = FALSE)
+outputDataFile <- file.path(workingdir, outputDataFile)
+write.csv(output_data,outputDataFile, row.names = FALSE)
+outputFileName <- outputDataFile
 outputFileName
 
 
