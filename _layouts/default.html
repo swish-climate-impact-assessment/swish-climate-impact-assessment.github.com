@@ -20,7 +20,7 @@
         <div id="navigation">
           <ul class="nav clearfix">
             <li class="first-child"><a href="/about.html">Overview</a></li>             
-            <li> <a href="/blog.html">Blog</a></li>         
+            <li> <a href="/blog.html">Resources</a></li>         
             <!-- <li><a href="/EWE.html">Catalogue</a></li>   -->
             <li><a href="/EWE.html">Data</a></li>  
             <li><a href="/analyses.html">Projects</a></li> 
@@ -36,6 +36,10 @@
       <div class="wrapper">
         <div id="content">
           {{ content }}
+  <div id="disqus_thread"></div>
+  <script type="text/javascript" src="http://swish-ewedb.disqus.com/embed.js"> </script>
+  <noscript>Please enable JavaScript to <a href="http://swish-ewedb.disqus.com/?url=ref">view the discussion thread.</a></noscript>
+               
         </div>
         <div id="sidebar">
           <div id="carrington-subscribe" class="widget">
@@ -111,6 +115,7 @@
               </ul>
               <div class="clear"></div>
             </div>
+
             <!--
             <div class="widget">
               <h2 class="widget-title">Archives</h2>
@@ -141,7 +146,7 @@
     </div>
     <!--
 	<a href="http://github.com/SChamberlain"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://assets2.github.com/img/e6bef7a091f5f3138b8cd40bc3e114258dd68ddf?repo=&url=http%3A%2F%2Fs3.amazonaws.com%2Fgithub%2Fribbons%2Fforkme_right_red_aa0000.png&path=" alt="Fork me on GitHub"></a>
-	-->
+
     <script type="text/javascript">
       var disqus_shortname = 'swish-ewedb';
 
@@ -152,6 +157,8 @@
         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
       }());
     </script>
+      -->
+
     <script type="text/javascript">
       var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
       document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
