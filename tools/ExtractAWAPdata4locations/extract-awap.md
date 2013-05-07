@@ -8,10 +8,10 @@ This workflow extracts AWAP weather data for a location (or optionally for sever
 Please see [this blog post](http://swish-climate-impact-assessment.github.io/2013/05/extract-awap-data-4-locations/) for details
 
 ### Download
-* [ExtractAWAPdata4locations.KAR](/tools/ExtractAWAPdata4locations/ExtractAWAPdata4locations.kar)
-* [test INPUT dataset zones.xlsx](/tools/ExtractAWAPdata4locations/zones.xlsx)
-* [test OUTPUT dataset Kaleen.csv](/tools/ExtractAWAPdata4locations/Kaleen.csv)
-* [test R script for debugging](/tools/ExtractAWAPdata4locations/ExtractAWAPdata4locations.r)
+* The workflow is [ExtractAWAPdata4locations.KAR](/tools/ExtractAWAPdata4locations/ExtractAWAPdata4locations.kar)
+* A test INPUT dataset is [zones.xlsx](/tools/ExtractAWAPdata4locations/zones.xlsx)
+* The intended OUTPUT dataset is [Kaleen.csv](/tools/ExtractAWAPdata4locations/Kaleen.csv)
+* A test [R script for debugging](/tools/ExtractAWAPdata4locations/ExtractAWAPdata4locations.r)
 
 
 ### Notes
