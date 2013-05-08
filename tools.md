@@ -24,9 +24,11 @@ title: Tools
 * [Click here for details](/tools/ExcessHeatIndices/ExcessHeatIndices-package.html)
 * [Click here for downloads](/tools/ExcessHeatIndices/ExcessHeatIndices-downloads.html)
 
-### Australian Water Availability Grids tools
-* R package to download and format gridded weather data
+### Australian Water Availability Project (AWAP) tools
+* R package to download and format gridded [AWAP weather data](/metadata/AWAP_GRIDS.html)
 * [Click here for downloads](/tools/awaptools/awaptools-downloads.html)
+* [Here is a workflow for extracting the data](/tools/ExtractAWAPdata4locations/extract-awap.html)
+* Please see [this tutorial](http://swish-climate-impact-assessment.github.io/2013/05/extract-awap-data-4-locations/) for details and screen shots.
 
 ### Geocoder
 * [Click here for geocoder info](/tools/geocoder/geocoder.html)
