@@ -6,6 +6,18 @@
 #+LATEX: \tableofcontents
 -----
 
+* structure
+
+** home
+*** COMMENT get img-code
+#+name:get img
+#+begin_src R :session *R* :tangle src/get img.r :exports none :eval no
+  ################################################################
+  # name:get img
+  file.copy("~/Dropbox/projects/ANDS/proposal/version-0/Fig1.png", "images/Fig1.png")
+#+end_src
+
+
 * Posts
 ** drafts
 *** testimonials
