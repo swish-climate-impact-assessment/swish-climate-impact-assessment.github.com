@@ -21,3 +21,6 @@ The Bureau of Meteorology has generated a range of improved meteorological analy
 [http://www.bom.gov.au/jsp/awap/](http://www.bom.gov.au/jsp/awap/) 
 
 Documentation is at [http://www.bom.gov.au/amm/docs/2009/jones.pdf](http://www.bom.gov.au/amm/docs/2009/jones.pdf)
+
+## Get the data
+[Here is a workflow for extracting the data](/tools/ExtractAWAPdata4locations/extract-awap.html)

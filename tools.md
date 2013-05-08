@@ -26,8 +26,8 @@ title: Tools
 
 ### Australian Water Availability Project (AWAP) tools
 * R package to download and format gridded [AWAP weather data](/metadata/AWAP_GRIDS.html)
-* [Click here for downloads](/tools/awaptools/awaptools-downloads.html)
 * [Here is a workflow for extracting the data](/tools/ExtractAWAPdata4locations/extract-awap.html)
+* The workflow will download these tools, but [to do this manually go here](/tools/awaptools/awaptools-downloads.html)
 * Please see [this tutorial](http://swish-climate-impact-assessment.github.io/2013/05/extract-awap-data-4-locations/) for details and screen shots.
 
 ### Geocoder
