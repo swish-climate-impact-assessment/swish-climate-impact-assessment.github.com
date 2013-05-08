@@ -3,13 +3,13 @@ layout: default
 title: Extreme Weather Events Database
 ---
 
-# The Extreme Weather Events Database of the:
+# This is the Extreme Weather Events Database of the:
 
     Scientific Workflow and Integration Software for Health (SWISH)
 <p></p>
 project from the [National Centre for Epidemiology and Population Health](http://nceph.anu.edu.au/) (NCEPH) at the Australian National University (ANU).  
 
-The SWISH project consists of a suite of software tools that we have worked on and leverage off the work of the [https://kepler-project.org/](https://kepler-project.org/), the [http://postgis.refractions.net/](http://postgis.refractions.net/) and the [http://www.stata.com/](http://www.stata.com/) software systems.
+The SWISH project consists of a suite of software tools that we have worked on and leverage off the work of the [https://kepler-project.org/](https://kepler-project.org/), the [http://postgis.refractions.net/](http://postgis.refractions.net/), [http://www.r-project.org/](http://www.r-project.org/) and the [http://www.stata.com/](http://www.stata.com/) software systems.
 
 Our work includes both an operational web-based research platform as well as enhanced traditional desktop client-side workflows, that boosts our researcher's capacity without compromising our expertise and trusted workflows.  You can read about the other elements of this project at the [Official Project Blog](http://swish-climate-impact-assessment.blogspot.com.au/) or this [High Level System Description Document webpage](/HighLevelDescription.html).  From those sites users can explore the scope of the project. This site is devoted to low level descriptions of the software resources included in our project.
 
@@ -43,7 +43,7 @@ To apply for access please complete the application forms with the data manager 
 [Public access spatial data are available via geoserver](http://115.146.93.225:8181/geoexplorer)
 
 # Analyse data
-[There is an Rstudio server available for using these data](https://115.146.93.225)
+[There is an security enhanced Rstudio server available for using these data](https://115.146.93.225)
 
 [The source code and associated project material is available at github](https://github.com/swish-climate-impact-assessment)
 
