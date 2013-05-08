@@ -7,11 +7,11 @@ title: About
 
     Scientific Workflow and Integration Software for Health (SWISH)
 <p></p>
-project from the National Centre for Epidemiology and Population Health (NCEPH) at the Australian National University (ANU).  
+project from the [National Centre for Epidemiology and Population Health](http://nceph.anu.edu.au/) (NCEPH) at the Australian National University (ANU).  
 
-The SWISH project is a suite of software tools that we developed and includes both an operational web-based research platform as well as enhanced traditional desktop client-side workflows, that boosts our researcher's capacity without compromising our expertise and trusted workflows.  You can read about the other elements of this project at the [High Level System Description Document webpage](/HighLevelDescription.html).
+The SWISH project consists of a suite of software tools that we have worked on and leverage off the work of the [https://kepler-project.org/](https://kepler-project.org/), the [http://postgis.refractions.net/](http://postgis.refractions.net/) and the [http://www.stata.com/](http://www.stata.com/) software systems.
 
-The SWISH project has [a second website devoted to the high level description](http://swish-climate-impact-assessment.blogspot.com.au/). From that site users can explore the scope of the project.
+Our work includes both an operational web-based research platform as well as enhanced traditional desktop client-side workflows, that boosts our researcher's capacity without compromising our expertise and trusted workflows.  You can read about the other elements of this project at the [Official Project Blog](http://swish-climate-impact-assessment.blogspot.com.au/) or this [High Level System Description Document webpage](/HighLevelDescription.html).  From those sites users can explore the scope of the project. This site is devoted to low level descriptions of the software resources included in our project.
 
 SWISH is released under [the GPL license](http://www.opensource.org/licenses/gpl-license.php)
 
