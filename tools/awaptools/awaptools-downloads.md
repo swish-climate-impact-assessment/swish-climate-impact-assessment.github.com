@@ -16,4 +16,4 @@ awaptools-package
 
 ### Windows
 * [awaptools_1.1.zip](/tools/awaptools/awaptools_1.1.zip) For R 3.0
-* [awaptools_1.0.zip](/tools/awaptools/awaptools_1.0.zip) For R ~ 2.15.x
+* [awaptools_1.0.zip](/tools/awaptools/awaptools_1.0.zip) For R 2.15.x

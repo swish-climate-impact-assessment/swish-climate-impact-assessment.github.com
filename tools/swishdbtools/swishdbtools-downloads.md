@@ -19,6 +19,6 @@ swishdbtools-package
 
 ### Windows
 * [swishdbtools_1.3.zip](/tools/swishdbtools/swishdbtools_1.3.zip) For R 3.0
-* [swishdbtools_1.2.zip](/tools/swishdbtools/swishdbtools_1.2.zip) For R 3 ~ 2.15
+* [swishdbtools_1.2.zip](/tools/swishdbtools/swishdbtools_1.2.zip) For R 3 2.15
 * [swishdbtools_1.1.zip](/tools/swishdbtools/swishdbtools_1.1.zip)
 * [swishdbtools_1.0.zip](/tools/swishdbtools/swishdbtools_1.0.zip)
