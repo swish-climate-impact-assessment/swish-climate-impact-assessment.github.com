@@ -527,6 +527,85 @@ In the attached example the study location is Kaleen, a suburb of Canberra.
     
 #+end_src
 
+*** 2013-05-09-set-up-r header
+**** COMMENT get-pics-code
+#+name:get-pics
+#+begin_src R :session *R* :tangle no :exports none :eval yes
+  ################################################################
+  # name:get-pics
+  picdir  <- "~/Pictures/setupR"
+  flist  <- dir(picdir, full.names = F)
+  flist <- flist[-1]
+  flist
+  for(f_i in flist)
+    {
+      #f_i  <-  flist[1]
+      f_i2 <- paste("setup-r-", f_i, sep ="")
+      #f_i2
+      file.copy(file.path(picdir,f_i), file.path("images", f_i2) )
+    }
+  
+  for(f_i in flist)
+    {
+      #f_i  <-  flist[1]
+      f_i2 <- paste("setup-r-", f_i, sep ="")
+      print(paste("![",f_i2,"](/images/",f_i2,")", sep = ""))  
+    }
+#+end_src
+
+**** post
+#+name:set-up-swish-computer-header
+#+begin_src markdown :tangle _posts/2013-05-09-set-up-r-on-ms-windows.md :exports none :eval no :padline no
+  ---
+  name: set-up-r-for-kepler-on-ms-windows
+  layout: post
+  title: Set Up R for Kepler on MS Windows
+  date: 2013-05-09
+  categories:
+  - set up your environment
+  ---
+    
+  ## Install R 3.0 
+  Even if you have [The R Environment for Statistical Computing and Graphics](http://www.r-project.org/) installed we recommend you upgrade to version 3.0 because new packages from there will not work with R 2.15 etc.
+  
+  ## Register R in the PATH so that Kepler can find it
+  This tutorial assumes windows 7 and a user without administrator privileges.
+  
+  ![setup-r-Slide1.PNG](/images/setup-r-Slide1.PNG)
+  
+  ## First download and install R to a location you can write to
+  
+  ![setup-r-Slide2.PNG](/images/setup-r-Slide2.PNG)
+  
+  ## It won't be recognised on your PATH
+  Because you are not admin it will not be in your path.  Check this by opening the terminal (Run > cmd) and then type R.
+  
+  ![setup-r-Slide3.PNG](/images/setup-r-Slide3.PNG)
+  
+  ## Go to the control panel and navigate to the set environment variables
+  
+  ![setup-r-Slide4.PNG](/images/setup-r-Slide4.PNG)
+  
+  ## make a new USER variable 
+  
+  ![setup-r-Slide5.PNG](/images/setup-r-Slide5.PNG)
+  
+  ## Locate the appropriate R binaries
+  
+  ![setup-r-Slide6.PNG](/images/setup-r-Slide6.PNG)
+  
+  ## make the new variable called Path
+  
+  ![setup-r-Slide7.PNG](/images/setup-r-Slide7.PNG)
+  
+  ## Exit and restart the terminal and check that R is recognised
+  
+  ![setup-r-Slide8.PNG](/images/setup-r-Slide8.PNG)
+  
+  ## The End
+  
+      
+#+end_src
 
 * metadata
 ** metadata home

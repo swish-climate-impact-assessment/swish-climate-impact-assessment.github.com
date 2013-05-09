@@ -8,6 +8,9 @@ title: Setting Up
 This will be a lot of links to posts on setting up.
 
 For eg:
+## Baseline
+* [Here is a tutorial for installing R and adding to the PATH on MS Windows 7](/2013/05/set-up-r-on-ms-windows/)
+
 
 ## Simple Installer:
 * [Click here for the Hello-EWEDB Simple Installer demo](http://swish-climate-impact-assessment.github.io/2013/05/hello-ewedb/)
