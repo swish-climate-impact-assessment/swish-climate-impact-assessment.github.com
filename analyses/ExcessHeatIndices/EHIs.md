@@ -12,7 +12,7 @@ During 2011 Ivan Hanigan worked for Geoff Morgan (Geoff.Morgan@ncahs.health.nsw.
 * The [Sweave workflow file](/analyses/ExcessHeatIndices/EHIs_transformations_doc.Rnw) file to produce 
 * [The PDF report of with graphs](/analyses/ExcessHeatIndices/EHIs_transformations_doc.pdf). 
 
-The interested reader is encouraged to run the R codes to do the calculations and generate the graphs that get compiled into that pdf file. These R codes are also held separately in the src directory and can be evaluated in the correct sequence using the go.r script if you prefer. Please don't hesitate to send me queries or comments on the algorithms or other aspects of this work.
+Please don't hesitate to send me queries or comments on the algorithms or other aspects of this work.
 
 ## Some Background
 
