@@ -663,6 +663,37 @@ Users are asked to bear this in mind when considering the appropriateness of the
 
 #+end_src
 
+*** 2013-05-15-geocoder header
+#+name:geocoder-header
+#+begin_src markdown :tangle _posts/2013-05-15-geocoder.md :exports none :eval no :padline no
+---
+name: geocoder
+layout: post
+title: geocoder
+---
+
+## A exemplar workflow for geocoding locations
+The geocoder workflow at [this clink](/tools/geocoder/geocoder.html) is an example that takes a list of locations and returns a shapefile with the latitude and longitudes, as well as a map.
+
+As you can see when you open the KAR file, this workflow expects an XLSX file to be linked in the first actor.
+
+![geocoder-kar.png](/images/geocoder-kar.png)
+
+## list your locations
+
+![geocoder-xls](/images/geocoder-xls.png)
+
+## run the workflow to create an image
+
+![geocoder-xls](/images/geocoder-img.png)
+
+## and a shapefile, stored in your temporary directory
+
+![geocoder-xls](/images/geocoder-shp.png)
+
+    
+#+end_src
+
 * metadata
 ** metadata home
 ** EWE
