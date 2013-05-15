@@ -5,21 +5,21 @@ layout: nil
 <feed xmlns="http://www.w3.org/2005/Atom">
  
  <title>swish-climate-impact-assessment</title>
- <link href="http://swish-climate-impact-assessment.github.com/feed/" rel="self"/>
- <link href="http://swish-climate-impact-assessment.github.com/"/>
+ <link href="http://swish-climate-impact-assessment.github.io/feed/" rel="self"/>
+ <link href="http://swish-climate-impact-assessment.github.io/"/>
  <updated>{{ site.time | date_to_xmlschema }}</updated>
  <id>http://swish-climate-impact-assessment.github.com/</id>
  <author>
    <name>ivanhanigan</name>
-   <email>mail@ivan.hanigan@gmail.com</email>
+   <email>ivan.hanigan@gmail.com</email>
  </author>
 
  {% for post in site.posts %}
  <entry>
    <title>{{ post.title }}</title>
-   <link href="http://swish-climate-impact-assessment.github.com{{ post.url }}"/>
+   <link href="http://swish-climate-impact-assessment.github.io{{ post.url }}"/>
    <updated>{{ post.date | date_to_xmlschema }}</updated>
-   <id>http://swish-climate-impact-assessment.github.com{{ post.id }}</id>
+   <id>http://swish-climate-impact-assessment.github.io{{ post.id }}</id>
    <content type="html">{{ post.content | xml_escape }}</content>
  </entry>
  {% endfor %}
