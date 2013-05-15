@@ -7,6 +7,10 @@ SWISH Kepler Actors Installer - Downloads
 * License: 	GPL2
 * Author: Ian Szarka
 * Maintainer: Who to complain to <ivan.hanigan@gmail.com>
+* Depends: Windows with Kepler and Stata Installed.
 
 ## Downloads
 * [Click here for Windows](/tools/swishkepleractorsinstaller/SWISHKeplerActorsInstaller6May2013.zip)
+
+## Documentation
+* [Click here for Instructions](/tools/swishkepleractorsinstaller/swishkepleractorsinstaller-details.html)

@@ -9,6 +9,9 @@ This will be a lot of links to posts on setting up.
 
 For eg:
 ## Baseline
+After installing Java and Kepler:
+
+* [Install our SWISH Kepler tools](/tools/swishkepleractorsinstaller/swishkepleractorsinstaller-downloads.html)
 * [Here is a tutorial for installing R and adding to the PATH on MS Windows 7](/2013/05/set-up-r-on-ms-windows/)
 
 

@@ -1,6 +1,6 @@
 ---
-name: 2013-05-01-tutorial-hot-days-with-little-relief
-layout: post
+name: tutorial-hot-days-with-little-relief
+layout: default
 title: Tutorial: Hot days with little relief
 date: 2013-05-01
 categories: 
