@@ -45,6 +45,6 @@ As you can see this is almost what we want, but not quite.  We now know the weat
 ## Replication data and software
 The data and software used in this tutorial are available from these links:
 
-- [The Kepler workflow](/farmdogs/radio-tracking-farm-dogs.kar)
-- [The R script (for debugging)](/farmdogs/radio-tracking-farm-dogs.kar)
-- [The resulting output dataset](/farmdogs/weather-merged-latlong.csv)
+* [The Kepler workflow](/farmdogs/radio-tracking-farm-dogs.kar)
+* [The R script (for debugging)](/farmdogs/radio-tracking-farm-dogs.kar)
+* [The resulting output dataset](/farmdogs/weather-merged-latlong.csv)
