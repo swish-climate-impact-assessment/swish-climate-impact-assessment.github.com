@@ -3,9 +3,6 @@ name: 2013-05-17-farm-dogs-radio-tracking-collars
 layout: post
 title: Ecologists studying farm dogs with radio tracking collars
 date: 2013-05-17
-categories: 
-- developing
-- ecology
 ---
 
 ## Extracting the weather for each location that a farm dog was observed
