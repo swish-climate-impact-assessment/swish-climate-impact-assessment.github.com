@@ -1,0 +1,397 @@
+#+TITLE:radio tracking collars 
+#+AUTHOR: Ivan Hanigan
+#+email: ivan.hanigan@anu.edu.au
+#+LaTeX_CLASS: article
+#+LaTeX_CLASS_OPTIONS: [a4paper]
+#+LATEX: \tableofcontents
+-----
+* Background
+** email from Lu
+These data were collected by linda.vanbommel@anu.edu.au and supplied
+to the SWISH project by Luciana.Porfirio@anu.edu.au. The locations are
+taken from radio tracking collars on farm dogs taken over 8 months,
+all in the same format (date, time, lat, lon) for a number of
+dogs. The coordinates are from a farm in Victoria.
+
+Linda Van Bommel [linda.vanbommel@anu.edu.au]
+Ms Linda van Bommel
+SCHOOL RESEARCH ASSOCIATE
+Forestry Building (48)
+linda.vanbommel@anu.edu.au
++61 2 612 52623
+http://fennerschool.anu.edu.au/about-us/people/linda-van-bommel
+
+These are "garden dogs"
+________________________________________
+From: Luciana Porfirio [Luciana.Porfirio@anu.edu.au]
+Sent: 13 May 2013 17:00
+To: Ivan Hanigan; Linda Van Bommel
+Subject: Re: a couple of question about swish
+
+Hi Ivan.
+cc Linda
+
+I'm not sure what you mean by metadata, the data Linda collected with
+the collars look like the table we shared... she has (I think) 8 months
+of data, all in the same format (date, time, lat, lon) for a number of
+dogs. The coordinates are from a farm in Victoria.
+
+
+I know what the second question was: not related to R or GIS: I saw you
+were wearing Kickers shoes, where did you buy them? I haven't seen them
+anywhere in Canberra.
+
+Lu
+
+
+On 13/05/2013 4:52 PM, Ivan Hanigan wrote:
+> Hi Lu,
+> You should be able to install R v3 without admin rights.
+>
+> So you are ok for me to use this as a test case?  Can I get some more metadata?
+> so far all I know is
+>
+>
+> require(RCurl)
+>
+> d <- read.csv(textConnection(getURLContent(
+> "https://docs.google.com/spreadsheet/pub?key=0AjrmPjvc7LwOdFowTzJ2T2xsa1pkeVdRd3VlQjZtdHc&output=csv")))
+>
+> str(d)
+>
+> 'data.frame': 367 obs. of  4 variables:
+>   $ Date: Factor w/ 8 levels "10/4/2011","11/4/2011",..: 8 8 8 8 8 8 8 8 8 8 ...
+>   $ Time: Factor w/ 57 levels "0:01:05","0:31:05",..: 1 2 27 28 39 40 41 42 43 45 ...
+>   $ Lat : num  -36.3 -36.3 -36.3 -36.3 -36.3 ...
+>   $ Long: num  147 147 147 147 147 ...
+>
+> summary(d)
+>
+>           Date          Time          Lat              Long
+>   14/04/2011:48   10:01:05:  8   Min.   :-36.28   Min.   :147.3
+>   15/04/2011:48   10:31:05:  8   1st Qu.:-36.27   1st Qu.:147.3
+>   16/04/2011:48   12:01:05:  8   Median :-36.27   Median :147.3
+>   9/4/2011  :47   12:31:05:  8   Mean   :-36.27   Mean   :147.3
+>   10/4/2011 :46   13:01:05:  8   3rd Qu.:-36.27   3rd Qu.:147.3
+>   13/04/2011:45   13:31:05:  8   Max.   :-36.27   Max.   :147.3
+>   (Other)   :85   (Other) :319
+
+> names(table(d$Date))
+[1] "10/4/2011"  "11/4/2011"  "12/4/2011"  "13/04/2011" "14/04/2011"
+[6] "15/04/2011" "16/04/2011" "9/4/2011"  
+> ________________________________________
+> From: Luciana Porfirio [Luciana.Porfirio@anu.edu.au]
+> Sent: 10 May 2013 14:37
+> To: Ivan Hanigan
+> Subject: a couple of question about swish
+>
+> I depend on the ITs to get r>v3.0 installed in my ANU computer. But I'll
+> try it at home this afternoon.
+>
+> A couple of question I have:
+>
+> 1- the data from the collars has date, time lat and lon. Your data had
+> only one location and then you specified the dates in two different
+> boxes. Shall I load the csv with only the lat lon coordinates? And
+> specified the dates in the other boxes?
+>
+> 2- I forgot my second question...
+>
+> Link to the collar_data:
+> https://docs.google.com/spreadsheet/pub?key=0AjrmPjvc7LwOdFowTzJ2T2xsa1pkeVdRd3VlQjZtdHc&output=csv
+> --
+>
+> Luciana Porfirio
+> TE: +61 2 6125 4729
+>
+> Fenner School of Environment & Society
+> College of Medicine, Biology & Environment
+> Australian National University
+>
+> Building 48
+> Linnaeus way
+> Canberra ACT 0200 AUSTRALIA
+>
+
+--
+
+Luciana Porfirio
+TE: +61 2 6125 4729
+
+Fenner School of Environment & Society
+College of Medicine, Biology & Environment
+Australian National University
+
+Building 48
+Linnaeus way
+Canberra ACT 0200 AUSTRALIA
+* data
+*** COMMENT EDA-code
+#+name:EDA
+#+begin_src R :session *R* :tangle no :exports none :eval no
+  ################################################################
+  # name:EDA
+  require(RCurl)
+  
+  d <- read.csv(textConnection(getURLContent(
+  "https://docs.google.com/spreadsheet/pub?key=0AjrmPjvc7LwOdFowTzJ2T2xsa1pkeVdRd3VlQjZtdHc&output=csv")))
+  
+  str(d)
+  
+  #'data.frame': 367 obs. of  4 variables:
+  #  $ Date: Factor w/ 8 levels "10/4/2011","11/4/2011",..: 8 8 8 8 8 8 8 8 8 8 ...
+  #  $ Time: Factor w/ 57 levels "0:01:05","0:31:05",..: 1 2 27 28 39 40 41 42 43 45 ...
+  #  $ Lat : num  -36.3 -36.3 -36.3 -36.3 -36.3 ...
+  #  $ Long: num  147 147 147 147 147 ...
+  #
+  summary(d)
+  
+  #         Date          Time          Lat              Long
+  # 14/04/2011:48   10:01:05:  8   Min.   :-36.28   Min.   :147.3
+  # 15/04/2011:48   10:31:05:  8   1st Qu.:-36.27   1st Qu.:147.3
+  # 16/04/2011:48   12:01:05:  8   Median :-36.27   Median :147.3
+  # 9/4/2011  :47   12:31:05:  8   Mean   :-36.27   Mean   :147.3
+  # 10/4/2011 :46   13:01:05:  8   3rd Qu.:-36.27   3rd Qu.:147.3
+  # 13/04/2011:45   13:31:05:  8   Max.   :-36.27   Max.   :147.3
+  # (Other)   :85   (Other) :319
+  
+  names(table(d$Date))
+  #[1] "10/4/2011"  "11/4/2011"  "12/4/2011"  "13/04/2011" "14/04/2011"
+  #[6] "15/04/2011" "16/04/2011" "9/4/2011"  
+#+end_src
+
+*** COMMENT R_download-google-ssheet 
+#+name:R_download-google-ssheet
+#+begin_src R :session *R* :tangle radio-tracking-farm-dogs.r :exports none :eval yes
+  # this script runs the ExtractAWAPGRIDS functions for sample locations
+  # depends on swishdbtools and awaptools package from http:/swish-climate-impact-assessment.github.com
+  
+  ################################################################
+  # name:R_download-google-ssheet
+  # eg
+  url <-
+   "https://docs.google.com/spreadsheet/pub?key=0AjrmPjvc7LwOdFowTzJ2T2xsa1pkeVdRd3VlQjZtdHc&output=csv"
+  # eg
+  outputFileName <- "locations.dta"
+  # eg
+  workingdir <- "~/projects/radio-tracking-collars"
+  require(RCurl)
+  require(foreign)
+  d <- read.csv(textConnection(getURLContent(url)))
+  #str(d)
+  #summary(d)
+  names(d)  <- tolower(names(d))
+  # add a primary key 
+  d$fid <- 1:nrow(d)
+  write.dta(d, file.path(workingdir,outputFileName))
+  tempTableName <- outputFileName
+  tempTableName
+  
+#+end_src
+
+#+RESULTS: download-google-ssheet
+: locations.dta
+*** COMMENT visualize-points-layer-code
+#+name:visualize-points-layer
+#+begin_src R :session *R* :tangle radio-tracking-farm-dogs.r :exports none :eval no
+  ################################################################
+  # name:visualize-points-layer
+  require(maps)
+  require(swishdbtools)
+  inputfilepath  <- file.path(workingdir,tempTableName)
+  locations <- read_file(inputfilepath)
+  head(locations)
+  plot(locations$long, locations$lat)
+  map.scale(ratio=F)
+#+end_src
+
+*** COMMENT send2postgis code
+#+name:send2postgis
+#+begin_src R :session *R* :tangle radio-tracking-farm-dogs.r :exports none :eval no
+  ################################################################
+  # name: send2postgis
+  require(swishdbtools)
+  ch <- connect2postgres2("ewedb")
+  inputfilepath  <- file.path(workingdir,tempTableName)
+  locations <- read_file(inputfilepath)
+  if(get_file_extension(inputfilepath) == "shp")
+    {
+      locations <- locations@data
+    }
+  
+  tempTableName <- swish_temptable()
+  dbWriteTable(ch, tempTableName$table, locations, row.names = F)
+  # d <- sql_subset(ch, tempTableName$fullname, eval = T)
+  # head(d)
+  #tempTableName <- tempTableName$fullname
+  #tempTableName
+  
+  # points2geom
+  sql <- points2geom(
+    schema=tempTableName$schema,
+    tablename=tempTableName$table,
+    col_lat= "lat",col_long="long", srid="4283"
+  )
+  # cat(sql)
+  dbSendQuery(ch, sql)
+  tbl  <- tempTableName$table
+  tbl
+#+end_src
+
+*** COMMENT  R_raster_extract_by_day code
+#+name: R_raster_extract_by_day
+#+begin_src R :session *R* :tangle radio-tracking-farm-dogs.r :exports none :eval no
+  ################################################################
+  # name: R_raster_extract_by_day
+  # eg 
+  weatherVariables <- "c('maxave', 'minave', 'totals', 'vprph09' , 'vprph15')"
+  weatherVariables  <- eval(parse(text = weatherVariables))
+  # eg
+  zoneLabel <- "fid"
+  # eg
+  StartDate  <- "2013-01-01"
+  # eg
+  EndDate  <- "2013-01-01"
+  # eg
+  outputDataFile  <- "weather.csv"
+  require(swishdbtools)
+  require(awaptools)
+  require(reshape)
+  tempTableName_locations <- tbl
+  startdate <- StartDate
+  enddate <- EndDate
+  ch<-connect2postgres2("ewedb")
+  tempTableName <- swish_temptable("ewedb")
+  
+  raster_extract_by_day(ch, startdate, enddate,
+                        schemaName = tempTableName$schema,
+                        tableName = tempTableName$table,
+                        pointsLayer = tempTableName_locations,
+                        measures = weatherVariables,
+                        zone_label = zoneLabel
+  )
+  
+  output_data <- reformat_awap_data(
+    tableName = tempTableName$fullname, zone_label = zoneLabel
+  )
+  
+  outputDataFile <- file.path(workingdir, outputDataFile)
+  write.csv(output_data,outputDataFile, row.names = FALSE)
+  fileName2 <- outputDataFile
+  fileName2  
+#+end_src
+
+*** COMMENT merge-locations-with-time-data-code
+#+name:merge-locations-with-time-data
+#+begin_src R :session *R* :tangle radio-tracking-farm-dogs.r :exports none :eval no
+  ################################################################
+  # name:merge-locations-with-time-data
+                                          # workingdir
+  # eg 
+  fileName1 <- outputFileName
+  fileName1 <- file.path(workingdir, fileName1)
+  # eg 
+  fileName2 <- outputDataFile
+  # eg
+  tempFileName <- "weather-merged-latlong.csv"
+  tempFileName <- file.path(workingdir,tempFileName)
+  # eg
+  byCols <- "c('fid')"
+  
+  require(swishdbtools)
+  f1 <- read_file(fileName1)
+  f2 <- read_file(fileName2)
+  byCols <- byCols
+  df <- eval(
+    parse(
+      text = 
+        sprintf(
+        "merge(x = %s, y = %s, by = %s)","f1","f2", byCols
+        )
+      )
+    )
+  #tempFileName <- tempfile("foo", tmpdir = Sys.getenv("TEMP"), fileext = ".csv")
+  write.csv(df, tempFileName, row.names=FALSE)
+  tempFileName
+#+end_src
+
+*** COMMENT tidy up 
+#+name: tidy up 
+#+begin_src R :session *R* :tangle radio-tracking-farm-dogs.r :exports none :eval no
+  ################################################################
+  # name: tidy up
+  require(swishdbtools)
+  ch<-connect2postgres2("ewedb")
+  sch <- swish_temptable("ewedb")
+  sch <- sch$schema
+  tbls <- pgListTables(ch, sch, table="foo", match = FALSE)
+  for(tab in tbls[,1])
+  {
+    dbSendQuery(ch, 
+                sprintf("drop table %s.%s", sch, tab)
+    )
+  }
+#+end_src
+
+* analysis
+* document
+** farm-dogs-radio-tracking-collars
+*** farm-dogs-radio-tracking-collars header
+#+name:farm-dogs-radio-tracking-collars-header
+#+begin_src markdown :tangle 2013-05-17-farm-dogs-radio-tracking-collars.md :exports none :eval no :padline no
+---
+name: 2013-05-17-farm-dogs-radio-tracking-collars
+layout: post
+title: Ecologists studying farm dogs with radio tracking collars
+date: 2013-05-17
+categories: 
+- developing with workflows
+---
+
+## Extracting the weather for each location that a farm dog was observed
+These data were collected by Linda Van Bommel and supplied
+to the SWISH project by Luciana Porfirio to use as a demonstration of how our tools might be used by researchers in other disciplines. 
+
+The locations are
+taken from radio tracking collars on farm dogs taken over 8 months,
+all in the same format (date, time, lat, lon) for a number of
+dogs. The coordinates are from a farm in Victoria.
+
+## Step one: modify the SWISH example
+The [previously written workflow used as a test case](/2013/05/extract-awap-data-4-locations/) for the SWISH project was downloaded from [this web page](/tools/ExtractAWAPdata4locations/extract-awap.html).
+
+That workflow takes location names with unknown lat, longs and geocodes them using the GoogleMaps API.  For this dataset we do know the lat, longs so the first step was to delete the superflous actor and replace it with one that gets the data from the source location at Google Docs/Spreadsheets.
+
+This URL is highlighted in the image below.
+
+![farm-dogs-sws.png](/images/farm-dogs-sws.png)
+    
+## Step two: Add some specific code to this analysis
+For example we will want to look at the spatial distribution of these data so a simple map is generated and displayed in the imageJ actor.  When the workflow is run the image below appears in a new window.  This can then be refined into a publication quality map at a later time.
+
+![farm-dogs-map.png](/images/farm-dogs-map.png)
+    
+## Step three: specify the dates required
+The information required by the "R raster extract by day" actor needs to be changed to reflect the specific duration of this dataset.
+
+## Step four: include a new step to merge the output time-series data with the spatial data 
+The time series data is then extracted for each location, and every time point.  That output does not include the lat,long data so this is merged by adding the "R merge" actor and specifying the files to merge.  The result is shown below: 
+
+![farm-dogs-data.png](/images/farm-dogs-data.png)
+
+## Step 5: assess data 
+In the above image we see that date.x is the date of the observation, date.y is the time the weather value was observed at that lat,long.  For each location we now have the complete timeseries of weather data extracted from the EWEDB AWAP grids datastore. 
+
+## Future work required: reformating data 
+As you can see this is almost what we want, but not quite.  We now know the weather on each day for every location the dog visited. However what we really want will be the weather at the point the dog was at the same time the dog was there.  To do this additional actors can be added to take the data generated so far and perform subsequent re-formatting steps so the data do match up the observations with the weather at their exact time point.
+
+## Replication data and software
+The data and software used in this tutorial are available from these links:
+
+- [The Kepler workflow](/farmdogs/radio-tracking-farm-dogs.kar)
+- [The R script (for debugging)](/farmdogs/radio-tracking-farm-dogs.kar)
+- [The resulting output dataset](/farmdogs/weather-merged-latlong.csv)
+
+
+#+end_src
+
