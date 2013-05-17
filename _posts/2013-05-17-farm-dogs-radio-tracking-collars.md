@@ -42,6 +42,9 @@ In the above image we see that date.x is the date of the observation, date.y is 
 ## Future work required: reformating data 
 As you can see this is almost what we want, but not quite.  We now know the weather on each day for every location the dog visited. However what we really want will be the weather at the point the dog was at the same time the dog was there.  To do this additional actors can be added to take the data generated so far and perform subsequent re-formatting steps so the data do match up the observations with the weather at their exact time point.
 
+## Automated processing of multiple datasets
+Once the workflow is finalised the URL pointing at the Google Spreadsheets dataset can be changed to other farms, or indeed any datasets with lat, long values in Australia.  If there is a large number of these a list of URLs could be fed into the workflow in a loop so that each dataset is processed in exactly the same way.  In this manner many datasets can be accessed in a rigorous and transparent manner, and revisions can be easily incorporated as new datasets are aquired or new analysis plans are formulated.
+
 ## Replication data and software
 The data and software used in this tutorial are available from these links:
 
