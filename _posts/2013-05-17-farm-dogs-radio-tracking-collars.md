@@ -49,5 +49,5 @@ Once the workflow is finalised the URL pointing at the Google Spreadsheets datas
 The data and software used in this tutorial are available from these links:
 
 * [The Kepler workflow](/farmdogs/radio-tracking-farm-dogs.kar)
-* [The R script (for debugging)](/farmdogs/radio-tracking-farm-dogs.kar)
+* [The R script (for debugging)](/farmdogs/radio-tracking-farm-dogs.r)
 * [The resulting output dataset](/farmdogs/weather-merged-latlong.csv)
