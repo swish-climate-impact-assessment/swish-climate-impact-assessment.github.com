@@ -1,12 +1,12 @@
 ---
 name: 2013-06-03-test-gislibrary
 layout: post
-title: test gislibrary
+title: test gislibrary with SLA concordance
 date: 2013-06-03
 ---
 
-# Testing the GIS library from R
-In this post we will use the swish R/PostGIS tools to manipulate spatial data on a remote GIS server and extract the result to our local client machine.
+# Testing the GIS library from R, Calculate a SLA concordance
+In this post we will use the swish R/PostGIS tools to manipulate spatial data on a remote GIS server (to calculate a SLA concordance) and extract the result to our local client machine.
 
 The great thing about PostGIS is that it is a standard relational database that also understands spatial data.  We have developed [an R package called swishdbtools](http://swish-climate-impact-assessment.github.io/tools/swishdbtools/swishdbtools-downloads.html) to assist connecting to the Database from Kepler.
 
@@ -28,7 +28,7 @@ I figured out a complicated SQL syntax to compute the intersecting geometries, t
     sql <- postgis_concordance(conn = ch, source_table = "abs_sla.nswsla91",
        source_zones_code = 'sla_id', target_table = "abs_sla.nswsla01",
        target_zones_code = "sla_code",
-       into = paste("public.concordance",sep = ""), tolerance = 0.01,
+       into = "public.concordance", tolerance = 0.01,
        subset_target_table = "cast(sla_code as text) like '105%'", 
        eval = F) 
     cat(sql)
@@ -41,8 +41,10 @@ so I just run the single line version
     
 if I don't want to look at the ugly code
 
-## so now I can use QGIS to visualise this, or if on linux rgdal can access it
+## so now I can use QGIS to visualise this, or if on linux rgdal can access it direct
+    require(devtools) # windoze users need to install Rtools
     install_github("gisviz", "ivanhanigan")
+    # otherwise download and install from http://ivanhanigan.github.io/gisviz/
     require(gisviz)
     pwd <- getPassword()
     shp <- readOGR2(hostip="130.56.60.77",user="gislibrary",
