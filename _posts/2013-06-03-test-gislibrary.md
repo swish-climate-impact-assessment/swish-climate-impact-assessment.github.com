@@ -6,7 +6,7 @@ date: 2013-06-03
 ---
 
 # Testing the GIS library from R, Calculate a SLA concordance
-In this post we will use the swish R/PostGIS tools to manipulate spatial data on a remote GIS server (to calculate a SLA concordance) and extract the result to our local client machine.
+In this post we will use the swish R/PostGIS tools to manipulate spatial data on a remote GIS server (to calculate a SLA concordance) and extract the result to our local client machine.  [Clink here](/2013-06-03-test-gislibrary.R) for the R script.
 
 The great thing about PostGIS is that it is a standard relational database that also understands spatial data.  We have developed [an R package called swishdbtools](http://swish-climate-impact-assessment.github.io/tools/swishdbtools/swishdbtools-downloads.html) to assist connecting to the Database from Kepler.
 
