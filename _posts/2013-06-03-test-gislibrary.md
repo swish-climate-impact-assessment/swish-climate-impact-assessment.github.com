@@ -27,15 +27,17 @@ I figured out a complicated SQL syntax to compute the intersecting geometries, t
 
     sql <- postgis_concordance(conn = ch, source_table = "abs_sla.nswsla91",
        source_zones_code = 'sla_id', target_table = "abs_sla.nswsla01",
-       target_zones_code = "sla_code",
-       into = "public.concordance", tolerance = 0.01,
-       subset_target_table = "cast(sla_code as text) like '105%'", 
-       eval = F) 
+       target_zones_code = "sla_code", into = "public.concordance", tolerance = 0.01,
+       subset_target_table = "cast(sla_code as text) like '105%'", eval = F) 
     cat(sql)
 
+## Which gives the map
+This shows the SLAs that existed in 2001 that were a smaller segment of their original SLA zone in 1991 (the red areas changed the most).
 
-## which gives me something a little less pretty
-so I just run the single line version
+![nswconc.png](/images/nswconc.png)
+
+## From the less pretty SQL
+I just run the single line version
 
     dbSendQuery(ch, sql)
     
@@ -54,10 +56,6 @@ if I don't want to look at the ugly code
       maptitle='Sydney SLA91-01 intersection'
       )
       
-## Which gives the map
-This shows the SLAs that existed in 2001 that were a smaller segment of their original SLA zone in 1991 (the red areas changed the most).
-
-![nswconc.png](/images/nswconc.png)
 
 ## and finally just clean up the temp file from the db
 
