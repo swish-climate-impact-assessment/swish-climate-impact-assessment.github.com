@@ -23,7 +23,7 @@ dbGetQuery(ch,
 sql <- postgis_concordance(conn = ch, source_table = "abs_sla.nswsla91",
        source_zones_code = 'sla_id', target_table = "abs_sla.nswsla01",
        target_zones_code = "sla_code",
-       into = paste("public.concordance",sep = ""), tolerance = 0.01,
+       into = "public.concordance", tolerance = 0.01,
        subset_target_table = "cast(sla_code as text) like '105%'", 
        eval = F) 
 cat(sql)
