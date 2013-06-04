@@ -8,20 +8,16 @@ date: 2013-06-03
 # Testing the GIS library from R
 In this post we will use the swish R/PostGIS tools to manipulate spatial data on a remote GIS server and extract the result to our local client machine.
 
-The great thing about PostGIS is that it is a standard relational database that also understands spatial data
+The great thing about PostGIS is that it is a standard relational database that also understands spatial data.  We have developed [an R package called swishdbtools](http://swish-climate-impact-assessment.github.io/tools/swishdbtools/swishdbtools-downloads.html) to assist connecting to the Database from Kepler.
 
-    require(devtools)
-    install_github("swishdbtools", "swish-climate-impact-assessment")
     require(swishdbtools)
-    install_github("gisviz", "ivanhanigan")
-    require(gisviz)
     ch <- connect2postgres2("gislibrary")
     # fill in the details, only required once as will save to your profile
     dbGetQuery(ch, 
-               "select t1.sla_code, t2.sla02_code as s2, st_area(t1.geom)
-               from abs_sla.actsla01 t1 join abs_sla.actsla02 t2 
-               on t1.sla_code = t2.sla02_code;
-               ")
+           "select t1.sla_id, t2.sla_code as s2, st_area(t1.geom)
+           from abs_sla.nswsla91 t1 join abs_sla.nswsla01 t2 
+           on t1.sla_id = 1 || substr(cast(t2.sla_code as text), 6,9);
+           ")
 
 Pretty cool huh?  Spatial functions start with st and the generic name for the spatial data is geom or the_geom.
 
@@ -29,71 +25,37 @@ Pretty cool huh?  Spatial functions start with st and the generic name for the s
 I figured out a complicated SQL syntax to compute the intersecting geometries, then wrapped it up into an R function:
 
 
-    sql <- postgis_concordance(conn = ch, source_table = "abs_sla.actsla01",
-           source_zones_code = 'sla_code', target_table = "abs_sla.actsla02",
-           target_zones_code = "sla02_code",
-           into = paste("public.concordance",sep = ""), tolerance = 0.01,
-           subset_target_table = NA, 
-           eval = F) 
+    sql <- postgis_concordance(conn = ch, source_table = "abs_sla.nswsla91",
+       source_zones_code = 'sla_id', target_table = "abs_sla.nswsla01",
+       target_zones_code = "sla_code",
+       into = paste("public.concordance",sep = ""), tolerance = 0.01,
+       subset_target_table = "cast(sla_code as text) like '105%'", 
+       eval = F) 
     cat(sql)
 
+
 ## which gives me something a little less pretty
-
-    dbSendQuery(ch,
-    "
-    select source_zone_code, source_zones, 
-      target_fid, target_zone_code, prop_olap_src_of_tgt,
-                prop_olap_src_segment_of_src_orig, geom
-                into public.concordance
-                from
-                (
-                select    src.zone_code as source_zone_code,
-                tgt.gid as target_fid, tgt.zone_code as target_zone_code, source_zones,
-                st_intersection(src.geom, tgt.geom) as geom,
-                st_area(src.geom) as src_area,
-                st_area(tgt.geom) as tgt_area,
-                st_area(st_intersection(src.geom, tgt.geom )) as area_overlap,
-                st_area(st_intersection(src.geom, tgt.geom
-                ))/st_area(tgt.geom) as
-                prop_olap_src_of_tgt,
-                st_area(st_intersection(src.geom, tgt.geom
-                ))/st_area(src.geom) as
-                prop_olap_src_segment_of_src_orig
-                from
-                (
-                select sla_code as zone_code, cast('abs_sla.actsla01' as text) as source_zones, geom
-                from abs_sla.actsla01
-                ) src,
-                (
-                select gid, sla02_code as zone_code, geom
-                from abs_sla.actsla02
-                ) tgt
-                where st_intersects(src.geom, tgt.geom)
-                ) concorded
-                where prop_olap_src_of_tgt > 0.01;
-                grant select on public.concordance to public_group;                        
-                alter table public.concordance add column gid serial primary key;                        
-                ALTER TABLE public.concordance ALTER COLUMN geom SET NOT NULL;                        
-                CREATE INDEX concordance_gist on public.concordance using GIST(geom);                      
-                ALTER TABLE public.concordance CLUSTER ON concordance_gist;
-    ")
-
-
-## or I could just run the single line version
+so I just run the single line version
 
     dbSendQuery(ch, sql)
     
 if I don't want to look at the ugly code
 
 ## so now I can use QGIS to visualise this, or if on linux rgdal can access it
-
+    install_github("gisviz", "ivanhanigan")
+    require(gisviz)
     pwd <- getPassword()
     shp <- readOGR2(hostip="130.56.60.77",user="gislibrary",
            db="gislibrary", layer="concordance", p = pwd)
-    choropleth(stat="prop_olap_src_of_tgt", region.map=shp, scalebar = T)
-
+    choropleth(stat="prop_olap_src_segment_of_src_orig", region.map=shp, 
+      scalebar = T, probs = seq(0, 1, .2), invert.brew.pal= F, 
+      maptitle='Sydney SLA91-01 intersection'
+      )
+      
 ## Which gives the map
-![actconc.png](/images/actconc.png)
+This shows the SLAs that existed in 2001 that were a smaller segment of their original SLA zone in 1991 (the red areas changed the most).
+
+![nswconc.png](/images/nswconc.png)
 
 ## and finally just clean up the temp file from the db
 
