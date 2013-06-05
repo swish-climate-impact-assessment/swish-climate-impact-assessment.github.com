@@ -12,9 +12,6 @@ title: EWE
 ### AWAP_GRIDS
 #### [Australian Water Availability Project](/metadata/AWAP_GRIDS.html)
 
-### Heatwaves
-#### [The Excess Heat Factor](https://github.com/swish-climate-impact-assessment/ExcessHeatIndices)
-
 ### Bushfire smoke
 #### [The U-TAS Biomass Smoke Project](http://ivanhanigan.github.com/bio_validated_bushfire_events)
 
@@ -22,7 +19,13 @@ title: EWE
 #### [The Hutchinson Index](https://github.com/ivanhanigan/HutchinsonDroughtIndex)
 #### [The Hutchinson Index Tutorial](/EWE/HutchinsonDroughtIndex/HutchinsonDroughtIndex.html)
 
+### Heatwaves
+#### [The Excess Heat Factor](https://github.com/swish-climate-impact-assessment/ExcessHeatIndices)
+
+### WEATHER SLA
+#### [Weather Exposures by Statistical Local Area (SLA)](/metadata/WEATHER_SLA.html)
+
 ## Viewing the data with GIS
 ### Quantum GIS
 ### ArcGIS 
-### [Geoserver](http://115.146.94.209:8181/geoserver)
+### [Geoserver](http://115.146.93.225:8181/geoserver)
