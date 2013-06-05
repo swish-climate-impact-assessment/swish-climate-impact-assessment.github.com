@@ -4,28 +4,19 @@ layout: default
 title: EWE
 ---
 
-## The registry and catalogue
-### [Use the Database Registry](http://115.146.93.225:8080/apex/f?p=102)
-### [Search the Catalogue](http://115.146.93.108:8181/ddiindex)
-
 ## The Datasets
-### AWAP_GRIDS
+### General Weather Data
 #### [Australian Water Availability Project](/metadata/AWAP_GRIDS.html)
+#### [Weather Exposures by Statistical Local Area (SLA)](/metadata/WEATHER_SLA.html)
 
-### Bushfire smoke
+### Bushfires
 #### [The U-TAS Biomass Smoke Project](http://ivanhanigan.github.com/bio_validated_bushfire_events)
 
-### Drought
+### Droughts
 #### [The Hutchinson Index](https://github.com/ivanhanigan/HutchinsonDroughtIndex)
-#### [The Hutchinson Index Tutorial](/EWE/HutchinsonDroughtIndex/HutchinsonDroughtIndex.html)
+#### [The NSW Dept Primary Industry Drought Declarations](/EWE/HutchinsonDroughtIndex/HutchinsonDroughtIndex.html)
 
 ### Heatwaves
 #### [The Excess Heat Factor](https://github.com/swish-climate-impact-assessment/ExcessHeatIndices)
 
-### WEATHER SLA
-#### [Weather Exposures by Statistical Local Area (SLA)](/metadata/WEATHER_SLA.html)
 
-## Viewing the data with GIS
-### Quantum GIS
-### ArcGIS 
-### [Geoserver](http://115.146.93.225:8181/geoserver)

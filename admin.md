@@ -30,4 +30,7 @@ To apply for access please complete the application forms with the data manager 
 # Licence
 This website is licensed under the Creative Commons Australia Attribution 3.0 Licence. Please note that this licence applies to the contents of posts and associated comments. By submitting a comment to this site you agree to have granted this licence.
 
-This project is supported by the Australian National Data Service (ANDS). ANDS is supported by the Australian Government through the National Collaborative Research Infrastructure Strategy Program and the Education Investment Fund (EIF) Super Science Initiative, as well as through The Australian National University. .
+This project is supported by the Australian National Data Service (ANDS). ANDS is supported by the Australian Government through the National Collaborative Research Infrastructure Strategy Program and the Education Investment Fund (EIF) Super Science Initiative, as well as through The Australian National University. 
+
+
+
