@@ -18,4 +18,5 @@ Data area stored on the EWEDB as tables partitioned per year, for example:
 
 <p></p>
 
-
+## Get the data
+[Here is a workflow for extracting the data](/tools/weather_sla/weather_sla.zip)
