@@ -22,7 +22,8 @@ Similar to 2 but rather than copy the code to the actor just add
 
     source('path/to/script.R')
 
-<p><\p>
+<p></p>
+
 to the actor.
 
 ## 4 write a package
