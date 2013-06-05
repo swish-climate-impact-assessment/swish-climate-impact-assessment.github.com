@@ -18,5 +18,3 @@ title: EWE
 
 ### Heatwaves
 #### [The Excess Heat Factor](https://github.com/swish-climate-impact-assessment/ExcessHeatIndices)
-
-

@@ -46,55 +46,31 @@ The image below is a diagram of the work that needs to be done (Clink here for [
 *** documentation header
 #+name:documentation-header
 #+begin_src markdown :tangle documentation.md :exports none :eval no :padline no
----
-name: documentation
-layout: default
-title: documentation
----
-
-# SWISH Documentation
-
-SWISH is released under [the GPL license](http://www.opensource.org/licenses/gpl-license.php)
-
-Our software is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-
-# Tutorials
-
-[Setting up your Environment](/setting-up.html)
-
-[Assembling Scientific Workflows](/assembling-workflows.html)
-
-[Developing with Workflow Software](/developing-with-workflows.html)
-
-# Administration and Governance
-
-[The Data Management Plan](/swish-DataManagementPlan.html)
-
-[High Level System Description Document webpage](/HighLevelDescription.html).
-
-# Access data
-The data are available for authorised users.  
-
-To apply for access please complete the application forms with the data manager [Ivan Hanigan](http://nceph.anu.edu.au/about-us/people/ivan-hanigan)
-
-[View the Database Catalogue](http://115.146.93.108:8181/ddiindex/)
-
-[View the Database Registry](http://115.146.93.225:8080/apex/f?p=102)
-
-[Public access spatial data are available via geoserver](http://115.146.93.225:8181/geoexplorer)
-
-# Analyse data
-[There is an security enhanced Rstudio server available for using these data](https://115.146.93.225)
-
-[The source code and associated project material is available at github](https://github.com/swish-climate-impact-assessment)
-
-
-# Licence
-This website is licensed under the Creative Commons Australia Attribution 3.0 Licence. Please note that this licence applies to the contents of posts and associated comments. By submitting a comment to this site you agree to have granted this licence.
-
-This project is supported by the Australian National Data Service (ANDS). ANDS is supported by the Australian Government through the National Collaborative Research Infrastructure Strategy Program and the Education Investment Fund (EIF) Super Science Initiative, as well as through The Australian National University. .
+  ---
+  name: documentation
+  layout: default
+  title: documentation
+  ---
+  
+  # SWISH Documentation
+  
+  SWISH is released under [the GPL license](http://www.opensource.org/licenses/gpl-license.php)
+  
+  Our software is distributed in the hope that it will be useful, but
+  WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+  
+  # Tutorials
+  
+  [Setting up your Environment](/setting-up.html)
+  
+  [Assembling Scientific Workflows](/assembling-workflows.html)
+  
+  [Developing with Workflow Software](/developing-with-workflows.html)
+  
+  # Admin
+  
+  [Administrative and technical details for the project](/admin.html)
 #+end_src
 
 
@@ -694,41 +670,83 @@ As you can see when you open the KAR file, this workflow expects an XLSX file to
     
 #+end_src
 
+
+*** 2013-06-05-developing-with-workflows header
+#+name:developing-with-workflows-header
+#+begin_src markdown :tangle _posts/2013-06-05-developing-with-workflows.md :exports none :eval no :padline no
+---
+name: 2013-06-05-developing-with-workflows
+layout: post
+title: Developing new tools with Kepler workflows
+---
+
+## Developing new tools with Kepler workflows
+If you can't get an actor from the core Kepler actors or our SWISH actor contributions then you have two choices:
+- assemble current actors into a new 'composite' actor or
+- develop a R/python/matlab/stata function to be a new actor.
+
+If you go for option 2 therefore you have to develop your function to work with other Kepler actors.    There are a few tricks to doing this.  This post will show several different approaches available to develop a new Kepler R actor.
+
+## 1 identify R function
+There is probably an R function that does what you want.  If not start writing one.  If it is a really simple case of just using a current R function with simple input/output requirements you can write it straight into the Rexpression actor and add some ports... however anything more than a couple of lines can get buggy quickly, and this is not a good place to be debugging code.
+
+## 2 write function in a script
+Then , test/debug in an IDE like emacs, Rstudio or eclipse; and then deploy to Rexpression actor in workflow
+
+## 3 source() your script from kepler
+Similar to 2 but rather than copy the code to the actor just add 
+
+    source('path/to/script.R')
+
+<p><\p>
+to the actor.
+
+## 4 write a package
+Similar to 2 and 3 but the function is written to a package and then this is loaded with
+
+    require(MyPackage)
+    outputPortValue <- myFunction(inputPortValue, otherArgument)
+    outputPortValue
+
+You can then publish this on GitHub or CRAN, or even just send as a zip or tar to your collaborators.
+
+## 5 add this to MyWorkflows
+if you have the R code or package details in the actor save this by right clicking on the actor and save it to your kepler directory under MyWorkflows.  This means it will be available whenever you open Kepler.
+
+## 6 If it is really awesome contribute it to SWISH
+Take a fork of the swish-kepler-actors GitHub repo and add your actor and tests to the simpleInstaller/Actors folder. Then send a pull request to the SWISH maintainers and these will then be incorporated into our one-click installer.
+    
+#+end_src
+
 * metadata
 ** metadata home
 ** EWE
 *** EWE header
 #+name:EWE-header
 #+begin_src markdown :tangle EWE.md :exports none :eval no :padline no
----
-name: EWE
-layout: default
-title: EWE
----
-
-## The registry and catalogue
-### [Use the Database Registry](http://115.146.93.225:8080/apex/f?p=102)
-### [Search the Catalogue](http://115.146.93.108:8181/ddiindex)
-
-## The Datasets
-### AWAP_GRIDS
-#### [Australian Water Availability Project](/metadata/AWAP_GRIDS.html)
-
-### Heatwaves
-#### [The Excess Heat Factor](https://github.com/swish-climate-impact-assessment/ExcessHeatIndices)
-
-### Bushfire smoke
-#### [The U-TAS Biomass Smoke Project](http://ivanhanigan.github.com/bio_validated_bushfire_events)
-
-### Drought
-#### [The Hutchinson Index](https://github.com/ivanhanigan/HutchinsonDroughtIndex)
-#### [The Hutchinson Index Tutorial](/EWE/HutchinsonDroughtIndex/HutchinsonDroughtIndex.html)
-
-## Viewing the data with GIS
-### Quantum GIS
-### ArcGIS 
-### [Geoserver](http://115.146.94.209:8181/geoserver)
-
+  ---
+  name: EWE
+  layout: default
+  title: EWE
+  ---
+  
+  ## The Datasets
+  ### General Weather Data
+  #### [Australian Water Availability Project](/metadata/AWAP_GRIDS.html)
+  #### [Weather Exposures by Statistical Local Area (SLA)](/metadata/WEATHER_SLA.html)
+  
+  ### Bushfires
+  #### [The U-TAS Biomass Smoke Project](http://ivanhanigan.github.com/bio_validated_bushfire_events)
+  
+  ### Droughts
+  #### [The Hutchinson Index](https://github.com/ivanhanigan/HutchinsonDroughtIndex)
+  #### [The NSW Dept Primary Industry Drought Declarations](/EWE/HutchinsonDroughtIndex/HutchinsonDroughtIndex.html)
+  
+  ### Heatwaves
+  #### [The Excess Heat Factor](https://github.com/swish-climate-impact-assessment/ExcessHeatIndices)
+  
+  
+  
 #+end_src
 
 ** AWAP_GRIDS
