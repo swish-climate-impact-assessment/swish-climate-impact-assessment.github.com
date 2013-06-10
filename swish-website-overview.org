@@ -140,11 +140,13 @@ Research Institute at the Australian National University.
     }
 #+end_src
 
+#+RESULTS:
+
 **** markdown
 #+begin_src markdown :tangle creating-a-validated-events-database.md :exports none :eval no :padline no
   ---
   name: 2013-06-08-creating-a-validated-events-database
-  layout: post
+  layout: default
   title: Creating a Validated Events Database
   categories:
   - validated events
@@ -200,12 +202,17 @@ Research Institute at the Australian National University.
       MINVALUE 1 MAXVALUE 9999999999999999999999999999 
       INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE')
   
+  
+      dbSendUpdate(ch, 'CREATE SEQUENCE   "BUSHFIREREFERENCES_SEQ"
+      MINVALUE 1 MAXVALUE 9999999999999999999999999999
+      INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE')
+    
+  
   - Create tables with primary keys and foreign keys
   
   #### Code:
         dbSendUpdate(ch, 'CREATE TABLE  "BUSHFIREEVENTS" 
        (    "EVENTID" NUMBER NOT NULL ENABLE, 
-            "REFID" NUMBER, 
             "EVENTTYPE" VARCHAR2(255), 
             "PLACE" VARCHAR2(255), 
             "MINDATE" DATE, 
@@ -213,25 +220,126 @@ Research Institute at the Australian National University.
              CONSTRAINT "BUSHFIREEVENTS_PK" PRIMARY KEY ("EVENTID") ENABLE
        )')
   
+      dbSendUpdate(ch, '
+      CREATE TABLE  "BUSHFIREREFERENCES" 
+      (    "REFID" NUMBER NOT NULL ENABLE, 
+            "EVENTID" NUMBER NOT NULL ENABLE, 
+            "AUTHOR" VARCHAR2(255), 
+            "YEAR" VARCHAR2(255), 
+            "TITLE" VARCHAR2(255), 
+            "URL" VARCHAR2(255), 
+            "NOTES" VARCHAR2(255), 
+             CONSTRAINT "BUSHFIREREFERENCES_PK" PRIMARY KEY ("REFID") ENABLE
+      )')
+  
+      dbSendUpdate(ch, '
+      ALTER TABLE  "BUSHFIREREFERENCES" ADD CONSTRAINT "BUSHFIREREFERENCES_FK" FOREIGN KEY ("EVENTID")
+                REFERENCES  "BUSHFIREEVENTS" ("EVENTID") ENABLE
+      ')
   
   -   create triggers
   
-  ### log in to apex workspace
+  #### Code
+      dbSendUpdate(ch, '
+      CREATE OR REPLACE TRIGGER  "BI_BUSHFIREEVENTS" 
+        before insert on "BUSHFIREEVENTS"               
+        for each row  
+      begin   
+        if :NEW."EVENTID" is null then 
+          select "EVENTS_SEQ".nextval into :NEW."EVENTID" from dual; 
+        end if; 
+      end;
+      ')
+  
+      dbSendUpdate(ch, '
+      ALTER TRIGGER  "BI_BUSHFIREEVENTS" ENABLE
+      ')
+  
+    
+      dbSendUpdate(ch, '
+      CREATE OR REPLACE TRIGGER  "BI_BUSHFIREREFERENCES" 
+        before insert on "BUSHFIREREFERENCES"               
+        for each row  
+      begin   
+        if :NEW."REFID" is null then 
+          select "REFERENCES_SEQ".nextval into :NEW."REFID" from dual; 
+        end if; 
+      end;
+      ')
+    
+      dbSendUpdate(ch, '
+      ALTER TRIGGER  "BI_BUSHFIREREFERENCES" ENABLE
+      ')
+  
+  ### Now log in to the Oracle XE apex workspace
   
   ![eventdb-apex.png](/images/eventdb-apex.png)
   
+  ### Navigate to the application builder
   
-  -   create blank pages
-  -   create new page
-  -             choose form
-  -             choose form on report
-  -             select the report to go on the blank page
-  -  10)        let the form create a new page
-  -  11)create a hidden item on report page IE :P2_IDNO
-  -  12)change report regions source SQL to 'WHERE [IDNO/FILEID ETC] = :P2_IDNO
-  -  13)set up the link on the previous page if applicable
-  -  in the form page set the default value for say IDNO to PL/SQL expression & = :P2_IDNO for eg
+  - Click on "Create"
+  - Select "Database" type
+  - Click "from scratch" then Next
+  - Give it a name, and ensure schema is selected to your workspace. Next
+  - Add a blank page, then Next
+  - One level of tabs, Next
+  - No shared components, Next
+  - Authentication scheme is Application Express, Next
+  - Select a Theme, Next
+  - Finally click "Create" to deploy the application
   
+  ### Now start building the pages
+  - Hit Create page
+  - Choose form
+  - Choose "form on a table with report", Next
+  - Table Owner is our workspace, Table Name is "Events", (Choose from arrow type button)
+  - Select the "Page Number" and set it so the report will go on the blank page (page 1), Next
+  - Select all columns, Next
+  - Select edit image, Next
+  - Let Form page create a new page, rename to page2, Next
+  - make sure the primary key is the eventid, Next
+  - Define the source for pkey from existing sequence, select our EVENTS_SEQ from the list, Next
+  - Select all columns, Next
+  - Leave defaults on the Identify Process Options page, Next
+  - Finish
+  - Run page.
+  - No data found.  Create, add a dummy value.  If everything works add another value.  EVENTID should increment by one.  All good?  Click on the Application ID below to return to edits.
+  - create page, blank page, named as page 3, Next
+  - name as references, Next
+  - Say yes use tabs from existing set and create a new tab, Next
+  - select the tabset, next
+  - add tab label, Next, Finish.
+  - Go to top level of application, Create Page
+  - Form, Form on table with report
+  - Table owner is our workspace
+  - table is our references table, Next
+  - set it to put the report on to page 3, Next
+  - select all columns, Next
+  - edit image, Next
+  - create form on page 4 (this will be created), check pkey is refid, Next
+  - select existing sequence, it is the REFS_SEQ, Next
+  - select all columns, Next
+  - Identify Process Options are all defaults, next
+  - Finish and go to main application page
+  
+  ### Now we need to set up the link between events and related references
+  - Create a hidden item on report page (page3) IE P3_EVENTID, Next
+  - leave default, next
+  - leave default, create item
+  - Change report regions source SQL to 'WHERE EVENTID = :P3_EVENTID', apply changes
+  - Set up the link on page1, go to report, report attributes, edit eventID, link, Use the buttons to set as shown in the image below then Apply changes
+  
+  ![eventdb-link.png](/images/eventdb-link.png)
+  
+  
+  - In the References form page (page4) set the default value for say EVENTID to PL/SQL expression & = :P3_EVENTID, Apply changes
+  - Run the application
+  
+  ### TODO
+  
+  - save the application to a file.
+  - modify the notes to a BLOB and make it a large editable window
+  - make the type of event a static list with dropdown menu
   
   ## References
   Johnston, F., Hanigan, I., Henderson, S., Morgan, G., Portner, T., Williamson, G., and Bowman, D. (2011). Creating an integrated historical record of extreme particulate air pollution events in Australian cities from 1994 to 2007. Journal of the Air & Waste Management Association, 61(4), 390. doi:10.3155/1047-3289.61.4.390
