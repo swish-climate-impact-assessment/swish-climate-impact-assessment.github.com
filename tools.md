@@ -25,9 +25,9 @@ title: Tools
 * [Click here for downloads](/tools/ExcessHeatIndices/ExcessHeatIndices-downloads.html)
 
 ### Australian Water Availability Project (AWAP) tools
-* R package to download and format raw gridded data and send to EWEDB (or other PostGIS server) - [awaptools](http://swish-climate-impact-assessment.github.io/tools/awaptools/awaptools-downloads.html)
+* The data are described [here](/metadata/AWAP_GRIDS.html)
+* R package to download and format raw gridded AWAP data and send to EWEDB (or other PostGIS server) - [awaptools](/tools/awaptools/awaptools-downloads.html)
 * [Here is a workflow for extracting the data from the EWEDB](/tools/ExtractAWAPdata4locations/extract-awap.html)
-* The workflow will download these tools, but [to do this manually go here](/tools/awaptools/awaptools-downloads.html)
 * Please see [this tutorial](http://swish-climate-impact-assessment.github.io/2013/05/extract-awap-data-4-locations/) for details and screen shots.
 
 ### Geocoder
