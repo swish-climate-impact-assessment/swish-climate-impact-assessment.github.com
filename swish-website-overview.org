@@ -334,11 +334,52 @@ Research Institute at the Australian National University.
   
   - In the References form page (page4) set the default value for say EVENTID to PL/SQL expression & = :P3_EVENTID, Apply changes
   - Run the application
+  - Minor edits were needed to fix up the names in the tabset, and remove the breadcrumbs.
+  
+  ### set up some Data Input Rules
+  - To set a list of Event Types
+  - create a new record
+  - edit the page, edit the item
+  - change type to Select List, go to list of values
+  - Create or edit static List of Values
+  
+  ## Now we have a pretty good first draft
+  If you want to add a column for summary notes in the first table:
+  
+  #### Code:
+      dbSendUpdate(ch,'
+        alter table BUSHFIREEVENTS
+        ADD NOTES varchar2(255)
+        ')
+  
+  #### adding large amounts of text
+  Varchar2(255) adds a standared text variable but adding large amounts of notes to the references table would be better with CLOB data type.
+  
+  #### Code:
+      dbSendUpdate(ch,'
+        alter table BUSHFIREREFERENCES
+        add MISCNOTES CLOB
+        ')
+  
+  ### add these new fields to the relevant pages
+  - edit the page of eg page 2 
+  - add item, text field, name = P2_NOTES, width = 150
+  - source type = DB Column, create, run
+  - add some notes
+  - go to page 1, edit
+  - report on table, add notes to SQL
+  - NB You have requested to change the Interactive Report query. If you added columns to the query, they will not be displayed when the report is run. You will need to use the actions menu and either select the columns or click Reset.
+  - go to actions menu, drop down menu, select columns, move notes across to second column
+  
+  
+  
+  ### TO export
+  - app home, export
+  - Database Application or Database Application Components
+  - export application
+  - save the application sql file to a folder.
   
   ### TODO
-  
-  - save the application to a file.
-  - modify the notes to a BLOB and make it a large editable window
   - make the type of event a static list with dropdown menu
   
   ## References
