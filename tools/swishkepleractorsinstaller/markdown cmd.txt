@@ -1,0 +1,11 @@
+Convert markdown to html
+
+use perl to run markdown.pl
+on the file swishkepleractorsinstaller-details.md
+and pipe (">") the output to file \swishkepleractorsinstaller-details.html
+
+
+get markdown.pl at http://daringfireball.net/projects/markdown/
+get perl at http://www.activestate.com/activeperl/downloads
+
+perl Markdown.pl "D:\Development\swish-climate-impact-assessment.github.com\tools\swishkepleractorsinstaller\swishkepleractorsinstaller-details.md" > D:\Development\swish-climate-impact-assessment.github.com\tools\swishkepleractorsinstaller\swishkepleractorsinstaller-details.html

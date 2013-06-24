@@ -1,0 +1,93 @@
+<h1>﻿SWISH Kepler Actors Installer - Details</h1>
+
+<h1>The installer</h1>
+
+<h2>Required software</h2>
+
+<p>To use SWISH Kepler Actors, Kepler 2.4, Java JRE or JDK, Stata 12, R, and Microsoft .Net framework 4 are required. The installer is built to work on Microsoft Windows systems, and will not work correctly on Linux systems. The installer will need to be run for each user that wishes to user SWISH Kepler actors.</p>
+
+<p>Kepler: https://kepler-project.org/</p>
+
+<p>Java 6: http://www.oracle.com/technetwork/java/javase/readme-142177.html</p>
+
+<p>Microsoft .net framework 4 is available on Windows 7, but will need to be additionally installed for Windows Vista or XP. It is available at http://www.microsoft.com/en-us/download/details.aspx?id=17851</p>
+
+<p>Stata 12: http://www.stata.com/stata12/</p>
+
+<p>R: http://www.r-project.org/</p>
+
+<p>The installer tests to see if it can find installed versions of Kepler, R, Java, and Stata. If these are not installed SWISH Kepler Actors may not run, and the installer will display a warning. The installer has trouble finding with some versions of R, in this case the warning can be safely ignored. </p>
+
+<p>If found the installer adds the locations of R and Java to your systems PATH environmental variable. </p>
+
+<h2>Installer arguments</h2>
+
+<p>The installer can be run directly and provided with arguments. The installer is called "Swish.SimpleInstaller.exe" and located in the installer bin folder. To run the graphical user interface (GUI) normally provide no arguments. To uninstall use the ">clean" argument. To install or uninstall automatically with no user interface add the ">silient" argument. To display extra information during the process add the ">verbose" argument, this can help find errors if the process fails. To launch Kepler after installing use the ">launch" argument.</p>
+
+<p>You can run the installer directly using the command prompt. Enter "Swish.SimpleInstaller.exe" and then any arguments separated by spaces.</p>
+
+<p>EG: to uninstall, when the installer in on the desktop</p>
+
+<pre><code>C:\Users\Ian\Desktop\SwishInstaller\Swish.SimpleInstaller.exe &gt;clean &gt;silent
+</code></pre>
+
+<p>[Note you can open the command prompt by pressing WindowsKey + R and enter "cmd"]</p>
+
+<h2>Installer Script</h2>
+
+<p>The installer copies actor files to where they will be automatically loaded by Kepler and copies executable files to where they are used by the actors. The Actor files are copied to the directory "C:\Users\%UserName%\KeplerData\workflows\MyWorkflows", where %UserName% is the name of the user profile logged on during installation. Executable files are copied to the "C:\Swish\bin" directory. The files copied during installation can all be found under the installer "%Installer%\bin" folder. Files in the "%Installer%\bin\Actors" are copied to the "C:\Users\Ian\KeplerData\MyWorkflows", and files in "%Installer%\bin\SwishBin" are copied to "C:\Swish\bin".</p>
+
+<p>To include additional actors with the installer simply add them to the ""%Installer%\bin\Actors" directory. </p>
+
+<p>The installer follows instructions found in install.txt. This file can be edited as new files are added to the installer. </p>
+
+<p>If the installer in installing the software then each line of install.txt is carried out in order. If the installer is removing the software then install.txt is read in reverse line order and the opposite of each action is carried out where possible.</p>
+
+<h3>Commands</h3>
+
+<p>Each line of install.txt is in the format </p>
+
+<p>ActionName arguments</p>
+
+<p>Where arguments are separated by spaces, strings are escaped and surrounded with "'s.</p>
+
+<table border="1">
+<tr><td>Name</td><td>Arguments</td><td>Install action</td><td>Clean action</td></tr>
+<tr><td>DeleteFilesAndDirectories</td><td>"directory"</td><td>Deletes the directory and all contents</td><td>N/A</td></tr>
+<tr><td>Delete</td><td>"fileName"</td><td>Deletes the file</td><td>N/A</td></tr>
+<tr><td>DateAfter</td><td>Year Month Day Instruction</td><td>Only executes the following instruction after the date</td><td>Only executes the following instruction after the date</td></tr>
+<tr><td>DateBefore</td><td>Year Month Day Instruction</td><td>Only executes the following instruction before the date</td><td>Only executes the following instruction before the date</td></tr>
+<tr><td>RunProcess</td><td>RunProcess "executable" arguments</td><td>Execute process</td><td>Execute process</td></tr>
+<tr><td>CopyFilesAndDirectories</td><td>"sourceDirectory" "destinationDirectory"</td><td>Copies the directory, and any files and sub directories.</td><td>Deletes the files found in the source directory and if empty deletes sub directories and destination directory.</td></tr>
+<tr><td>CopyFiles</td><td>"sourceDirectory" "destinationDirectory"</td><td>Copies the files in the source directory to the destination directory.</td><td>Removes the files in the source directory from the destination directory.</td></tr>
+<tr><td>Copy</td><td>"sourceFileName" "destinationFileName"</td><td>Copies the file and creates the underlying directory if necessary.</td><td>Removes the destination file if it exists.</td></tr>
+<tr><td>MakeShortCut</td><td>"fileName" "targetFileName" "arguments" "description"</td><td>Creates a shortcut to a target file or target executable. The shortcut is saved at the path specified by fileName. </td><td>Deletes the shortcut.</td></tr>
+<tr><td>AddPath</td><td>"binPath"</td><td>Attempts to add the binPath to the system PATH environment variable. On failure it adds it to the user PATH variable.</td><td>N/A</td></tr>
+<tr><td>AddRegistryKey</td><td>"path" "key" "value"</td><td>Sets the value of the key located at path in the system registry.</td><td>Sets the key value to NULL.</td></tr>
+<tr><td>//</td><td>N/A</td><td>Ignored comment</td><td>Ignored comment</td></tr>
+<tr><td><blank line></td><td>N/A</td><td>Ignored</td><td>Ignored</td></tr>
+<tr><td><any other text></td><td>N/A</td><td>Invalid line error reported.</td><td>Invalid line error reported.</td></tr>
+</table>
+
+<h4>Examples:</h4>
+
+<p>AddPath "%RBin%"</p>
+
+<p>Copy "%StartupPath%\SampleData\Kaleen.csv" "C:\Swish\SampleData\Kaleen.csv"</p>
+
+<p>DateAfter 2014 01 01 RunProcess "%StartupPath%\UpdateCheck.exe" ""</p>
+
+<h3>Symbols</h3>
+
+<p>Several symbols are defined that are determined when the installer is run. Some values and paths may change depending on the user running the software. These symbols can used instead of specific paths in install.txt.</p>
+
+<table border="1">
+<tr><td>Name</td><td>Description</td></tr>
+<tr><td>%UserProfile%</td><td>Directory of the user profile. Eg on Windows 7 it will be something like C:\Users\Ian\. On windows XP it will be something like C:\Documents and Settings\Ian\</td></tr>
+<tr><td>%StartupPath%</td><td>Start directory of the installer running</td></tr>
+<tr><td>%StartMenu%</td><td>Directory of the system start menu</td></tr>
+<tr><td>%SystemStartup%</td><td>Directory of the system startup</td></tr>
+<tr><td>%KeplerBin%</td><td>If found directory where Kepler is installed</td></tr>
+<tr><td>%RBin%</td><td>If found directory where R is installed</td></tr>
+<tr><td>%JavaBin%</td><td>If found directory where Java is installed</td></tr>
+</table>
