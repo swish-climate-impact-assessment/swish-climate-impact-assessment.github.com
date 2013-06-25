@@ -42,12 +42,16 @@ Add an actor: Locate the actor in the components panel.You can do this by typing
 
 <div class="MsoNormal">
 
-<span style="mso-fareast-language: EN-AU; mso-no-proof: yes;">&nbsp;</span>![Image004](/images/HotDaysWithLittleReliefInKaleen004.png)</div>
+<span style="mso-fareast-language: EN-AU; mso-no-proof: yes;">&nbsp;</span>
+![Image004](/images/HotDaysWithLittleReliefInKaleen004.png)
+</div>
 
 <div class="MsoNormal">
 <span style="mso-fareast-language: EN-AU; mso-no-proof: yes;">Add an annotation by dragging and dropping the icon from the panel to the workflow canvas on the right of the Kepler window.&nbsp;</span>
 
-<span style="mso-fareast-language: EN-AU; mso-no-proof: yes;">![Image005](/images/HotDaysWithLittleReliefInKaleen005.png) </span></div>
+<span style="mso-fareast-language: EN-AU; mso-no-proof: yes;">
+![Image005](/images/HotDaysWithLittleReliefInKaleen005.png)
+</span></div>
 
 <span style="mso-fareast-language: EN-AU; mso-no-proof: yes;">Use the annotation to describe the first step. O</span><span style="mso-fareast-language: EN-AU; mso-no-proof: yes;">pen the edit parameters dialog by double clicking on the annotation on the canvas. Enter the text "</span>Hot days = Maximum temperature &gt;35 degrees" into the "text" field and click the "Commit" button. The value will be displayed on the canvas
 
