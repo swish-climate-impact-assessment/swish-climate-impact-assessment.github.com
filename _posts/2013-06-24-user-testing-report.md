@@ -1,7 +1,7 @@
 ---
 name: User testing report
 layout: post
-title: AddinUser testing report
+title: User testing report
 date: 2013-06-24
 categories:
 - User testing report
