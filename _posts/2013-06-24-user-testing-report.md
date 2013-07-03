@@ -15,14 +15,14 @@ Peter made his way through the tutorial, quicker than I expected for someone who
 
 ## During the testing two mistakes occurred
 1. A missing an input link to an actor. When run the workflow reported an error, Peter quickly identified the omission himself and corrected it.
-2. The identifier “Date” was used with a capital letters instead of “date”. When run Kepler reported an error message; however this problem was too subtle. Even after I pointed it out Peter was unclear as to why the error was occurring.
+2. The identifier "Date" was used with a capital letters instead of "date". When run Kepler reported an error message; however this problem was too subtle. Even after I pointed it out Peter was unclear as to why the error was occurring.
 
 The images in the tutorial provided the necessary details to continue through the tutorial without encouraging Peter to notice and understand the accompanying text. The tutorial explains that the all links need to be connected for the workflow to run and the identifiers are the names of columns in the input data. Both of these points that directly explained the errors that occurred where overlooked. 
 
 # Did the user complete the analysis they intended to do?  
 Yes!, Peter successfully assembled an operational workflow that ran and produced the correct result by following the tutorial. 
 
-Peter was then curious and started to ‘play’ with values in the heat index calculation. He lowered the maximum temperature limit and increased the min – max threshold to generate a greater number of ‘heat waves’.
+Peter was then curious and started to 'play' with values in the heat index calculation. He lowered the maximum temperature limit and increased the min - max threshold to generate a greater number of 'heat waves'.
 
 # What features did they find useful and what features did they have difficulty with or wish to see (and are subject to future improvement if there are available resources)?
 Peter was able to quickly use the installer and update the software to the latest version of SWISH actors. Peter found the drag, drop and link nature of Kepler intuitive and usable. He was able to easily find all the actors needed by the tutorial. The actors used where clearly named and labelled, Peter found them simple to use.
@@ -41,7 +41,7 @@ Error handling for general Kepler actors is the responsibility of the developers
 
 # Observations
 
-Peter had trouble linking some actors together as the links ‘snap’ to other nearby links or port. Peter worked around this when necessary by dragging links the long way round to avoid connecting to the wrong place. 
+Peter had trouble linking some actors together as the links 'snap' to other nearby links or port. Peter worked around this when necessary by dragging links the long way round to avoid connecting to the wrong place. 
 
 Peter did not run the workflow until the very end. This made finding errors more difficult.
 
