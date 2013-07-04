@@ -10,7 +10,7 @@ SWISH Kepler Actors Installer - Downloads
 * Depends: Windows with Kepler and Stata Installed.
 
 ## Downloads
-* [Click here for Windows](/tools/swishkepleractorsinstaller/SWISHKeplerActorsInstaller06June2013.zip)
+* [Click here for Windows](/tools/swishkepleractorsinstaller/SWISHKeplerActorsInstaller04July2013.zip)
 
 ## Documentation
 * [Click here for Instructions](/tools/swishkepleractorsinstaller/swishkepleractorsinstaller-details.html)
