@@ -1,13 +1,9 @@
-SWISH Kepler Actors Installer - Details
+﻿SWISH Kepler Actors Installer - Details
 ========================================================
 
-### The installer 
-This is the SWISH Kepler Actors installer, you will need Kepler and Java if you don’t have them already.
-
-The installer should work regardless of the order you install things, if you get into trouble let us know.
-* [Click here for downloads](/tools/swishkepleractorsinstaller/swishkepleractorsinstaller-downloads.html)
-
-To use SWISH Kepler Actors, Kepler 2.3, Java JRE or JDK, Stata 12, and Microsoft .Net framework 4 are required. The installer is built to work on Microsoft Windows systems, and will not work correctly on Linux systems. The installer will need to be run for each user that wishes to user SWISH Kepler actors.
+# The installer 
+## Required software
+To use SWISH Kepler Actors, Kepler 2.4, Java JRE or JDK, Stata 12, R, and Microsoft .Net framework 4 are required. The installer is built to work on Microsoft Windows systems, and will not work correctly on Linux systems. The installer will need to be run for each user that wishes to user SWISH Kepler actors.
 
 Kepler: https://kepler-project.org/
 
@@ -17,46 +13,78 @@ Microsoft .net framework 4 is available on Windows 7, but will need to be additi
 
 Stata 12: http://www.stata.com/stata12/
 
-The installer can be run directly and provided with arguments. The installer is called “Swish.SimpleInstaller.exe” and located in the installer bin folder. To run the graphical user interface (GUI) normally provide no arguments, to uninstall use the “/clean” argument. To install or uninstall automatically with no user interface add the “/silient” argument. To display extra information during the process add the “/verbose” argument, this can help find errors if the process fails.
+R: http://www.r-project.org/
 
-You can run the installer directly using the command prompt. Enter “Swish.SimpleInstaller.exe” and then any arguments separated by spaces.
+The installer tests to see if it can find installed versions of Kepler, R, Java, and Stata. If these are not installed SWISH Kepler Actors may not run, and the installer will display a warning. The installer has trouble finding with some versions of R, in this case the warning can be safely ignored. 
 
-EG: if the installer in on the desktop
-
-> C:\Users\Ian\Desktop\SwishInstaller\Swish.SimpleInstaller.exe   /clean   /silent
-
-[Note you can open the command prompt by pressing WindowsKey + R and enter “cmd”]
-
- 
-
-The installer copies actor files to where they will be automatically loaded by Kepler and copies executable files to where they are used by the actors. The Actor files are copied to the directory “C:\Users\%UserName%\KeplerData\workflows\MyWorkflows”, where %UserName% is the name of the user profile logged on during installation. Executable files are copied to the “C:\Swish\bin” directory. The files copied during installation can all be found under the installer “%Installer%\bin” folder. Files in the “%Installer%\bin\Actors” are copied to the “C:\Users \....\MyWorkflows”, and files in “%Installer%\bin\SwishBin” are copied to “C:\Swish\bin”.
-
-The installer follows instructions found in install.txt. This file can be edited as new files are added to the install. The “CopyFiles” “Source directory” “Destination directory” command copies all the contents of a directory. The “Copy” “Source file” “Destination file” command copies a single file to a location. File paths can be constructed using “%StartupPath%” for the location of the installer, and “%UserProfile%” for the location of the logged on user profile directory.
+If found the installer adds the locations of R and Java to your systems PATH environmental variable. 
 
 
-### The Actors
-Most of the SWISH actors require a data input as well as some parameters and produce a data output. A data input can be a file path to a Stata “.dta” file or a “.csv” file. The output will be a file name to a “.dta” file located in the temporary directory. Other actor parameters can be added easily using string constants.
+## Installer arguments
+The installer can be run directly and provided with arguments. The installer is called "Swish.SimpleInstaller.exe" and located in the installer bin folder. To run the graphical user interface (GUI) normally provide no arguments. To uninstall use the ">clean" argument. To install or uninstall automatically with no user interface add the ">silient" argument. To display extra information during the process add the ">verbose" argument, this can help find errors if the process fails. To launch Kepler after installing use the ">launch" argument.
 
-To save the result of a SWISH actor connect its output to a SaveTable actor, it can be saved as a Stata “.dta” file or a “.csv” file. Intermediate results between actors do not need to be saved explicitly as SWISH actors are designed to be linked together. The output of one SWISH actor can just be linked directly to the input of the next SWISH actor.
+You can run the installer directly using the command prompt. Enter "Swish.SimpleInstaller.exe" and then any arguments separated by spaces.
 
-Variable names are the columns names in data sets. When a SWISH actor input is a variable name and it makes sense to do so, multiple variable names can be specified, separated by spaces. Eg the SortTable actor.
+EG: to uninstall, when the installer in on the desktop
 
-The actors are AppendTables, CompressTable, DisplayTable, EncodeArgument, FormatVariables, GenerateVariable, GetFileName, GetFileNameWithoutExtension, MergeTables, Password, RemoveColumns, ReplaceValues, RunDoScript, SaveTable, SelectColumns, SelectRecords, SortTable, StataCommand, TransposeTable, VariableCount, VariableIQR, VariableMaximum, VariableMean, VariableMedian, VariableMinimum, VariableStandardDeviation, and VariableSum.
+    C:\Users\Ian\Desktop\SwishInstaller\Swish.SimpleInstaller.exe >clean >silent
 
-### To use these actors:
+[Note you can open the command prompt by pressing WindowsKey + R and enter "cmd"]
 
-The easiest way to use Kepler is with the components panel that appears on the left side of the screen. You can search for actors, and drag and drop them on to the main canvas. Eg searching for 'table' or 'variable' will return a number of the SWISH actors.
 
-Each SWISH actor has one or more input connectors, an output connector, a variable(s) connector as needed, and a result connector.
+## Installer Script
+The installer copies actor files to where they will be automatically loaded by Kepler and copies executable files to where they are used by the actors. The Actor files are copied to the directory "C:\Users\%UserName%\KeplerData\workflows\MyWorkflows", where %UserName% is the name of the user profile logged on during installation. Executable files are copied to the "C:\Swish\bin" directory. The files copied during installation can all be found under the installer "%Installer%\bin" folder. Files in the "%Installer%\bin\Actors" are copied to the "C:\Users\Ian\KeplerData\MyWorkflows", and files in "%Installer%\bin\SwishBin" are copied to "C:\Swish\bin".
 
-The inputs and outputs need to be attached to a file name, the inputs can also be connected to the result of a previous SWISH actor.
+To include additional actors with the installer simply add them to the ""%Installer%\bin\Actors" directory. 
 
-File names are entered using the 'String Constant' actor, to set its value double click on the actors icon and edit the 'value:' parameter, click the 'Commit' button to save the value.
+The installer follows instructions found in install.txt. This file can be edited as new files are added to the installer. 
 
-The variable connector identifies the table columns the actor operates on, eg the variables used to merge two tables together. Variables are also entered using a 'String Constant' actor, with multiple variable names separated by a space.
+If the installer in installing the software then each line of install.txt is carried out in order. If the installer is removing the software then install.txt is read in reverse line order and the opposite of each action is carried out where possible.
 
-To display some text output use the 'Display' actor, note that the result output of the swish actors will just display a file name.
+### Commands
+Each line of install.txt is in the format 
 
-Finally every workflow needs one  'SDF Director' located somewhere on the main canvas. You will need to double click on the 'SDF Director' icon and set the 'iterations:' parameter to 1.
+ActionName arguments
 
- 
+Where arguments are separated by spaces, strings are escaped and surrounded with "'s.
+
+<table border="1">
+<tr><td>Name</td><td>Arguments</td><td>Install action</td><td>Clean action</td></tr>
+<tr><td>DeleteFilesAndDirectories</td><td>"directory"</td><td>Deletes the directory and all contents</td><td>N/A</td></tr>
+<tr><td>Delete</td><td>"fileName"</td><td>Deletes the file</td><td>N/A</td></tr>
+<tr><td>DateAfter</td><td>Year Month Day Instruction</td><td>Only executes the following instruction after the date</td><td>Only executes the following instruction after the date</td></tr>
+<tr><td>DateBefore</td><td>Year Month Day Instruction</td><td>Only executes the following instruction before the date</td><td>Only executes the following instruction before the date</td></tr>
+<tr><td>RunProcess</td><td>RunProcess "executable" arguments</td><td>Execute process</td><td>Execute process</td></tr>
+<tr><td>CopyFilesAndDirectories</td><td>"sourceDirectory" "destinationDirectory"</td><td>Copies the directory, and any files and sub directories.</td><td>Deletes the files found in the source directory and if empty deletes sub directories and destination directory.</td></tr>
+<tr><td>CopyFiles</td><td>"sourceDirectory" "destinationDirectory"</td><td>Copies the files in the source directory to the destination directory.</td><td>Removes the files in the source directory from the destination directory.</td></tr>
+<tr><td>Copy</td><td>"sourceFileName" "destinationFileName"</td><td>Copies the file and creates the underlying directory if necessary.</td><td>Removes the destination file if it exists.</td></tr>
+<tr><td>MakeShortCut</td><td>"fileName" "targetFileName" "arguments" "description"</td><td>Creates a shortcut to a target file or target executable. The shortcut is saved at the path specified by fileName. </td><td>Deletes the shortcut.</td></tr>
+<tr><td>AddPath</td><td>"binPath"</td><td>Attempts to add the binPath to the system PATH environment variable. On failure it adds it to the user PATH variable.</td><td>N/A</td></tr>
+<tr><td>AddRegistryKey</td><td>"path" "key" "value"</td><td>Sets the value of the key located at path in the system registry.</td><td>Sets the key value to NULL.</td></tr>
+<tr><td>//</td><td>N/A</td><td>Ignored comment</td><td>Ignored comment</td></tr>
+<tr><td><blank line></td><td>N/A</td><td>Ignored</td><td>Ignored</td></tr>
+<tr><td><any other text></td><td>N/A</td><td>Invalid line error reported.</td><td>Invalid line error reported.</td></tr>
+</table>
+
+
+#### Examples:
+AddPath "%RBin%"
+
+Copy "%StartupPath%\\SampleData\\Kaleen.csv" "C:\\Swish\\SampleData\\Kaleen.csv"
+
+DateAfter 2014 01 01 RunProcess "%StartupPath%\\UpdateCheck.exe" ""
+
+### Symbols
+Several symbols are defined that are determined when the installer is run. Some values and paths may change depending on the user running the software. These symbols can used instead of specific paths in install.txt.
+
+<table border="1">
+<tr><td>Name</td><td>Description</td></tr>
+<tr><td>%UserProfile%</td><td>Directory of the user profile. Eg on Windows 7 it will be something like C:\Users\Ian\. On windows XP it will be something like C:\Documents and Settings\Ian\</td></tr>
+<tr><td>%StartupPath%</td><td>Start directory of the installer running</td></tr>
+<tr><td>%StartMenu%</td><td>Directory of the system start menu</td></tr>
+<tr><td>%SystemStartup%</td><td>Directory of the system startup</td></tr>
+<tr><td>%KeplerBin%</td><td>If found directory where Kepler is installed</td></tr>
+<tr><td>%RBin%</td><td>If found directory where R is installed</td></tr>
+<tr><td>%JavaBin%</td><td>If found directory where Java is installed</td></tr>
+</table>
+
