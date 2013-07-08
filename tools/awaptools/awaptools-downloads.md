@@ -12,6 +12,7 @@ awaptools-package
 
 ## Downloads
 ### Linux 
+* [awaptools_1.1_R_x86_64-pc-linux-gnu.tar.gz](/tools/awaptools/awaptools_1.1_R_x86_64-pc-linux-gnu.tar.gz)
 * [awaptools_1.0_R_x86_64-pc-linux-gnu.tar.gz](/tools/awaptools/awaptools_1.0_R_x86_64-pc-linux-gnu.tar.gz)
 
 ### Windows
