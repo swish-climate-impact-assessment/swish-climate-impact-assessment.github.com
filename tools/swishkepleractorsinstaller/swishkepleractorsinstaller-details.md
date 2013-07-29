@@ -1,4 +1,4 @@
-SWISH Kepler Actors Installer - Details
+﻿SWISH Kepler Actors Installer - Details
 ========================================================
 
 # The installer 

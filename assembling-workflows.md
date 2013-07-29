@@ -5,22 +5,15 @@ title: Assembling Workflows
 
 # Assembling Workflows
 
-* [Geocoding locations](/2013/05/geocoder)
+This will be a lot of links to posts on Assembling Workflows.
 
-* [Common Kepler tasks](/2013/06/kepler-common-tasks)
+For eg:
 
-* [Analysis of 2010 election results from AEC](/2012/09/new-analysis-added-drought-and-election-results)
+## Doing complicated things with pre-built actors 
+* [Click here for the Kaleen Heatwaves demo](/tutorial-hot-days-with-little-relief.html)
 
-* [Hot night with little relief in Kaleen - Demo calculating heatwaves](/tutorial-hot-days-with-little-relief.html)
-
-* [Quantumgis and postgis](/2013/04/quantumgis-and-postgis)
-
-* [Hello EWEDB](/2013/05/hello-ewedb)
-
-* [Extract AWAP data for locations](/2013/05/extract-awap-data-4-locations)
-
-* [Extracting weather data from grids](/2013/04/extract-weather-from-grids)
-
-* [Example study of farm dogs](/2013/05/farm-dogs-radio-tracking-collars)
-
-* [Hutchinson Drought Index](/2012/10/hutchinson-drought-index-fixed)
+## Explanations of each of the individual SWISH actors
+* AddVariable
+* DoStuff
+* R_subset
+* etc
