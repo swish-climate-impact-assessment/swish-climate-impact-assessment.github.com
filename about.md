@@ -1,9 +1,7 @@
 ---
-name: About
 layout: default
 title: About
 ---
-
 
 # Keith Dear: Project Manager
 
