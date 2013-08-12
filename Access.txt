@@ -1,0 +1,5 @@
+Access
+
+The software is licensed under the Creative Commons Australia Attribution 3.0 Licence.  Access to the EWEBD is available but requires NCEPH collaborations to be set up.  Interested users are invited to contact the NCEPH Data Manager for more info.
+
+http://creativecommons.org/licenses/by/3.0/au/legalcode
