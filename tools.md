@@ -24,6 +24,12 @@ title: Tools
 * [Click here for details](/tools/ExcessHeatIndices/ExcessHeatIndices-package.html)
 * [Click here for downloads](/tools/ExcessHeatIndices/ExcessHeatIndices-downloads.html)
 
+### RTAMET
+* This is an R package collecting useful R functions for checking the quality of meteorology data
+* [Click here for details](/tools/rtamet/rtamet-package.html)
+* [Click here for downloads](/tools/rtamet/rtamet-downloads.html)
+
+
 ### Australian Water Availability Project (AWAP) tools
 * The data are described [here](/metadata/AWAP_GRIDS.html)
 * R package to download and format raw gridded AWAP data and send to EWEDB (or other PostGIS server) - [awaptools](/tools/awaptools/awaptools-downloads.html)
