@@ -15,9 +15,3 @@ The SWISH project consists of a suite of software tools that we have worked on a
 The image below is a diagram of the work that needs to be done (Clink here for [Hi Res](/images/Fig1HiRes.png)).  The implementation using our Scientific and Integration Software is in development at the moment.
 
 ![Fig1.png](/images/Fig1.png)
-
-# ANDS funding
-
-This project is supported by the Australian National Data Service (ANDS) and The Australian National University. ANDS is supported by the Australian Government through the National Collaborative Research Infrastructure Strategy Program and the Education Investment Fund (EIF) Super Science Initiative.
-
-[ANDS](http://ands.org.au/)

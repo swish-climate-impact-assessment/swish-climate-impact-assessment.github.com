@@ -982,6 +982,26 @@ Take a fork of the swish-kepler-actors GitHub repo and add your actor and tests 
     
 #+end_src
 
+** 2013-10-26-finishing-up
+#+name:finishing-up-header
+#+begin_src markdown :tangle ~/projects/swish-climate-impact-assessment.github.com/_posts/2013-10-26-finishing-up.md :exports none :eval no :padline no
+---
+name: finishing-up
+layout: post
+title: Finishing Up
+date: 2013-10-26
+---
+
+- The SWISH project is finishing up.
+- Ivan will add any future swishdbtoools or EWEDB content to his [Open Notebook Science (ONS) blog](http://ivanhanigan.github.io/)
+- [Keith got a new job](https://globalhealth.duke.edu/people/faculty/dear-keith)
+- ANDS showed our video at eResearch 2013.
+
+![Keith_at_eResearch2013.jpeg](/images/Keith_at_eResearch_2013.jpeg)
+
+Cheers!    
+#+end_src
+
 * metadata
 ** metadata home
 ** EWE
