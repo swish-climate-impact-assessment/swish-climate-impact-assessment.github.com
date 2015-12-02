@@ -24,16 +24,18 @@
 #+begin_src markdown :tangle index.md :exports none :eval no :padline no
 ---
 layout: default
-title: Extreme Weather Events Database
+title: Scientific Workflow and Integration Software for Holism
 ---
 
-# This is the Extreme Weather Events Database of the:
-
-    Scientific Workflow and Integration Software for Health (SWISH)
+# This is the Scientific Workflow and Integration Software for Holism (SWISH)
 <p></p>
-project from the [National Centre for Epidemiology and Population Health](http://nceph.anu.edu.au/) (NCEPH) at the Australian National University (ANU).  
+SWISH started as a project for climate change and health impact assessments at the [National Centre for Epidemiology and Population Health](http://nceph.anu.edu.au/) (NCEPH) at the Australian National University (ANU).  
 
-The SWISH project consists of a suite of software tools that we have worked on and leverage off the work of the [https://kepler-project.org/](https://kepler-project.org/), the [http://postgis.refractions.net/](http://postgis.refractions.net/), [http://www.r-project.org/](http://www.r-project.org/) and the [http://www.stata.com/](http://www.stata.com/) software systems. Our work includes both an operational web-based research platform as well as enhanced traditional desktop client-side workflows, that boosts our researcher's capacity without compromising our expertise and trusted workflows.  You can read about the other elements of this project at the [Official Project Blog](http://swish-climate-impact-assessment.blogspot.com.au/) or this [High Level System Description Document webpage](/HighLevelDescription.html).  From those sites users can explore the scope of the project. This site is devoted to low level descriptions of the software resources included in our project.
+The H used to stand for Health, but the scope of the project has grown and so now the H stands for 'Holistic Climate Impact Assessments'.
+
+See the Documentation tab for more information about us and the project.
+
+In brief, the SWISH project consists of a suite of software tools and data packages that we have worked on and leverage off the work of the [https://kepler-project.org/](https://kepler-project.org/), the [http://postgis.refractions.net/](http://postgis.refractions.net/), [http://www.r-project.org/](http://www.r-project.org/) and the [http://www.stata.com/](http://www.stata.com/) software systems. Our work includes both an operational web-based research platform as well as enhanced traditional desktop client-side workflows, that boosts our researcher's capacity without compromising our expertise and trusted workflows.  You can read about the other elements of this project at the [Official Project Blog](http://swish-climate-impact-assessment.blogspot.com.au/) or this [High Level System Description Document webpage](/HighLevelDescription.html).  From those sites users can explore the scope of the project. This site is devoted to low level descriptions of the software resources included in our project.
 
 ## An example climate impact assessment workflow design
 The image below is a diagram of the work that needs to be done (Clink here for [Hi Res](/images/Fig1HiRes.png)).  The implementation using our Scientific and Integration Software is in development at the moment.
@@ -51,25 +53,31 @@ The image below is a diagram of the work that needs to be done (Clink here for [
   layout: default
   title: documentation
   ---
-  
+
+  # Who we are
+
+  - Ivan Hanigan [https://github.com/ivanhanigan](https://github.com/ivanhanigan)is a data scientist at the University of Sydney (corresponding author,  ivan.hanigan(at)gmail.com)
+  - Prof Dear is Research Professor of Global Health
+  - ozjimbob is an ecologist at the University of Tasmania
+
   # SWISH Documentation
-  
+
   SWISH is released under [the GPL license](http://www.opensource.org/licenses/gpl-license.php)
-  
+
   Our software is distributed in the hope that it will be useful, but
   WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-  
+
   # Tutorials
-  
+
   [Setting up your Environment](/setting-up.html)
-  
+
   [Assembling Scientific Workflows](/assembling-workflows.html)
-  
+
   [Developing with Workflow Software](/developing-with-workflows.html)
-  
+
   # Admin
-  
+
   [Administrative and technical details for the project](/admin.html)
 #+end_src
 
@@ -143,7 +151,8 @@ Research Institute at the Australian National University.
 #+RESULTS:
 
 **** markdown
-#+begin_src markdown :tangle creating-a-validated-events-database.md :exports none :eval no :padline no
+creating-a-validated-events-database.md 
+#+begin_src markdown :tangle no :exports none :eval no :padline no
   ---
   name: 2013-06-08-creating-a-validated-events-database
   layout: default
@@ -388,8 +397,8 @@ Research Institute at the Australian National University.
 #+end_src
 ** posted
 *** 2013-04-15-postgis-utils-on-windows header
-
-#+begin_src markdown :tangle _posts/2013-04-15-postgis-utils-on-windows.md :exports none :eval no :padline no
+ _posts/2013-04-15-postgis-utils-on-windows.md
+#+begin_src markdown :tangle no :exports none :eval no :padline no
 ---
 name: 2013-04-15-postgis-utils-on-windows
 layout: post
@@ -421,7 +430,8 @@ A tutorial with screenshots to make use of the GIS features of the EWEDB will fo
 #+end_src
 *** A SWISH user test report header
 #+name:A SWISH user test report-header
-#+begin_src markdown :tangle _posts/2013-04-19-a-swish-user-test-report.md :exports none :eval no :padline no
+_posts/2013-04-19-a-swish-user-test-report.md
+#+begin_src markdown :tangle no  :exports none :eval no :padline no
   ---
   name: A-SWISH-user-test-report
   layout: post 
@@ -506,7 +516,8 @@ A tutorial with screenshots to make use of the GIS features of the EWEDB will fo
 #+RESULTS: get-pics
 **** post
 #+name:2013-04-26-extract-weather-from-grids-header
-#+begin_src markdown :tangle _posts/2013-04-26-extract-weather-from-grids.md :exports none :eval no :padline no
+_posts/2013-04-26-extract-weather-from-grids.md
+#+begin_src markdown :tangle no :exports none :eval no :padline no
   ---
   name: 2013-04-26-extract-weather-from-grids
   layout: post
@@ -599,7 +610,8 @@ A tutorial with screenshots to make use of the GIS features of the EWEDB will fo
 
 **** post
 #+name:set-up-swish-computer-header
-#+begin_src markdown :tangle _posts/2013-04-27-set-up-swish-computer.md :exports none :eval no :padline no
+ _posts/2013-04-27-set-up-swish-computer.md
+#+begin_src markdown :tangle no :exports none :eval no :padline no
   ---
   name: set-up-swish-computer
   layout: post
@@ -648,7 +660,7 @@ A tutorial with screenshots to make use of the GIS features of the EWEDB will fo
     <p></p>
   OR if you don't want the newest versions
   
-      if (length(grep("ming", sessionInfo()[[1]]$os)) == 1) {
+      if (length(grep("ming", sessionInfo()[[ 1 ]]$os)) == 1) {
         download.file("http://swish-climate-impact-assessment.github.io/tools/swishdbtools/swishdbtools_1.2.zip", 
                       destfile=file.path(Sys.getenv("HOME"), "swishdbtools_1.2.zip"), 
                       mode="wb")
@@ -741,7 +753,8 @@ A tutorial with screenshots to make use of the GIS features of the EWEDB will fo
 
 *** 2013-05-03 ExtractAWAPdata4locations header
 #+name:ExtractAWAPdata4locations-header
-#+begin_src markdown :tangle _posts/2013-05-03-extract-awap-data-4-locations.md :exports none :eval no :padline no
+ _posts/2013-05-03-extract-awap-data-4-locations.md
+#+begin_src markdown :tangle no :exports none :eval no :padline no
 ---
 name: 2013-05-03-extract-awap-data-4-locations
 layout: post
@@ -793,7 +806,8 @@ In the attached example the study location is Kaleen, a suburb of Canberra.
 
 **** post
 #+name:set-up-swish-computer-header
-#+begin_src markdown :tangle _posts/2013-05-09-set-up-r-on-ms-windows.md :exports none :eval no :padline no
+ _posts/2013-05-09-set-up-r-on-ms-windows.md
+#+begin_src markdown :tangle no :exports none :eval no :padline no
   ---
   name: set-up-r-for-kepler-on-ms-windows
   layout: post
@@ -847,7 +861,8 @@ In the attached example the study location is Kaleen, a suburb of Canberra.
 
 *** 2013-05-13-awapgrids-vs-stations.md  header
 #+name:2013-05-13-awapgrids-vs-stations.md -header
-#+begin_src markdown :tangle _posts/2013-05-13-awapgrids-vs-stations.md :exports none :eval no :padline no
+_posts/2013-05-13-awapgrids-vs-stations.md 
+#+begin_src markdown :tangle no :exports none :eval no :padline no
 ---
 name: 2013-05-13-awapgrids-vs-stations.md 
 layout: post
@@ -903,7 +918,8 @@ Users are asked to bear this in mind when considering the appropriateness of the
 
 *** 2013-05-15-geocoder header
 #+name:geocoder-header
-#+begin_src markdown :tangle _posts/2013-05-15-geocoder.md :exports none :eval no :padline no
+_posts/2013-05-15-geocoder.md
+#+begin_src markdown :tangle no :exports none :eval no :padline no
 ---
 name: geocoder
 layout: post
@@ -935,7 +951,8 @@ As you can see when you open the KAR file, this workflow expects an XLSX file to
 
 *** 2013-06-05-developing-with-workflows header
 #+name:developing-with-workflows-header
-#+begin_src markdown :tangle _posts/2013-06-05-developing-with-workflows.md :exports none :eval no :padline no
+_posts/2013-06-05-developing-with-workflows.md
+#+begin_src markdown :tangle no :exports none :eval no :padline no
 ---
 name: 2013-06-05-developing-with-workflows
 layout: post
@@ -983,8 +1000,9 @@ Take a fork of the swish-kepler-actors GitHub repo and add your actor and tests 
 #+end_src
 
 ** 2013-10-26-finishing-up
+~/projects/swish-climate-impact-assessment.github.com/_posts/2013-10-26-finishing-up.md
 #+name:finishing-up-header
-#+begin_src markdown :tangle ~/projects/swish-climate-impact-assessment.github.com/_posts/2013-10-26-finishing-up.md :exports none :eval no :padline no
+#+begin_src markdown :tangle no  :exports none :eval no :padline no
 ---
 name: finishing-up
 layout: post
@@ -1003,13 +1021,28 @@ Cheers!
 
 
 #+end_src
+** 2015-12-02-reboot
+#+name:reboot-header
+#+begin_src markdown :tangle _posts/2015-12-02-reboot.md :exports none :eval no :padline no
+---
+name: reboot
+layout: post
+title: Reboot
+date: 2015-12-02
+---
+
+- The SWISH project is going to move forward 
+- The H used to stand for Health, but the scope of the project has grown and so now the H stands for 'Holistic Climate Impact Assessments'.
+    
+#+end_src
 
 * metadata
 ** metadata home
 ** EWE
 *** EWE header
 #+name:EWE-header
-#+begin_src markdown :tangle EWE.md :exports none :eval no :padline no
+EWE.md
+#+begin_src markdown :tangle no :exports none :eval no :padline no
   ---
   name: EWE
   layout: default
@@ -1038,7 +1071,8 @@ Cheers!
 ** AWAP_GRIDS
 *** AWAP_GRIDS header
 #+name:AWAP_GRIDS-header
-#+begin_src markdown :tangle metadata/AWAP_GRIDS.md :exports none :eval no :padline no
+metadata/AWAP_GRIDS.md
+#+begin_src markdown :tangle no :exports none :eval no :padline no
 ---
 name: AWAP-GRIDS
 layout: default
@@ -1067,3 +1101,10 @@ Documentation is at [http://www.bom.gov.au/amm/docs/2009/jones.pdf](http://www.b
 [Here is a workflow for extracting the data](/tools/ExtractAWAPdata4locations/extract-awap.html)
     
 #+end_src
+* snip
+              <!--><a class="Dataset Catalogue" href="http://115.146.93.108:8181/ddiindex">Dataset Catalogue →</a> -->
+              <!-- <p></p> -->
+              <!-- <a class="Dataset Registry" href="http://115.146.93.225:8080/apex/f?p=102">Dataset Registry →</a> -->
+              <!-- <p></p> -->
+              <!-- <a class="OpenGeo Suite" href="http://115.146.93.108:8181/dashboard">OpenGeo Suite →</a> -->
+              <!-- <p></p> -->
