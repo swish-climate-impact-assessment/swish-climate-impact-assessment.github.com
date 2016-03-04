@@ -25,4 +25,4 @@ title: EWE
 ## Viewing the data with GIS
 ### Quantum GIS
 ### ArcGIS 
-### [Geoserver](http://gislibrary.anu.edu.au:8081/geoserver)
+### [Geoserver](http://gislibrary-geo.anu.edu.au:8081/dashboard)
