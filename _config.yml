@@ -2,5 +2,6 @@ name: swish
 description: An exploration of data
 url: http://swish-climate-impact-assessment.github.com
 paginate: 5
-pygments: true
+highlighter:      pygments
+markdown: kramdown
 permalink: /:year/:month/:title/
