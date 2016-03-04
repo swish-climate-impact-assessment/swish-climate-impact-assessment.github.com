@@ -1,7 +1,6 @@
-name: Recology
-description: An exploration of using R for ecology, evolution, and open science.
-url: http://schamberlain.github.com
+name: swish
+description: An exploration of data
+url: http://swish-climate-impact-assessment.github.com
 paginate: 5
 pygments: true
-markdown: rdiscount
 permalink: /:year/:month/:title/
