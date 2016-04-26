@@ -6,7 +6,7 @@ awaptools-package
 * Current Version:	1.2
 * Date: 	2016-04-26
 * License: 	GPL2
-* Author: ivanhanigan
+* Author: ivanhanigan,  J. Guillaume, F. Markham, G. Williamson and I. Szarka
 * Maintainer: Who to complain to <ivan.hanigan@gmail.com>
 
 
