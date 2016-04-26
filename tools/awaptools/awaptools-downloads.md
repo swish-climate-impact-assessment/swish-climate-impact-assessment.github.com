@@ -3,8 +3,8 @@ awaptools-package
 
 * Package: 	awaptools
 * Type: 	R Package
-* Current Version:	1.1
-* Date: 	2013-07-08
+* Current Version:	1.2
+* Date: 	2016-04-26
 * License: 	GPL2
 * Author: ivanhanigan
 * Maintainer: Who to complain to <ivan.hanigan@gmail.com>
