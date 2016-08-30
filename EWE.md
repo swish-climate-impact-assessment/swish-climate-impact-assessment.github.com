@@ -28,12 +28,7 @@ title: EWE
 
 #### [The Hutchinson Index](https://github.com/ivanhanigan/HutchinsonDroughtIndex)
 
-#### [The Hutchinson Index Tutorial](/EWE/HutchinsonDroughtIndex/HutchinsonDroughtIndex.html)
 
 ## Viewing the data with GIS
 
-### Quantum GIS
-
-### ArcGIS 
-
-### [Geoserver](http://gislibrary-geo.anu.edu.au:8081/dashboard)
+### [ANU GIS-FORUM GIS LIBRARY](http://gis-forum.github.com)
