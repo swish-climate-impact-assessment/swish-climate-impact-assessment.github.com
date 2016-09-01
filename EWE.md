@@ -1,20 +1,14 @@
 ---
 name: EWE
 layout: default
-title: EWE
+title: Extreme Weather Events (EWE)
 ---
-
-## The registry and catalogue
-
-### [Use the Database Registry](http://115.146.93.225:8080/apex/f?p=102)
-
-### [Search the Catalogue](http://115.146.93.108:8181/ddiindex)
 
 ## The Datasets
 
 ### AWAP_GRIDS
 
-#### [Australian Water Availability Project](/metadata/AWAP_GRIDS.html)
+#### [Australian Water Availability Project](https://github.com/swish-climate-impact-assessment/awaptools)
 
 ### Heatwaves
 
