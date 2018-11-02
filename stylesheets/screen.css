@@ -55,9 +55,11 @@ address {
 /* Typography
 ======================================================*/
 body {
-	background: #fff;
-	color: #020206;
-	font: 12px/18px helvetica, arial, sans-serif;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #333;
+        background-color: #fff;
 }
 code {
 	font-family: "Lucida Console", Monaco, monospace;
@@ -455,7 +457,7 @@ h1.page-title {
 	width: 960px;
 }
 #header {
-	background-color: #FDD0A2;
+	background-color: #238B45;
 	background-repeat:repeat-x;
 	background-position:left bottom;
 	color: #CCECE6;
@@ -534,7 +536,7 @@ h1.page-title {
 	margin-right:12px;
 }
 #footer {
-	background-color: #FDD0A2;
+	background-color: #238B45;
 	background-repeat:repeat-x;
 	background-position:left top;
 	clear: both;
@@ -968,7 +970,7 @@ form.comment-form {
 	background-image:url(/images/header/gradient-dark.png);
 }
 #header .wrapper {
-	background-image:url(/images/header/McMichaelDDRMHconf2008crop2.jpg);
+	background-image:url(/images/header/titlV3.png);
 }
 #sub-header {
 	background-image: url(../img/sub-header-border-bottom.gif);
@@ -1029,7 +1031,7 @@ body#attachment #header .wrapper {
 =================================== */
 
 #TB_title{
-	background-image: url(/images/header/McMichaelDDRMHconf2008crop.jpg);
+	background-image: url(/images/header/titlV3.png);
 	background-repeat:no-repeat;
 	background-position:center bottom;
 }
